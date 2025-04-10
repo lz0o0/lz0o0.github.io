@@ -10,7 +10,7 @@
     <lastBuildDate>Thu, 10 Apr 2025 15:21:26 +0800</lastBuildDate>
     <atom:link href="https://lz0o0.github.io/zh/categories/category-2/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>解决hugo部署到github后CSS样式无法显示的问题</title>
+      <title>关于hugo部署到github后CSS无法加载</title>
       <link>https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/</link>
       <pubDate>Thu, 10 Apr 2025 15:21:26 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/</guid>
