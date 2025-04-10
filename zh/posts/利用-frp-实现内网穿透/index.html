@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>利用 frp 实现内网穿透 | Le blog de Lz0o0</title>
 <meta name="keywords" content="">
-<meta name="description" content="配置 frp 服务端
+<meta name="description" content="1. frp 源码获取
 
 git：https://github.com/fatedier/frp/releases
 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <meta property="og:url" content="https://lz0o0.github.io/zh/posts/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
   <meta property="og:site_name" content="Le blog de Lz0o0">
   <meta property="og:title" content="利用 frp 实现内网穿透">
-  <meta property="og:description" content="配置 frp 服务端 git：https://github.com/fatedier/frp/releases 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz
+  <meta property="og:description" content="1. frp 源码获取 git：https://github.com/fatedier/frp/releases 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz
 文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <meta property="article:modified_time" content="2025-04-06T23:57:22+08:00">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用 frp 实现内网穿透">
-<meta name="twitter:description" content="配置 frp 服务端
+<meta name="twitter:description" content="1. frp 源码获取
 
 git：https://github.com/fatedier/frp/releases
 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz
@@ -128,12 +128,12 @@ git：https://github.com/fatedier/frp/releases
   "@type": "BlogPosting",
   "headline": "利用 frp 实现内网穿透",
   "name": "利用 frp 实现内网穿透",
-  "description": "配置 frp 服务端 git：https://github.com/fatedier/frp/releases 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz\n文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容\n",
+  "description": "1. frp 源码获取 git：https://github.com/fatedier/frp/releases 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz\n文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容\n",
   "keywords": [
     
   ],
-  "articleBody": "配置 frp 服务端 git：https://github.com/fatedier/frp/releases 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz\n文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容\n配置 frps 服务端设置项 frps.toml文件配置： 1 2 3 4 5 6 7 8 9 bindPort = 7000 webServer.addr = \"0.0.0.0\" webServer.port = 7500 webServer.user = \"admin\" webServer.password = \"admin\" auth.method=\"token\" auth.token = \"passtoken\" 配置后启动即可，成功会显示初始化日志：./frps -c frps.toml，随后可以访问公网IP：7500网站查看访问面板\n后台挂载进程 利用systemd启动后台进程挂载，创建文件：vim /etc/systemd/system/frps.service，文件内容如下(指定了访问面板的信息和绑定端口)：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 [Unit] Description = frp server After = network.target syslog.target Wants = network.target [Service] Type=simple ExecStart = /dev-ops/frp/frps -c /dev-ops/frp/frps.toml ExecStop=/bin/kill $MAINPID Restart=always RestartSec=5 [Install] WantedBy = multi-user.target 文件创建成功后，启动即可：\n1 2 systemctl start frps systemctl status frps 配置 frpc 客户端设置项 配置frpc.toml文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 #你的云服务器公网ip serverAddr = \"x.x.x.x\" #连接到云服务器端口,需要和frps.toml配置文件中端口一致 serverPort = 7000 auth.method = \"token\" auth.token = \"passtoken\" #开放端口连接 [[proxies]] name = \"test-tcp\" type = \"tcp\" localIP = \"127.0.0.1\" localPort = 8080 remotePort = 6100 # 服务器需要开放该端口 #共享文件访问 [[proxies]] name = \"d_drive\" type = \"tcp\" remotePort = 6001 # 服务器上用于访问的端口，需要开放该端口 [proxies.plugin] type = \"static_file\" localPath = \"D:\\\\\" # 要对外暴露的目录 stripPrefix = \"d_drive\" # 访问路径名，此处即http://x.x.x.x:6001/d_drive/ httpUser = \"username\" # 用户名 httpPassword = \"password\" # 密码 连接客户端与服务端 确保 frpc.exe 和 frpc.toml 位于同一目录。\n打开命令提示符（cmd）或 PowerShell，切换到 frpc.exe 所在目录：\n1 cd path\\to\\frp 执行以下命令启动客户端：\n1 .\\frpc.exe -c frpc.toml 如果提示权限问题，确保当前用户有执行权限，或者以管理员身份运行命令提示符。\n如果仍然无法执行，检查以下内容：\n确保 frpc.exe 文件未被杀毒软件拦截。 确保 frpc.toml 文件路径正确，且格式无误。 使用以下命令查看详细日志： 1 frpc.exe -c frpc.toml --log_level debug ",
-  "wordCount" : "814",
+  "articleBody": "1. frp 源码获取 git：https://github.com/fatedier/frp/releases 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz\n文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容\n2.配置 frps 服务端设置项 frps.toml文件配置： 1 2 3 4 5 6 7 8 9 bindPort = 7000 webServer.addr = \"0.0.0.0\" webServer.port = 7500 webServer.user = \"admin\" webServer.password = \"admin\" auth.method=\"token\" auth.token = \"passtoken\" 配置后启动即可，成功会显示初始化日志：./frps -c frps.toml，随后可以访问公网IP：7500网站查看访问面板\n后台挂载进程 利用systemd启动后台进程挂载，创建文件：vim /etc/systemd/system/frps.service，文件内容如下(指定了访问面板的信息和绑定端口)：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 [Unit] Description = frp server After = network.target syslog.target Wants = network.target [Service] Type=simple ExecStart = /dev-ops/frp/frps -c /dev-ops/frp/frps.toml ExecStop=/bin/kill $MAINPID Restart=always RestartSec=5 [Install] WantedBy = multi-user.target 文件创建成功后，启动即可：\n1 2 systemctl start frps systemctl status frps 3.配置 frpc 客户端设置项 配置frpc.toml文件 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 #你的云服务器公网ip serverAddr = \"x.x.x.x\" #连接到云服务器端口,需要和frps.toml配置文件中端口一致 serverPort = 7000 auth.method = \"token\" auth.token = \"passtoken\" #开放端口连接 [[proxies]] name = \"test-tcp\" type = \"tcp\" localIP = \"127.0.0.1\" localPort = 8080 remotePort = 6100 # 服务器需要开放该端口 #共享文件访问 [[proxies]] name = \"d_drive\" type = \"tcp\" remotePort = 6001 # 服务器上用于访问的端口，需要开放该端口 [proxies.plugin] type = \"static_file\" localPath = \"D:\\\\\" # 要对外暴露的目录 stripPrefix = \"d_drive\" # 访问路径名，此处即http://x.x.x.x:6001/d_drive/ httpUser = \"username\" # 用户名 httpPassword = \"password\" # 密码 4.连接客户端与服务端 确保 frpc.exe 和 frpc.toml 位于同一目录。\n打开命令提示符（cmd）或 PowerShell，切换到 frpc.exe 所在目录：\n1 cd path\\to\\frp 执行以下命令启动客户端：\n1 .\\frpc.exe -c frpc.toml 如果提示权限问题，确保当前用户有执行权限，或者以管理员身份运行命令提示符。\n如果仍然无法执行，检查以下内容：\n确保 frpc.exe 文件未被杀毒软件拦截。 确保 frpc.toml 文件路径正确，且格式无误。 使用以下命令查看详细日志： 1 frpc.exe -c frpc.toml --log_level debug 5.应用场景与实操 6.小结 refer ",
+  "wordCount" : "834",
   "inLanguage": "zh",
   "datePublished": "2025-04-06T23:57:22+08:00",
   "dateModified": "2025-04-06T23:57:22+08:00",
@@ -213,11 +213,6 @@ git：https://github.com/fatedier/frp/releases
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/archives" title="⏱时间轴">
-                    <span>⏱时间轴</span>
-                </a>
-            </li>
-            <li>
                 <a href="https://lz0o0.github.io/zh/tags" title="🔖tags">
                     <span>🔖tags</span>
                 </a>
@@ -260,28 +255,31 @@ git：https://github.com/fatedier/frp/releases
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#%e9%85%8d%e7%bd%ae-frp-%e6%9c%8d%e5%8a%a1%e7%ab%af" aria-label="配置 frp 服务端">配置 frp 服务端</a><ul>
-                        
+                    <a href="#1-frp-%e6%ba%90%e7%a0%81%e8%8e%b7%e5%8f%96" aria-label="1. frp 源码获取">1. frp 源码获取</a></li>
                 <li>
-                    <a href="#%e9%85%8d%e7%bd%ae-frps-%e6%9c%8d%e5%8a%a1%e7%ab%af%e8%ae%be%e7%bd%ae%e9%a1%b9" aria-label="配置 frps 服务端设置项">配置 frps 服务端设置项</a></li>
+                    <a href="#2%e9%85%8d%e7%bd%ae-frps-%e6%9c%8d%e5%8a%a1%e7%ab%af%e8%ae%be%e7%bd%ae%e9%a1%b9" aria-label="2.配置 frps 服务端设置项">2.配置 frps 服务端设置项</a></li>
                 <li>
-                    <a href="#%e9%85%8d%e7%bd%ae-frpc-%e5%ae%a2%e6%88%b7%e7%ab%af%e8%ae%be%e7%bd%ae%e9%a1%b9" aria-label="配置 frpc 客户端设置项">配置 frpc 客户端设置项</a></li>
+                    <a href="#3%e9%85%8d%e7%bd%ae-frpc-%e5%ae%a2%e6%88%b7%e7%ab%af%e8%ae%be%e7%bd%ae%e9%a1%b9" aria-label="3.配置 frpc 客户端设置项">3.配置 frpc 客户端设置项</a></li>
                 <li>
-                    <a href="#%e8%bf%9e%e6%8e%a5%e5%ae%a2%e6%88%b7%e7%ab%af%e4%b8%8e%e6%9c%8d%e5%8a%a1%e7%ab%af" aria-label="连接客户端与服务端">连接客户端与服务端</a>
+                    <a href="#4%e8%bf%9e%e6%8e%a5%e5%ae%a2%e6%88%b7%e7%ab%af%e4%b8%8e%e6%9c%8d%e5%8a%a1%e7%ab%af" aria-label="4.连接客户端与服务端">4.连接客户端与服务端</a></li>
+                <li>
+                    <a href="#5%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af%e4%b8%8e%e5%ae%9e%e6%93%8d" aria-label="5.应用场景与实操">5.应用场景与实操</a></li>
+                <li>
+                    <a href="#6%e5%b0%8f%e7%bb%93" aria-label="6.小结">6.小结</a></li>
+                <li>
+                    <a href="#refer" aria-label="refer">refer</a>
                 </li>
-            </ul>
-            </li>
             </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h3 id="配置-frp-服务端">配置 frp 服务端<a hidden class="anchor" aria-hidden="true" href="#配置-frp-服务端">#</a></h3>
+  <div class="post-content"><h3 id="1-frp-源码获取">1. frp 源码获取<a hidden class="anchor" aria-hidden="true" href="#1-frp-源码获取">#</a></h3>
 <blockquote>
 <p>git：https://github.com/fatedier/frp/releases
 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz<br>
 文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容</p></blockquote>
-<h4 id="配置-frps-服务端设置项">配置 frps 服务端设置项<a hidden class="anchor" aria-hidden="true" href="#配置-frps-服务端设置项">#</a></h4>
+<h3 id="2配置-frps-服务端设置项">2.配置 frps 服务端设置项<a hidden class="anchor" aria-hidden="true" href="#2配置-frps-服务端设置项">#</a></h3>
 <ol>
 <li>frps.toml文件配置：</li>
 </ol>
@@ -361,7 +359,7 @@ git：https://github.com/fatedier/frp/releases
 </span></span><span class="line"><span class="cl">systemctl status frps
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="配置-frpc-客户端设置项">配置 frpc 客户端设置项<a hidden class="anchor" aria-hidden="true" href="#配置-frpc-客户端设置项">#</a></h4>
+</div><h3 id="3配置-frpc-客户端设置项">3.配置 frpc 客户端设置项<a hidden class="anchor" aria-hidden="true" href="#3配置-frpc-客户端设置项">#</a></h3>
 <ol>
 <li>配置frpc.toml文件</li>
 </ol>
@@ -427,7 +425,7 @@ git：https://github.com/fatedier/frp/releases
 </span></span><span class="line"><span class="cl">httpPassword = &#34;password&#34;  # 密码
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="连接客户端与服务端">连接客户端与服务端<a hidden class="anchor" aria-hidden="true" href="#连接客户端与服务端">#</a></h4>
+</div><h3 id="4连接客户端与服务端">4.连接客户端与服务端<a hidden class="anchor" aria-hidden="true" href="#4连接客户端与服务端">#</a></h3>
 <ol>
 <li>
 <p>确保 <code>frpc.exe</code> 和 <code>frpc.toml</code> 位于同一目录。</p>
@@ -475,6 +473,9 @@ git：https://github.com/fatedier/frp/releases
 </ul>
 </li>
 </ol>
+<h3 id="5应用场景与实操">5.应用场景与实操<a hidden class="anchor" aria-hidden="true" href="#5应用场景与实操">#</a></h3>
+<h3 id="6小结">6.小结<a hidden class="anchor" aria-hidden="true" href="#6小结">#</a></h3>
+<h3 id="refer">refer<a hidden class="anchor" aria-hidden="true" href="#refer">#</a></h3>
 
 
   </div>

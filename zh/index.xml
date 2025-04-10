@@ -14,8 +14,7 @@
       <link>https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/</link>
       <pubDate>Fri, 04 Apr 2025 20:41:46 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Hi！&lt;/em&gt;   &lt;strong&gt;我是 lz0o0 ，以后在本站就自称本鲤了！&lt;/strong&gt;  &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;知行合一 止于至善&lt;/strong&gt; &lt;br&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;Hiii！&lt;/em&gt;   &lt;strong&gt;我是 lz0o0 ，以后在本站就自称本鲤了！&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Blog == 管理 &#43; 输出</title>
@@ -26,7 +25,7 @@
 # This Blog = Hugo+Blowfish+Github
 --&gt;
 &lt;p&gt;&lt;img alt=&#34;建站核心&#34; loading=&#34;lazy&#34; src=&#34;https://lz0o0.github.io/img/demo.png&#34; title=&#34;夜深了，睡觉！&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;前言๑ˑ_&#34;&gt;前言(๑✦ˑ_✦)&lt;/h3&gt;
+&lt;h3 id=&#34;1前言๑ˑ_&#34;&gt;1.前言(๑✦ˑ_✦)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;前年用 &lt;em&gt;BT+Wordpress+阿里轻量化服务器&lt;/em&gt; 搭了个网站，当时挺上头的，写了好几篇博客&amp;hellip;后来由于服务确实卡顿，偶尔容易出问题，加上服务器每月有开销，当时又忙着准备保研和毕设，慢慢就搁置了&amp;hellip;&lt;/p&gt;</description>
@@ -50,7 +49,7 @@
       <link>https://lz0o0.github.io/zh/posts/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
       <pubDate>Sun, 06 Apr 2025 23:57:22 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
-      <description>&lt;h3 id=&#34;配置-frp-服务端&#34;&gt;配置 frp 服务端&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;1-frp-源码获取&#34;&gt;1. frp 源码获取&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;git：https://github.com/fatedier/frp/releases
 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz&lt;br&gt;
