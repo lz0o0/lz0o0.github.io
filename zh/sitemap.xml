@@ -2,51 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lz0o0.github.io/zh/posts/first-blog/</loc>
+    <loc>https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/</loc>
     <lastmod>2025-04-04T20:41:46+08:00</lastmod>
   </url><url>
-    <loc>https://lz0o0.github.io/zh/posts/blog-manage&#43;output/</loc>
+    <loc>https://lz0o0.github.io/zh/posts/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</loc>
     <lastmod>2025-04-05T13:41:46+08:00</lastmod>
   </url><url>
     <loc>https://lz0o0.github.io/zh/posts/</loc>
     <lastmod>2025-04-10T15:21:26+08:00</lastmod>
   </url><url>
-    <loc>https://lz0o0.github.io/zh/categories/</loc>
-    <lastmod>2025-04-10T15:21:26+08:00</lastmod>
-  </url><url>
-    <loc>https://lz0o0.github.io/zh/categories/category-1/</loc>
-    <lastmod>2025-04-10T15:21:26+08:00</lastmod>
-  </url><url>
-    <loc>https://lz0o0.github.io/zh/categories/category-2/</loc>
-    <lastmod>2025-04-10T15:21:26+08:00</lastmod>
-  </url><url>
-    <loc>https://lz0o0.github.io/zh/tags/hugo/</loc>
+    <loc>https://lz0o0.github.io/zh/posts/hugo%E5%8F%91%E5%B8%83%E5%90%8Ecss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</loc>
     <lastmod>2025-04-10T15:21:26+08:00</lastmod>
   </url><url>
     <loc>https://lz0o0.github.io/zh/</loc>
     <lastmod>2025-04-10T15:21:26+08:00</lastmod>
   </url><url>
-    <loc>https://lz0o0.github.io/zh/tags/tag-2/</loc>
-    <lastmod>2025-04-10T15:21:26+08:00</lastmod>
-  </url><url>
     <loc>https://lz0o0.github.io/zh/tags/</loc>
     <lastmod>2025-04-10T15:21:26+08:00</lastmod>
   </url><url>
-    <loc>https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/</loc>
+    <loc>https://lz0o0.github.io/zh/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2025-04-10T15:21:26+08:00</lastmod>
   </url><url>
     <loc>https://lz0o0.github.io/zh/about/</loc>
     <lastmod>2025-04-08T22:32:14+08:00</lastmod>
   </url><url>
-    <loc>https://lz0o0.github.io/zh/tags/tag-1/</loc>
-    <lastmod>2025-04-08T22:32:14+08:00</lastmod>
-  </url><url>
-    <loc>https://lz0o0.github.io/zh/posts/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-%E7%94%A8frp%E6%89%93%E6%B8%B8%E6%88%8F/</loc>
+    <loc>https://lz0o0.github.io/zh/posts/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
     <lastmod>2025-04-06T23:57:22+08:00</lastmod>
   </url><url>
     <loc>https://lz0o0.github.io/archives/</loc>
   </url><url>
     <loc>https://lz0o0.github.io/zh/search/</loc>
+  </url><url>
+    <loc>https://lz0o0.github.io/zh/categories/</loc>
   </url><url>
     <loc>https://lz0o0.github.io/zh/series/</loc>
   </url>

@@ -11,18 +11,17 @@
     <atom:link href="https://lz0o0.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>热爱，让你成为自己~</title>
-      <link>https://lz0o0.github.io/zh/posts/first-blog/</link>
+      <link>https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/</link>
       <pubDate>Fri, 04 Apr 2025 20:41:46 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/first-blog/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Welcom&lt;/em&gt; &lt;strong&gt;我是 lz0o0 ，以后在本站就自称本鲤了！&lt;/strong&gt;  &lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;努力不一定有回报，但能让你成长！&lt;/strong&gt; &lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Always remember for one thing：love makes who you are~&lt;/strong&gt;&lt;/p&gt;</description>
+      <guid>https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Hi！&lt;/em&gt;   &lt;strong&gt;我是 lz0o0 ，以后在本站就自称本鲤了！&lt;/strong&gt;  &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;知行合一 止于至善&lt;/strong&gt; &lt;br&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Blog &gt; Manage and Output</title>
-      <link>https://lz0o0.github.io/zh/posts/blog-manage&#43;output/</link>
+      <title>Blog == 管理 &#43; 输出</title>
+      <link>https://lz0o0.github.io/zh/posts/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</link>
       <pubDate>Sat, 05 Apr 2025 13:41:46 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/blog-manage&#43;output/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</guid>
       <description>&lt;!--
 # This Blog = Hugo+Blowfish+Github
 --&gt;
@@ -30,14 +29,14 @@
 &lt;h3 id=&#34;前言๑ˑ_&#34;&gt;前言(๑✦ˑ_✦)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;前年用 &lt;em&gt;BT+Wordpress+阿里轻量化服务器&lt;/em&gt; 搭了个网站，当时挺上头的，写了好几篇博客&amp;hellip;后来由于服务确实卡顿，偶尔容易出问题，再加上服务器每月有开销，当时又忙着准备保研和毕设，慢慢就搁置了，Blog弄起来还挺上头的!&lt;/p&gt;</description>
+&lt;p&gt;前年用 &lt;em&gt;BT+Wordpress+阿里轻量化服务器&lt;/em&gt; 搭了个网站，当时挺上头的，写了好几篇博客&amp;hellip;后来由于服务确实卡顿，偶尔容易出问题，加上服务器每月有开销，当时又忙着准备保研和毕设，慢慢就搁置了&amp;hellip;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>关于hugo部署到github后CSS无法加载</title>
-      <link>https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/</link>
+      <title>hugo发布后css无法加载</title>
+      <link>https://lz0o0.github.io/zh/posts/hugo%E5%8F%91%E5%B8%83%E5%90%8Ecss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</link>
       <pubDate>Thu, 10 Apr 2025 15:21:26 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/</guid>
-      <description>Hugo部署不显示样式，CSS错误，禁止SRI校验</description>
+      <guid>https://lz0o0.github.io/zh/posts/hugo%E5%8F%91%E5%B8%83%E5%90%8Ecss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</guid>
+      <description>Hugo部署不显示样式，CSS错误，禁止 SRI 校验</description>
     </item>
     <item>
       <title>About</title>
@@ -47,12 +46,11 @@
       <description>About me</description>
     </item>
     <item>
-      <title>内网穿透 用frp打游戏</title>
-      <link>https://lz0o0.github.io/zh/posts/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-%E7%94%A8frp%E6%89%93%E6%B8%B8%E6%88%8F/</link>
+      <title>利用 frp 实现内网穿透</title>
+      <link>https://lz0o0.github.io/zh/posts/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
       <pubDate>Sun, 06 Apr 2025 23:57:22 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-%E7%94%A8frp%E6%89%93%E6%B8%B8%E6%88%8F/</guid>
-      <description>&lt;p&gt;内网穿透：借助Frp，增强游戏体验&lt;/p&gt;
-&lt;h2 id=&#34;配置frp服务端&#34;&gt;配置frp服务端&lt;/h2&gt;
+      <guid>https://lz0o0.github.io/zh/posts/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
+      <description>&lt;h3 id=&#34;配置-frp-服务端&#34;&gt;配置 frp 服务端&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;git：https://github.com/fatedier/frp/releases
 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz&lt;br&gt;
