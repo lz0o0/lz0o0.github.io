@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Le blog de Lz0o0</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Le blog de Lz0o0</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>zh-cn</language>
+    <copyright>©2024 Le blog de Lz0o0</copyright>
+    <lastBuildDate>Sun, 06 Apr 2025 23:57:22 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>内网穿透 用frp打游戏</title>
+      <link>http://localhost:1313/posts/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-%E7%94%A8frp%E6%89%93%E6%B8%B8%E6%88%8F/</link>
+      <pubDate>Sun, 06 Apr 2025 23:57:22 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-%E7%94%A8frp%E6%89%93%E6%B8%B8%E6%88%8F/</guid>
+      <description>&lt;p&gt;内网穿透：借助Frp，增强游戏体验&lt;/p&gt;
+&lt;h2 id=&#34;配置frp服务端&#34;&gt;配置frp服务端&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;git：https://github.com/fatedier/frp/releases
+解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz&lt;br&gt;
+文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;配置服务端设置项&#34;&gt;配置服务端设置项&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;frps.toml文件配置：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;bindPort&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;7000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;webServer&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;addr&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0.0.0.0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;webServer&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;port&lt;/span&gt; = &lt;span style=&#34;color:#ae81ff&#34;&gt;7500&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;webServer&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;webServer&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;password&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;auth&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;method&lt;/span&gt;=&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;token&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;auth&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;token&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;passtoken&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt; 配置后启动即可，成功会显示初始化日志：&lt;code&gt;./frps -c frps.toml&lt;/code&gt;，随后可以访问公网&lt;code&gt;IP：7500&lt;/code&gt;网站查看访问面板&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;后台挂载进程&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt; 利用systemd启动后台进程挂载，创建文件：&lt;code&gt;vim /etc/systemd/system/frps.service&lt;/code&gt;，文件内容如下(指定了访问面板的信息和绑定端口)：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[Unit]
+Description = frp server
+After = network.target syslog.target
+Wants = network.target
+
+[Service]
+Type=simple
+ExecStart = /dev-ops/frp/frps -c /dev-ops/frp/frps.toml
+
+ExecStop=/bin/kill $MAINPID
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy = multi-user.target
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 文件创建成功后，启动即可：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;systemctl start frps
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;systemctl status frps
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;配置服务端设置项-1&#34;&gt;配置服务端设置项&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;配置frpc.toml文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-tmol&#34; data-lang=&#34;tmol&#34;&gt;#你的云服务器公网ip
+serverAddr = &amp;#34;x.x.x.x&amp;#34;
+#连接到云服务器端口,需要和frps.toml配置文件中端口一致
+serverPort = 7000
+
+auth.method = &amp;#34;token&amp;#34;
+auth.token = &amp;#34;passtoken&amp;#34;
+
+#开放端口连接
+[[proxies]]
+name = &amp;#34;test-tcp&amp;#34;
+type = &amp;#34;tcp&amp;#34;
+localIP = &amp;#34;127.0.0.1&amp;#34;
+localPort = 8080
+remotePort = 6100
+# 服务器需要开放该端口
+
+#共享文件访问
+[[proxies]]
+name = &amp;#34;d_drive&amp;#34;
+type = &amp;#34;tcp&amp;#34;
+remotePort = 6001  # 服务器上用于访问的端口，需要开放该端口
+[proxies.plugin]
+type = &amp;#34;static_file&amp;#34;
+localPath = &amp;#34;D:\\&amp;#34;  # 要对外暴露的目录
+stripPrefix = &amp;#34;d_drive&amp;#34;  # 访问路径名，此处即http://x.x.x.x:6001/d_drive/
+httpUser = &amp;#34;username&amp;#34;  # 用户名
+httpPassword = &amp;#34;password&amp;#34;  # 密码
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;windows-上运行-frpc&#34;&gt;Windows 上运行 frpc&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;确保 &lt;code&gt;frpc.exe&lt;/code&gt; 和 &lt;code&gt;frpc.toml&lt;/code&gt; 位于同一目录。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Blog &gt; Manage and Output</title>
+      <link>http://localhost:1313/posts/blog-manage&#43;output/</link>
+      <pubDate>Sat, 05 Apr 2025 13:41:46 +0800</pubDate>
+      <guid>http://localhost:1313/posts/blog-manage&#43;output/</guid>
+      <description>&lt;p&gt;&lt;img alt=&#34;建站核心&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/img/lc.jpg&#34; title=&#34;夜深了，睡觉！&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;(๑✦ˑ_✦)前年用 &lt;em&gt;BT+Wordpress+阿里轻量化服务器&lt;/em&gt; 搭了个网站，当时挺上头的，写了好几篇博客&amp;hellip;后来由于服务确实卡顿，偶尔容易出问题，再加上服务器每月有开销，当时忙着准备保研和毕设，慢慢就搁置了，Blog弄起来还挺上头的!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;前段时间，我导提到说&lt;strong&gt;作为技术人，要有数字人的意识，将自己的一生都数字化&lt;/strong&gt;，后面回想起来，尽管时空不同步，但却能在思维、意识上和某些小伙伴交流，属实颇为浪漫和炫酷，也蛮有价值的！不愧是我导doge!(▼O▼ﾒ)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用清明两天的时间把整个框架搞起来了，后面只用更新内容就行&amp;hellip;复盘来看其实没什么大问题，但是网上的教程和博文写的零零散散的，没有很系统的讲，基本看完都是半碗水的感觉。另外搁置HTML和CSS比较久了（上次写网页还是大二&amp;hellip;现在都研一了&amp;hellip;(▼O▼ﾒ)），总之遇到不少问题&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt; Okay，下面复盘下构筑过程、问题和解决方法。整体来说分成三个部分：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;明确建站框架和基本流程：&lt;strong&gt;hugo+git&lt;/strong&gt;、hexo+git、bt+wordpress&lt;/li&gt;
+&lt;li&gt;内容设计与自定义调整：结构熟悉（hugo&amp;amp;theme、自定义修改（需求&amp;amp;设计&lt;/li&gt;
+&lt;li&gt;内容发布与部署：内容与数据维护、公网发布、F&amp;amp;R&lt;/li&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
+&lt;p&gt; 上述内容可以概括成三个问题，如何建站？建什么样的站？&lt;/p&gt;
+&lt;h3 id=&#34;1什么是建站&#34;&gt;1.什么是建站？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;私以为博客的核心是提供一种管理和分享模式，通过博客可以记录并组织个人零碎的知识、经验甚至于心理感受，类别网络概念就是你自己的数字日志；虽然有本地博客和公网发布一说，但核心在乎个人的取舍（but if你借助某些平台发布的话，内容可能要作脱敏，like git）&amp;hellip;总言之，博客能够帮你更好地组织你的所想、所学、所得，并可能是你分享和展示自己的一种媒介，这是数字化带给个人的福荫&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2如何建站&#34;&gt;2.如何建站？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;怎么建站？核心有两个，一个内容托管平台、一个内容加工平台。托管平台负责存储、维护你的内容，在有人访问时，通过这些托管平台输送出去，托管平台的核心是集成了存储和web服务，使得内容在公网可见可得。加工平台负责内容组织、美化和打包，讲你输出的内容作统一组织、推送至托管平台。而你理论上专注内容输出即可，你如果想自定义这个过程，主动输出，那你就还需要完成三者的协调维护，这就是建站所需做的。（在你动手之前，我多说一句，你可能并不需要如此费力损兵，毕竟，选择QQ、We-Chat、小红书、抖音等等，可以满足绝大多数的需求（如果你还是想有自己的小金库，那么朋友，我们继续~）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3建什么样的站&#34;&gt;3.建什么样的站？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;建站作何用，决定了你需要建什么样的站：搭建购物平台？那你肯定不想每天花时间维护、希望简单易上手，那么基于wordpress建站可鞥比较适合你，这种方式，你需要一台服务器（满足公网访问，一个域名（满足用户友好接入，你只需要点击、撰写内容、推送发布即可，非常简单，但大站、复杂代码结构的通病就是容易卡顿、维护需要持续燃烧你的钱包；个人写作、技术博客？网站绝对能承担你的需求，但你可能不需要那么多花里胡哨的功能，也不想为它们买单，那么DIY就是你的理想选择。直接讲建议，如果你更在意美观，那么在你知道建站的框架后，你可以对应去找hexo的博文了，hexo的美化生态更丰富；相比之下，hugo构建静态网页为主的模式可能更快更轻量，如果你的内容体量预计不小并且对访问速度有一定要求，那么hugo将是你不错的选择&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;主要内容展开&#34;&gt;主要内容展开&lt;/h2&gt;
+&lt;h3 id=&#34;1明确建站框架和基本流程&#34;&gt;1.明确建站框架和基本流程&lt;/h3&gt;
+&lt;hr&gt;
+&lt;p&gt; 建站框架的选用基本上决定了，个人blog此后的管理方式、维护成本、访问速度以及blog本身的能力上下限。目前有几种方式较为主流的方式，你可能听过甚至曾经用过Hexo、Hugo、Wordpress，还有一些小众的比如Mix space&lt;/p&gt;
+&lt;h3 id=&#34;2内容设计与自定义调整&#34;&gt;2.内容设计与自定义调整&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;关键需求与对应文件结构&#34;&gt;关键需求与对应文件结构&lt;/h4&gt;
+&lt;h4 id=&#34;问题1菜单栏用户块新增子块填充铭言&#34;&gt;问题1：菜单栏用户块新增子块，填充铭言&lt;/h4&gt;
+&lt;hr&gt;
+&lt;p&gt; 需求：希望在博客名下面加一个子块，附写格言&lt;/p&gt;
+&lt;h5 id=&#34;解决方案&#34;&gt;解决方案&lt;/h5&gt;
+&lt;p&gt; 需求和做法都很明确，对HTML和CSS进行修改即可，F12定位博客名所在的html块，修改对应文件，新增子块，由于可能对显示作特殊要求，需要对css修改&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;nav&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;flex flex-col space-y-1&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {{ if not .Site.Params.disableTextInHeader | default true }}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{{ &amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;relLangURL&lt;/span&gt; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;}}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text-base font-medium text-gray-500 hover:text-gray-900&amp;#34;&lt;/span&gt;&amp;gt;{{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            .Site.Title | markdownify
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {{ end }}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {{ with .Site.Params.subtitle }}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;subtitle text-sm text-gray-400&amp;#34;&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            {{ . }}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {{ end }}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;nav&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* Subtitle */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;subtitle&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;font-size&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;0.75&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;rem&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;/* 比主标题字体小 */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;color&lt;/span&gt;: rgba(&lt;span style=&#34;color:#ae81ff&#34;&gt;75&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;85&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;99&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.8&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;/* 颜色和透明度 */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改文件路径：&lt;br&gt;
+ html = D:\LZ0o0\themes\blowfish\layouts\partials\header\basic.html&lt;br&gt;
+ css = D:\LZ0o0\themes\blowfish\assets\css\compiled\main.css&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My First Post</title>
+      <link>http://localhost:1313/posts/first-blog/</link>
+      <pubDate>Fri, 04 Apr 2025 20:41:46 +0800</pubDate>
+      <guid>http://localhost:1313/posts/first-blog/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Welcom&lt;/em&gt; &lt;strong&gt;我是 lz0o0 !&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;很高兴你能看到，这是我的第一篇博客哦~&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

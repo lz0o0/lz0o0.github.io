@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>📚 文章 on Le blog de Lz0o0</title>
+    <link>https://lz0o0.github.io/zh/posts/</link>
+    <description>Recent content in 📚 文章 on Le blog de Lz0o0</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>zh</language>
+    <copyright>©2024 Le blog de Lz0o0</copyright>
+    <lastBuildDate>Sun, 06 Apr 2025 23:57:22 +0800</lastBuildDate>
+    <atom:link href="https://lz0o0.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog &gt; Manage and Output</title>
+      <link>https://lz0o0.github.io/zh/posts/blog-manage&#43;output/</link>
+      <pubDate>Sat, 05 Apr 2025 13:41:46 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/blog-manage&#43;output/</guid>
+      <description>&lt;!--
+# This Blog = Hugo+Blowfish+Github
+--&gt;
+&lt;p&gt;&lt;img alt=&#34;建站核心&#34; loading=&#34;lazy&#34; src=&#34;https://lz0o0.github.io/img/mlk.jpg&#34; title=&#34;夜深了，睡觉！&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;(๑✦ˑ_✦)前年用 &lt;em&gt;BT+Wordpress+阿里轻量化服务器&lt;/em&gt; 搭了个网站，当时挺上头的，写了好几篇博客&amp;hellip;后来由于服务确实卡顿，偶尔容易出问题，再加上服务器每月有开销，当时又忙着准备保研和毕设，慢慢就搁置了，Blog弄起来还挺上头的!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My First Post</title>
+      <link>https://lz0o0.github.io/zh/posts/first-blog/</link>
+      <pubDate>Fri, 04 Apr 2025 20:41:46 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/first-blog/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Welcom&lt;/em&gt; &lt;strong&gt;我是 lz0o0 !&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;很高兴你能看到，这是我的第一篇博客哦~&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>内网穿透 用frp打游戏</title>
+      <link>https://lz0o0.github.io/zh/posts/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-%E7%94%A8frp%E6%89%93%E6%B8%B8%E6%88%8F/</link>
+      <pubDate>Sun, 06 Apr 2025 23:57:22 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-%E7%94%A8frp%E6%89%93%E6%B8%B8%E6%88%8F/</guid>
+      <description>&lt;p&gt;内网穿透：借助Frp，增强游戏体验&lt;/p&gt;
+&lt;h2 id=&#34;配置frp服务端&#34;&gt;配置frp服务端&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;git：https://github.com/fatedier/frp/releases
+解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz&lt;br&gt;
+文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容&lt;/p&gt;</description>
+    </item>
+  
+  <follow_challenge>
+      <feedId>00000000000000000</feedId>
+      <userId>00000000000000000</userId>
+  </follow_challenge>
+
+  </channel>
+</rss>
