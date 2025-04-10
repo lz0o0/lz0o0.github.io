@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hugo 部署后CSS样式无法显示-解决 | Le blog de Lz0o0</title>
+<meta name="keywords" content="word 1, word 2">
+<meta name="description" content="Hugo部署不显示样式，CSS错误，禁止SRI校验">
+<meta name="author" content="Lz0o0">
+<link rel="canonical" href="https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/">
+
+
+
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lz0o0.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/img/logo.gif">
+<link rel="apple-touch-icon" href="https://lz0o0.github.io/logo.gif">
+<link rel="mask-icon" href="https://lz0o0.github.io/logo.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+        ]
+    });
+});
+</script>
+
+<meta property="og:url" content="https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/">
+  <meta property="og:site_name" content="Le blog de Lz0o0">
+  <meta property="og:title" content="Hugo 部署后CSS样式无法显示-解决">
+  <meta property="og:description" content="Hugo部署不显示样式，CSS错误，禁止SRI校验">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-10T15:21:26+08:00">
+    <meta property="article:modified_time" content="2025-04-10T15:21:26+08:00">
+    <meta property="article:tag" content="问题-解决">
+    <meta property="article:tag" content="Tag 2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hugo 部署后CSS样式无法显示-解决">
+<meta name="twitter:description" content="Hugo部署不显示样式，CSS错误，禁止SRI校验">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "📚 文章",
+      "item": "https://lz0o0.github.io/zh/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Hugo 部署后CSS样式无法显示-解决",
+      "item": "https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hugo 部署后CSS样式无法显示-解决",
+  "name": "Hugo 部署后CSS样式无法显示-解决",
+  "description": "Hugo部署不显示样式，CSS错误，禁止SRI校验",
+  "keywords": [
+    "word 1", "word 2"
+  ],
+  "articleBody": "问题描述 在本地使用 Hugo 启动服务器时，网站样式能够正常显示，但部署到 GitHub Pages 后，样式无法加载。通过浏览器 F12 调试发现，控制台报错如下：\n1 Failed to find a valid digest in the 'integrity' attribute for resource 'https://lz0o0.github.io/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a0，30e887a7dd3c3f3918e4cc113129361414bda.css' with computed SHA-256 integrity '9J1myq6eoP1D8h8p5xqNPihFF+13Dyqob6ASlTrTye8='. The resource has been blocked. Note:关于SRI和校验失败 SRI 是一种安全机制，用于确保在加载资源时，它们的内容与预期的哈希值一致。如果资源的实际哈希值与 HTML 文件中 integrity 属性定义的不一致，浏览器会阻止加载资源。\n原因\u0026解法 根据调试面板的抱错信息，确认问题是因为 Subresource Integrity (SRI) 校验时hash值不匹配，CSS加载失败，从而导致网页样式无法正常显示，无法看到多彩的网页。\n网上的解决办法比较多，我简单调研后，主要是如下几种：\nCloudflare对 JS 和 CSS，默认执行\"Auto Minify\"，文件压缩后导致校验失效；对应禁用选项，刷新缓存即可 修改 Hugo 的文件，禁用指纹校验选项：在config.yaml或者hugo.yaml中添加以下代码 yaml\rparams:\rassets:\rdisableFingerprinting: true\r修改 html 文件索引入口，禁用 SRI 校验：将文件(themes\\PaperMod\\layouts\\partials\\head.html)中的 integrity 参数索引都置空(integrity=\"\") 方法1我不知道在哪配置，所有没有实操，但我认为可能是压缩的问题，因为本地没问题；方法2比较合理，当我实际配置后没什么效果；方法3之后，我这边成功显示了CSS样式，但注意，你需要把文件中所有的integrity参数索引都置空，大部分教程只提示改(integrity=\"{{ $stylesheet.Data.Integrity }}\")，这么改，另外地方索引时还是会报错\nMind:你可以按照231的顺序都试试，能解决最好，前端的问题真是琳琅满目，甚至有说因为LF和CRLF问题的（我觉得比较有用的描述或blog文档，放在文末，供你参考）\n小结 本文描述了Hugo+Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题，文档列举了三种主要的解决方法，分析了可能的问题（may优化导致校验失效），博主通过修改配置的html索引，禁用 SRI 校验选项，成功解决了这个问题。\n如果你知道校验失败的具体原因，或者也在部署过程中，遇到新的问题，欢迎留言讨论~\n",
+  "wordCount" : "1047",
+  "inLanguage": "zh",
+  "datePublished": "2025-04-10T15:21:26+08:00",
+  "dateModified": "2025-04-10T15:21:26+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "Lz0o0"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Le blog de Lz0o0",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lz0o0.github.io/img/logo.gif"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lz0o0.github.io/zh/" accesskey="h" title="Le blog de Lz0o0 (Alt + H)">Le blog de Lz0o0</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lz0o0.github.io/zh/search" title="🔍Search (Alt &#43; /)" accesskey=/>
+                    <span>🔍Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/" title="🏠Home">
+                    <span>🏠Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/posts" title="📚Posts">
+                    <span>📚Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/tags" title="🔖tags">
+                    <span>🔖tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/about" title="🙋🏻‍♂️about">
+                    <span>🙋🏻‍♂️about</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/links" title="🤝links">
+                    <span>🤝links</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://lz0o0.github.io/zh/">🏠主页</a>&nbsp;»&nbsp;<a href="https://lz0o0.github.io/zh/posts/">📚 文章</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Hugo 部署后CSS样式无法显示-解决
+    </h1>
+    <div class="post-description">
+      Hugo部署不显示样式，CSS错误，禁止SRI校验
+    </div>
+    <div class="post-meta"><span title='2025-04-10 15:21:26 +0800 CST'>2025-04-10</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;Lz0o0
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">目录</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e9%97%ae%e9%a2%98%e6%8f%8f%e8%bf%b0" aria-label="问题描述">问题描述</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#note%e5%85%b3%e4%ba%8esri%e5%92%8c%e6%a0%a1%e9%aa%8c%e5%a4%b1%e8%b4%a5" aria-label="Note:关于SRI和校验失败">Note:关于SRI和校验失败</a></li></ul>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#%e5%8e%9f%e5%9b%a0%e8%a7%a3%e6%b3%95" aria-label="原因&amp;解法">原因&amp;解法</a></li>
+                <li>
+                    <a href="#%e5%b0%8f%e7%bb%93" aria-label="小结">小结</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="问题描述">问题描述<a hidden class="anchor" aria-hidden="true" href="#问题描述">#</a></h1>
+<p>  在本地使用 Hugo 启动服务器时，网站样式能够正常显示，但部署到 GitHub Pages 后，样式无法加载。通过浏览器 F12 调试发现，控制台报错如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Failed to find a valid digest in the &#39;integrity&#39; attribute for resource &#39;https://lz0o0.github.io/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a0，30e887a7dd3c3f3918e4cc113129361414bda.css&#39; with computed SHA-256 integrity &#39;9J1myq6eoP1D8h8p5xqNPihFF+13Dyqob6ASlTrTye8=&#39;. The resource has been blocked.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="note关于sri和校验失败">Note:关于SRI和校验失败<a hidden class="anchor" aria-hidden="true" href="#note关于sri和校验失败">#</a></h3>
+<p>  SRI 是一种安全机制，用于确保在加载资源时，它们的内容与预期的哈希值一致。如果资源的实际哈希值与 HTML 文件中 integrity 属性定义的不一致，浏览器会阻止加载资源。</p>
+<h1 id="原因解法">原因&amp;解法<a hidden class="anchor" aria-hidden="true" href="#原因解法">#</a></h1>
+<p>  根据调试面板的抱错信息，确认问题是因为 Subresource Integrity (SRI) 校验时hash值不匹配，CSS加载失败，从而导致网页样式无法正常显示，无法看到多彩的网页。</p>
+<p>  网上的解决办法比较多，我简单调研后，主要是如下几种：</p>
+<ol>
+<li>Cloudflare对 JS 和 CSS，默认执行&quot;Auto Minify&quot;，文件压缩后导致校验失效；对应禁用选项，刷新缓存即可</li>
+<li>修改 Hugo 的文件，禁用指纹校验选项：在config.yaml或者hugo.yaml中添加以下代码
+<code>yaml params: assets: disableFingerprinting: true </code></li>
+<li>修改 html 文件索引入口，禁用 SRI 校验：将文件<code>(themes\PaperMod\layouts\partials\head.html)</code>中的 <strong>integrity</strong> 参数索引都置空<code>(integrity=&quot;&quot;)</code></li>
+</ol>
+<p>  方法1我不知道在哪配置，所有没有实操，但我认为可能是压缩的问题，因为本地没问题；方法2比较合理，当我实际配置后没什么效果；方法3之后，我这边成功显示了CSS样式，但注意，你需要把文件中所有的<strong>integrity</strong>参数索引都置空，大部分教程只提示改<code>(integrity=&quot;{{ $stylesheet.Data.Integrity }}&quot;)</code>，这么改，另外地方索引时还是会报错<br>
+  Mind:你可以按照231的顺序都试试，能解决最好，前端的问题真是琳琅满目，甚至有说因为LF和CRLF问题的（我觉得比较有用的描述或blog文档，放在文末，供你参考）</p>
+<h1 id="小结">小结<a hidden class="anchor" aria-hidden="true" href="#小结">#</a></h1>
+<p>  本文描述了Hugo+Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题，文档列举了三种主要的解决方法，分析了可能的问题（may优化导致校验失效），博主通过修改配置的html索引，禁用 SRI 校验选项，成功解决了这个问题。<br>
+  如果你知道校验失败的具体原因，或者也在部署过程中，遇到新的问题，欢迎留言讨论~</p>
+<!-- more -->
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://lz0o0.github.io/zh/tags/%E9%97%AE%E9%A2%98-%E8%A7%A3%E5%86%B3/">问题-解决</a></li>
+      <li><a href="https://lz0o0.github.io/zh/tags/tag-2/">Tag 2</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://lz0o0.github.io/zh/posts/first-blog/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>My First Post</span>
+  </a>
+  <a class="next" href="https://lz0o0.github.io/zh/posts/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-%E7%94%A8frp%E6%89%93%E6%B8%B8%E6%88%8F/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>内网穿透 用frp打游戏</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span><a href="https://lz0o0.github.io/">©2024  Le blog de Lz0o0</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

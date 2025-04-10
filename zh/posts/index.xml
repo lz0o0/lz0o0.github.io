@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2024 Le blog de Lz0o0</copyright>
-    <lastBuildDate>Sun, 06 Apr 2025 23:57:22 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 10 Apr 2025 15:21:26 +0800</lastBuildDate>
     <atom:link href="https://lz0o0.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blog &gt; Manage and Output</title>
@@ -31,6 +31,13 @@
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;Welcom&lt;/em&gt; &lt;strong&gt;我是 lz0o0 !&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;很高兴你能看到，这是我的第一篇博客哦~&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hugo 部署后CSS样式无法显示-解决</title>
+      <link>https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/</link>
+      <pubDate>Thu, 10 Apr 2025 15:21:26 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/</guid>
+      <description>Hugo部署不显示样式，CSS错误，禁止SRI校验</description>
     </item>
     <item>
       <title>内网穿透 用frp打游戏</title>
