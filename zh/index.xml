@@ -33,7 +33,7 @@
 &lt;p&gt;&lt;strong&gt;很高兴你能看到，这是我的第一篇博客哦~&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Hugo 部署后CSS样式无法显示-解决</title>
+      <title>解决hugo部署到github后CSS样式无法显示的问题</title>
       <link>https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/</link>
       <pubDate>Thu, 10 Apr 2025 15:21:26 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/</guid>
