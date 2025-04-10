@@ -10,6 +10,17 @@
     <lastBuildDate>Thu, 10 Apr 2025 15:21:26 +0800</lastBuildDate>
     <atom:link href="https://lz0o0.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>热爱，让你成为自己~</title>
+      <link>https://lz0o0.github.io/zh/posts/first-blog/</link>
+      <pubDate>Fri, 04 Apr 2025 20:41:46 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/first-blog/</guid>
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Welcom&lt;/em&gt; &lt;strong&gt;我是 lz0o0 !&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这是我的第一篇blog，以后就自称本鲤了！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Always remember for one thing：love makes who you are~&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;努力不一定有回报，但能让你成长！&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Blog &gt; Manage and Output</title>
       <link>https://lz0o0.github.io/zh/posts/blog-manage&#43;output/</link>
       <pubDate>Sat, 05 Apr 2025 13:41:46 +0800</pubDate>
@@ -22,17 +33,6 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;前年用 &lt;em&gt;BT+Wordpress+阿里轻量化服务器&lt;/em&gt; 搭了个网站，当时挺上头的，写了好几篇博客&amp;hellip;后来由于服务确实卡顿，偶尔容易出问题，再加上服务器每月有开销，当时又忙着准备保研和毕设，慢慢就搁置了，Blog弄起来还挺上头的!&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Welcome! Friends!</title>
-      <link>https://lz0o0.github.io/zh/posts/first-blog/</link>
-      <pubDate>Fri, 04 Apr 2025 20:41:46 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/first-blog/</guid>
-      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;Welcom&lt;/em&gt; &lt;strong&gt;我是 lz0o0 !&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;这是我的第一篇blog，以后就自称本鲤了！&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Always remember for one thing：love makes who you are~&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;努力不一定有回报，但能让你成长！&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>关于hugo部署到github后CSS无法加载</title>
