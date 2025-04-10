@@ -12,8 +12,8 @@
 <link rel="canonical" href="https://lz0o0.github.io/zh/posts/css_failure-try-to-ban-sri/">
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="sha256-bammPSWpYIvKL3&#43;QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as="style">
 
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lz0o0.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/img/logo.gif">
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function() {
   "keywords": [
     "word 1", "word 2"
   ],
-  "articleBody": "问题描述 在本地使用 Hugo 启动服务器时，网站样式能够正常显示，但部署到 GitHub Pages 后，样式无法加载。通过浏览器 F12 调试发现，控制台报错如下：\n1 Failed to find a valid digest in the 'integrity' attribute for resource 'https://lz0o0.github.io/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a0，30e887a7dd3c3f3918e4cc113129361414bda.css' with computed SHA-256 integrity '9J1myq6eoP1D8h8p5xqNPihFF+13Dyqob6ASlTrTye8='. The resource has been blocked. SRI和校验失败：SRI 是一种安全机制，用于确保在加载资源时，它们的内容与预期的哈希值一致。如果资源的实际哈希值与 HTML 文件中 integrity 属性定义的不一致，浏览器会阻止加载资源。\n原因\u0026解法 根据报错信息，基本确认问题是因为 Subresource Integrity (SRI) 校验时hash值不匹配，CSS加载失败，从而导致网页样式无法正常显示，无法看到多彩的网页。\n网上给的解决办法比较多，主要是如下几种：\n1. Cloudflare对 JS 和 CSS，默认执行\"Auto Minify\"，文件压缩后导致校验失效；对应禁用选项，刷新缓存即可\r2. 修改 Hugo 的文件，禁用指纹校验选项：在config.yaml或者hugo.yaml中添加以下代码\r1 2 3 params: assets: disableFingerprinting: true 3. 修改 html 文件索引入口，禁用 SRI 校验：将文件`(themes\\PaperMod\\layouts\\partials\\head.html)`中的 **integrity** 参数索引都置空`(integrity=\"\")`\r方法1我不知道在哪配置，所以没有实操，但我认为可能是压缩的问题，因为本地没问题 方法2比较合理，当我实际配置后没什么效果 通过方法3，本鲤成功显示了CSS样式，但注意，你需要把文件中所有的 integrity 参数索引都置空，大部分教程只提示改(integrity=\"{{ $stylesheet.Data.Integrity }}\")，有时候这么改，另外的地方索引时还是会报错，因此建议你都置空\nMind:你可以按照231的顺序都试试，能解决最好，前端的问题真是多种多样，甚至有说因为LF和CRLF问题的（我觉得比较有用的描述或blog文档，放在文末，供你参考） 小结 本文描述了Hugo+Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题，文档列举了三种主要的解决方法，分析了可能的问题（may优化导致校验失效），博主通过修改配置的html索引，禁用 SRI 校验选项，成功解决了这个问题。\n如果你知道校验失败的具体原因，或者也在部署过程中，遇到新的问题，欢迎留言讨论~\nRefer: https://swopnil.com/blog/valid-digest-integrity-error-hugo-styling/ https://github.com/alanorth/hugo-theme-bootstrap4-blog/issues/53 https://stackoverflow.com/questions/65040931/hugo-failed-to-find-a-valid-digest-in-the-integrity-attribute-for-resource ",
+  "articleBody": "\n问题描述 在本地使用 Hugo 启动服务器时，网站样式能够正常显示，但部署到 GitHub Pages 后，样式无法加载。通过浏览器 F12 调试发现，控制台报错如下：\n1 Failed to find a valid digest in the 'integrity' attribute for resource 'https://lz0o0.github.io/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a0，30e887a7dd3c3f3918e4cc113129361414bda.css' with computed SHA-256 integrity '9J1myq6eoP1D8h8p5xqNPihFF+13Dyqob6ASlTrTye8='. The resource has been blocked. SRI和校验失败：SRI 是一种安全机制，用于确保在加载资源时，它们的内容与预期的哈希值一致。如果资源的实际哈希值与 HTML 文件中 integrity 属性定义的不一致，浏览器会阻止加载资源。\n原因\u0026解法 根据报错信息，基本确认问题是因为 Subresource Integrity (SRI) 校验时hash值不匹配，CSS加载失败，从而导致网页样式无法正常显示，无法看到多彩的网页。\n网上给的解决办法比较多，主要是如下几种：\n1. Cloudflare对 JS 和 CSS，默认执行\"Auto Minify\"，文件压缩后导致校验失效；对应禁用选项，刷新缓存即可\r2. 修改 Hugo 的文件，禁用指纹校验选项：在config.yaml或者hugo.yaml中添加以下代码\r1 2 3 params: assets: disableFingerprinting: true 3. 修改 html 文件索引入口，禁用 SRI 校验：将文件`(themes\\PaperMod\\layouts\\partials\\head.html)`中的 **integrity** 参数索引都置空`(integrity=\"\")`\r方法1我不知道在哪配置，所以没有实操，但我认为可能是压缩的问题，因为本地没问题 方法2比较合理，当我实际配置后没什么效果 通过方法3，本鲤成功显示了CSS样式，但注意，你需要把文件中所有的 integrity 参数索引都置空，大部分教程只提示改(integrity=\"{{ $stylesheet.Data.Integrity }}\")，有时候这么改，另外的地方索引时还是会报错，因此建议你都置空\nMind:你可以按照231的顺序都试试，能解决最好，前端的问题真是多种多样，甚至有说因为LF和CRLF问题的（我觉得比较有用的描述或blog文档，放在文末，供你参考） 小结 本文描述了Hugo+Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题，文档列举了三种主要的解决方法，分析了可能的问题（may优化导致校验失效），博主通过修改配置的html索引，禁用 SRI 校验选项，成功解决了这个问题。\n如果你知道校验失败的具体原因，或者也在部署过程中，遇到新的问题，欢迎留言讨论~\nRefer: https://swopnil.com/blog/valid-digest-integrity-error-hugo-styling/ https://github.com/alanorth/hugo-theme-bootstrap4-blog/issues/53 https://stackoverflow.com/questions/65040931/hugo-failed-to-find-a-valid-digest-in-the-integrity-attribute-for-resource ",
   "wordCount" : "1049",
   "inLanguage": "zh",
   "datePublished": "2025-04-10T15:21:26+08:00",
@@ -258,7 +258,8 @@ document.addEventListener("DOMContentLoaded", function() {
     </details>
 </div>
 
-  <div class="post-content"><h2 id="问题描述">问题描述<a hidden class="anchor" aria-hidden="true" href="#问题描述">#</a></h2>
+  <div class="post-content"><p><img alt="hugo_loadcss_down" loading="lazy" src="/error/hugo_loadcss_down.png"></p>
+<h2 id="问题描述">问题描述<a hidden class="anchor" aria-hidden="true" href="#问题描述">#</a></h2>
 <p>  在本地使用 Hugo 启动服务器时，网站样式能够正常显示，但部署到 GitHub Pages 后，样式无法加载。通过浏览器 F12 调试发现，控制台报错如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
