@@ -17,20 +17,22 @@
       <description>&lt;!--
 # This Blog = Hugo+Blowfish+Github
 --&gt;
-&lt;p&gt;&lt;img alt=&#34;建站核心&#34; loading=&#34;lazy&#34; src=&#34;https://lz0o0.github.io/img/mlk.jpg&#34; title=&#34;夜深了，睡觉！&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;前言๑ˑ_&#34;&gt;前言(๑✦ˑ_✦)&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&#34;建站核心&#34; loading=&#34;lazy&#34; src=&#34;https://lz0o0.github.io/img/demo.png&#34; title=&#34;夜深了，睡觉！&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;前言๑ˑ_&#34;&gt;前言(๑✦ˑ_✦)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;前年用 &lt;em&gt;BT+Wordpress+阿里轻量化服务器&lt;/em&gt; 搭了个网站，当时挺上头的，写了好几篇博客&amp;hellip;后来由于服务确实卡顿，偶尔容易出问题，再加上服务器每月有开销，当时又忙着准备保研和毕设，慢慢就搁置了，Blog弄起来还挺上头的!&lt;/p&gt;</description>
     </item>
     <item>
-      <title>My First Post</title>
+      <title>Welcome! Friends!</title>
       <link>https://lz0o0.github.io/zh/posts/first-blog/</link>
       <pubDate>Fri, 04 Apr 2025 20:41:46 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/first-blog/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;&lt;em&gt;Welcom&lt;/em&gt; &lt;strong&gt;我是 lz0o0 !&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;很高兴你能看到，这是我的第一篇博客哦~&lt;/strong&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;strong&gt;这是我的第一篇blog，以后就自称本鲤了！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Always remember for one thing：love makes who you are~&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;努力不一定有回报，但能让你成长！&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>关于hugo部署到github后CSS无法加载</title>
