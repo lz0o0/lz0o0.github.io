@@ -14,11 +14,7 @@
       <link>https://lz0o0.github.io/zh/posts/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
       <pubDate>Sun, 06 Apr 2025 23:57:22 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
-      <description>&lt;h3 id=&#34;1-frp-源码获取&#34;&gt;1. frp 源码获取&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;git：https://github.com/fatedier/frp/releases
-解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz&lt;br&gt;
-文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容&lt;/p&gt;</description>
+      <description>frp 是一种反向代理工具, 被广泛用于内网穿透，能够将外网暴露内网服务，本文具体介绍了如何基于云服务器和frp源码实现简单的内网穿透，是一种很有意思和实际用处的技术</description>
     </item>
   </channel>
 </rss>

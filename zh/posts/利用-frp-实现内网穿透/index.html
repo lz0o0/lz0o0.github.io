@@ -7,11 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>利用 frp 实现内网穿透 | Le blog de Lz0o0</title>
 <meta name="keywords" content="技术学习">
-<meta name="description" content="1. frp 源码获取
-
-git：https://github.com/fatedier/frp/releases
-解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz
-文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容">
+<meta name="description" content="frp 是一种反向代理工具, 被广泛用于内网穿透，能够将外网暴露内网服务，本文具体介绍了如何基于云服务器和frp源码实现简单的内网穿透，是一种很有意思和实际用处的技术">
 <meta name="author" content="Lz0o0">
 <link rel="canonical" href="https://lz0o0.github.io/zh/posts/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
 
@@ -65,8 +61,7 @@ git：https://github.com/fatedier/frp/releases
 </noscript><meta property="og:url" content="https://lz0o0.github.io/zh/posts/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
   <meta property="og:site_name" content="Le blog de Lz0o0">
   <meta property="og:title" content="利用 frp 实现内网穿透">
-  <meta property="og:description" content="1. frp 源码获取 git：https://github.com/fatedier/frp/releases 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz
-文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容">
+  <meta property="og:description" content="frp 是一种反向代理工具, 被广泛用于内网穿透，能够将外网暴露内网服务，本文具体介绍了如何基于云服务器和frp源码实现简单的内网穿透，是一种很有意思和实际用处的技术">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -75,11 +70,7 @@ git：https://github.com/fatedier/frp/releases
     <meta property="article:tag" content="技术学习">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用 frp 实现内网穿透">
-<meta name="twitter:description" content="1. frp 源码获取
-
-git：https://github.com/fatedier/frp/releases
-解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz
-文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容">
+<meta name="twitter:description" content="frp 是一种反向代理工具, 被广泛用于内网穿透，能够将外网暴露内网服务，本文具体介绍了如何基于云服务器和frp源码实现简单的内网穿透，是一种很有意思和实际用处的技术">
 
 
 <script type="application/ld+json">
@@ -108,7 +99,7 @@ git：https://github.com/fatedier/frp/releases
   "@type": "BlogPosting",
   "headline": "利用 frp 实现内网穿透",
   "name": "利用 frp 实现内网穿透",
-  "description": "1. frp 源码获取 git：https://github.com/fatedier/frp/releases 解压：tar -zxvf frp_0.61.2_linux_amd64.tar.gz\n文件中包含 frpc、frpc.toml；frps、frps.toml；以及LICENSE文件，分别对应客户端和服务端的配置项设置，可删去相对的内容\n",
+  "description": "frp 是一种反向代理工具, 被广泛用于内网穿透，能够将外网暴露内网服务，本文具体介绍了如何基于云服务器和frp源码实现简单的内网穿透，是一种很有意思和实际用处的技术",
   "keywords": [
     "技术学习"
   ],
@@ -188,8 +179,8 @@ git：https://github.com/fatedier/frp/releases
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/posts" title="📚Posts">
-                    <span>📚Posts</span>
+                <a href="https://lz0o0.github.io/zh/posts" title="📚Blogs">
+                    <span>📚Blogs</span>
                 </a>
             </li>
             <li>
@@ -214,7 +205,7 @@ git：https://github.com/fatedier/frp/releases
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://lz0o0.github.io/zh/">🏠主页</a>&nbsp;»&nbsp;<a href="https://lz0o0.github.io/zh/posts/">๑✦ˑ_✦</a></div>
+    <div class="breadcrumbs"><a href="https://lz0o0.github.io/zh/">🏠Home</a>&nbsp;»&nbsp;<a href="https://lz0o0.github.io/zh/posts/">๑✦ˑ_✦</a></div>
     <h1 class="post-title entry-hint-parent">
       利用 frp 实现内网穿透
     </h1>
@@ -224,7 +215,7 @@ git：https://github.com/fatedier/frp/releases
   </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Dir</span>
+            <span class="details">Directory</span>
         </summary>
 
         <div class="inner"><ul>
@@ -613,12 +604,12 @@ git：https://github.com/fatedier/frp/releases
 
         const copybutton = document.createElement('button');
         copybutton.classList.add('copy-code');
-        copybutton.innerHTML = '复制';
+        copybutton.innerHTML = 'copy';
 
         function copyingDone() {
-            copybutton.innerHTML = '已复制！';
+            copybutton.innerHTML = 'copied!';
             setTimeout(() => {
-                copybutton.innerHTML = '复制';
+                copybutton.innerHTML = 'copy';
             }, 2000);
         }
 
