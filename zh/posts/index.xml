@@ -28,7 +28,7 @@
       <link>https://lz0o0.github.io/zh/posts/hugo%E5%8F%91%E5%B8%83%E5%90%8Ecss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</link>
       <pubDate>Thu, 10 Apr 2025 15:21:26 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/hugo%E5%8F%91%E5%B8%83%E5%90%8Ecss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</guid>
-      <description>Hugo部署不显示样式，CSS错误，禁止 SRI 校验</description>
+      <description>本文分析并解决了Hugo+Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题</description>
     </item>
     <item>
       <title>利用 frp 实现内网穿透</title>
