@@ -13,7 +13,7 @@
 
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bd9ddab9c0e5c8a791d1e648ed3dc9e185010121bcc9abbf54b5e023a29c1eda.css" integrity="" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.304124336c438581cdfe7a988341cb63b5b4e703aa95f76ce89c78af33b8ce60.css" integrity="" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lz0o0.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/img/logo.gif">
@@ -179,8 +179,8 @@
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/posts" title="📚Blogs">
-                    <span>📚Blogs</span>
+                <a href="https://lz0o0.github.io/zh/posts" title="📓Blogs">
+                    <span>📓Blogs</span>
                 </a>
             </li>
             <li>
@@ -199,8 +199,8 @@
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/about" title="🙋🏻‍♂️about">
-                    <span>🙋🏻‍♂️about</span>
+                <a href="https://lz0o0.github.io/zh/about" title="😎about">
+                    <span>😎about</span>
                 </a>
             </li>
         </ul>
@@ -585,6 +585,63 @@
 </nav>
 
   </footer>
+
+
+
+
+<div class="comments-title" id="tw-comment-title">
+    <p class="x-comments-title">😁欢迎来到评论区😉</p>
+    <p style="font-size: 1rem">~燕过留痕，选个表情😋，或者头脑风暴下留个评论吧🤯~ </p>
+</div>
+<div id="tw-comment"></div>
+<script>
+    const getStoredTheme = () => localStorage.getItem("pref-theme") === "dark" ? "" : "";
+    const setGiscusTheme = () => {
+        const sendMessage = (message) => {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage({giscus: message}, 'https://giscus.app');
+            }
+        }
+        sendMessage({setConfig: {theme: getStoredTheme()}})
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const giscusAttributes = {
+            "src": "https://giscus.app/client.js",
+            "data-repo": "lz0o0/lz0o0.github.io",
+            "data-repo-id": "R_kgDOJ4v2Xg",
+            "data-category": "Announcements",
+            "data-category-id": "DIC_kwDOJ4v2Xg4CR1rE",
+            "data-mapping": "pathname",
+            "data-strict": "0",
+            "data-reactions-enabled": "1",
+            "data-emit-metadata": "0",
+            "data-input-position": "top",
+            "data-theme": getStoredTheme(),
+            "data-lang": "zh-CN",
+            "data-loading": "lazy",
+            "crossorigin": "anonymous",
+            "async": "",
+        };
+
+        
+        const giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(
+                ([key, value]) => giscusScript.setAttribute(key, value));
+        document.querySelector("#tw-comment").appendChild(giscusScript);
+
+        
+        const themeSwitcher = document.querySelector("#theme-toggle");
+        if (themeSwitcher) {
+            themeSwitcher.addEventListener("click", setGiscusTheme);
+        }
+        const themeFloatSwitcher = document.querySelector("#theme-toggle-float");
+        if (themeFloatSwitcher) {
+            themeFloatSwitcher.addEventListener("click", setGiscusTheme);
+        }
+    });
+</script>
 </article>
     </main>
     
