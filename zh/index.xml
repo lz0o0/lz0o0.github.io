@@ -137,33 +137,9 @@
 &lt;div class=&#34;friends&#34;&gt;
     
     &lt;div class=&#34;friend-skeleton&#34;&gt;
-        &lt;a href=&#34;https://umb.ink/&#34; target=&#34;_blank&#34;&gt;
-            &lt;div class=&#34;friend&#34;&gt;
-                &lt;img class=&#34;friend-avatar&#34; src=&#34;https://avatars.githubusercontent.com/u/53655863?v=4&#34; /&gt;
-                &lt;div class=&#34;friend-content&#34;&gt;
-                    &lt;div class=&#34;friend-name&#34;&gt;伞&lt;/div&gt;
-                    &lt;div class=&#34;friend-description&#34;&gt;一只咸鱼的学习记录&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/a&gt;
-    &lt;/div&gt;
-    
-    &lt;div class=&#34;friend-skeleton&#34;&gt;
-        &lt;a href=&#34;https://mzdluo123.github.io/&#34; target=&#34;_blank&#34;&gt;
-            &lt;div class=&#34;friend&#34;&gt;
-                &lt;img class=&#34;friend-avatar&#34; src=&#34;https://avatars.githubusercontent.com/u/23146087?v=4&#34; /&gt;
-                &lt;div class=&#34;friend-content&#34;&gt;
-                    &lt;div class=&#34;friend-name&#34;&gt;HelloWorld的小博客&lt;/div&gt;
-                    &lt;div class=&#34;friend-description&#34;&gt;这里是一个小白的博客&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/a&gt;
-    &lt;/div&gt;
-    
-    &lt;div class=&#34;friend-skeleton&#34;&gt;
         &lt;a href=&#34;https://lz0o0.github.io/&#34; target=&#34;_blank&#34;&gt;
             &lt;div class=&#34;friend&#34;&gt;
-                &lt;img class=&#34;friend-avatar&#34; src=&#34;https://haowallpaper.com/homeViewLook/16411199043915136&#34; /&gt;
+                &lt;img class=&#34;friend-avatar&#34; src=&#34;https://lizhuo.space/lc.jpg&#34; /&gt;
                 &lt;div class=&#34;friend-content&#34;&gt;
                     &lt;div class=&#34;friend-name&#34;&gt;Lz0o0😎&lt;/div&gt;
                     &lt;div class=&#34;friend-description&#34;&gt;Love, makes who you are ~&lt;/div&gt;
