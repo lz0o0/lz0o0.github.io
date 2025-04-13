@@ -13,12 +13,12 @@
 
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.ed97fdc88aec290a61d5313d9b45b8f463dc42a00238485c46d83b855dee71e5.css" integrity="" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://lz0o0.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/img/logo.gif">
-<link rel="apple-touch-icon" href="https://lz0o0.github.io/logo.gif">
-<link rel="mask-icon" href="https://lz0o0.github.io/logo.gif">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.68972c9164cac49dd78c607b41ce6f131c61b5eea5f8507777b389422ef188ec.css" integrity="" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lz0o0.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lz0o0.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lz0o0.github.io/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="zh" href="https://lz0o0.github.io/zh/posts/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
@@ -27,34 +27,6 @@
         #theme-toggle,
         .top-link {
             display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
         }
 
     </style>
@@ -129,21 +101,17 @@
     "name": "Le blog de Lz0o0",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://lz0o0.github.io/img/logo.gif"
+      "url": "https://lz0o0.github.io/favicon.ico"
     }
   }
 }
 </script>
 </head>
 
-<body class="" id="top">
+<body class=" dark" id="top">
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
+    if (localStorage.getItem("pref-theme") === "light") {
         document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
     }
 
 </script>

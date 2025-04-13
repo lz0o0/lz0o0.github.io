@@ -17,6 +17,53 @@
       <description>&lt;!-- {{&lt; music id=&#34;557578993&#34; type=&#34;song&#34; server=&#34;netease&#34; &gt;}}
  --&gt;
 &lt;p&gt;&lt;em&gt;Hiii！&lt;/em&gt;   &lt;strong&gt;我是 lz0o0 ，以后在本站就自称本鲤了😎！&lt;/strong&gt;  &lt;strong&gt;听听我喜欢的歌吧~&lt;/strong&gt;&lt;/p&gt;
+&lt;!-- eva --&gt;
+&lt;div id=&#34;player1&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/eva-15.jpg&#39;);&#34;&gt;
+&lt;script&gt;
+    const ap1 = new APlayer({
+        container: document.getElementById(&#39;player1&#39;),
+        audio: [
+            {
+                name: &#39;Komm,süsser Tod (M-10 Director’s Edit. Version)&#39;,
+                artist: &#39;arianne schreiber&#39;,
+                url: &#39;https://lizhuo.space/Komm%2C%20s%C3%BCsser%20Tod%20%EF%BC%8F%E7%94%98%E3%81%8D%E6%AD%BB%E3%82%88%E3%80%81%E6%9D%A5%E3%81%9F%E3%82%8C%20(M-10%20Director%E2%80%99s%20Edit.%20Version).flac&#39;,
+                cover: &#39;https://lizhuo.space/evas.png&#39;
+            }
+        ]
+    });
+&lt;/script&gt;
+&lt;/div&gt;
+&lt;div id=&#34;player4&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/eva-15.jpg&#39;);&#34;&gt;
+&lt;script&gt;
+    const ap4 = new APlayer({
+        container: document.getElementById(&#39;player4&#39;),
+        audio: [
+            {
+                name: &#39;残酷な天使のテーゼ&#39;,
+                artist: &#39;高桥洋子&#39;,
+                url: &#39;https://lizhuo.space/残酷な天使のテーゼ.flac&#39;,
+                cover: &#39;https://lizhuo.space/evas.png&#39;
+            }
+        ]
+    });
+&lt;/script&gt;
+&lt;/div&gt;
+&lt;!-- berserk --&gt;
+&lt;div id=&#34;player3&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/berserk-12.jpg&#39;);&#34;&gt;
+    &lt;script&gt;
+        const ap3 = new APlayer({
+            container: document.getElementById(&#39;player3&#39;),
+            audio: [
+                {
+                    name: &#39;BERSERK -Forces- (GOD HAND MIX)&#39;,
+                    artist: &#39;平泽进&#39;,
+                    url: &#39;https://lizhuo.space/BERSERK -Forces- (GOD HAND MIX).flac&#39;,
+                    cover: &#39;https://lizhuo.space/berserk-16.png&#39;
+                }
+            ]
+        });
+    &lt;/script&gt;
+&lt;/div&gt;
 &lt;div id=&#34;player0&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/berserk-12.jpg&#39;);&#34;&gt;
 &lt;script&gt;
     const ap0 = new APlayer({
@@ -32,22 +79,23 @@
     });
 &lt;/script&gt;
 &lt;/div&gt;
-&lt;div id=&#34;player1&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/eva-3.png&#39;);&#34;&gt;
-&lt;script&gt;
-    const ap1 = new APlayer({
-        container: document.getElementById(&#39;player1&#39;),
-        audio: [
-            {
-                name: &#39;Komm, süsser Tod／甘き死よ、来たれ (M-10 Director’s Edit. Version)&#39;,
-                artist: &#39;arianne schreiber&#39;,
-                url: &#39;https://lizhuo.space/Komm%2C%20s%C3%BCsser%20Tod%20%EF%BC%8F%E7%94%98%E3%81%8D%E6%AD%BB%E3%82%88%E3%80%81%E6%9D%A5%E3%81%9F%E3%82%8C%20(M-10%20Director%E2%80%99s%20Edit.%20Version).flac&#39;,
-                cover: &#39;https://lizhuo.space/evas.png&#39;
-            }
-        ]
-    });
-&lt;/script&gt;
+&lt;!-- samurai --&gt;
+&lt;div id=&#34;player5&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/samurai-29.png&#39;);&#34;&gt;
+    &lt;script&gt;
+        const ap5 = new APlayer({
+            container: document.getElementById(&#39;player5&#39;),
+            audio: [
+                {
+                    name: &#39;Battlecry (Saib. Mix)&#39;,
+                    artist: &#39;Saib.&#39;,
+                    url: &#39;https://lizhuo.space/Battlecry (Saib. Mix).flac&#39;,
+                    cover: &#39;https://lizhuo.space/samurai-8.jpg&#39;
+                }
+            ]
+        });
+    &lt;/script&gt;
 &lt;/div&gt;
-&lt;div id=&#34;player2&#34; style=&#34;--background-url: url(&#39;&#39;);&#34;&gt;
+&lt;div id=&#34;player2&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/samurai-29.png&#39;);&#34;&gt;
     &lt;script&gt;
         const ap2 = new APlayer({
             container: document.getElementById(&#39;player2&#39;),
@@ -56,14 +104,14 @@
                     name: &#39;Aruarian dance&#39;,
                     artist: &#39;Nujabes&#39;,
                     url: &#39;https://lizhuo.space/aruarian dance.flac&#39;,
-                    cover: &#39;https://lizhuo.space/64.png&#39;
+                    cover: &#39;https://lizhuo.space/samurai-8.jpg&#39;
                 }
             ]
         });
     &lt;/script&gt;
 &lt;/div&gt;
-&lt;div class=&#34;aplayer&#34; data-id=&#34;409931420&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/lc.jpg&#39;);&#34;&gt;&lt;/div&gt;
-&lt;div class=&#34;aplayer&#34; data-id=&#34;29718176&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/dog.png&#39;);&#34;&gt;&lt;/div&gt;
+&lt;div class=&#34;aplayer&#34; data-id=&#34;409931420&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/dog.png&#39;);&#34;&gt;&lt;/div&gt;
+&lt;!-- &lt;div class=&#34;aplayer&#34; data-id=&#34;29718176&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/lc.jpg&#39;);&#34;&gt;&lt;/div&gt; --&gt;
 &lt;!-- &lt;div class=&#34;aplayer&#34; data-id=&#34;18666397&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34;&gt;&lt;/div&gt; --&gt;
 &lt;!-- &lt;div class=&#34;aplayer&#34; data-id=&#34;1483488615&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34;&gt;&lt;/div&gt; --&gt;
 &lt;!-- &lt;div class=&#34;aplayer&#34; data-id=&#34;29718176&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34;&gt;&lt;/div&gt; --&gt;

@@ -16,6 +16,18 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
 
 
 
+
+
+    
+
+
+
+
+
+
+    
+
+
     
 
 
@@ -29,12 +41,12 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
 
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.ed97fdc88aec290a61d5313d9b45b8f463dc42a00238485c46d83b855dee71e5.css" integrity="" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://lz0o0.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/img/logo.gif">
-<link rel="apple-touch-icon" href="https://lz0o0.github.io/logo.gif">
-<link rel="mask-icon" href="https://lz0o0.github.io/logo.gif">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.68972c9164cac49dd78c607b41ce6f131c61b5eea5f8507777b389422ef188ec.css" integrity="" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lz0o0.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lz0o0.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lz0o0.github.io/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="zh" href="https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/">
@@ -43,34 +55,6 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
         #theme-toggle,
         .top-link {
             display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
         }
 
     </style>
@@ -100,6 +84,18 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
 
 
 
+
+
+
+
+    
+
+
+
+
+
+
+    
 
 
     
@@ -160,21 +156,17 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
     "name": "Le blog de Lz0o0",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://lz0o0.github.io/img/logo.gif"
+      "url": "https://lz0o0.github.io/favicon.ico"
     }
   }
 }
 </script>
 </head>
 
-<body class="" id="top">
+<body class=" dark" id="top">
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
+    if (localStorage.getItem("pref-theme") === "light") {
         document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
     }
 
 </script>
@@ -270,6 +262,53 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
   <div class="post-content"><!-- {{< music id="557578993" type="song" server="netease" >}}
  -->
 <p><em>Hiii！</em>   <strong>我是 lz0o0 ，以后在本站就自称本鲤了😎！</strong>  <strong>听听我喜欢的歌吧~</strong></p>
+<!-- eva -->
+<div id="player1" style="--background-url: url('https://lizhuo.space/eva-15.jpg');">
+<script>
+    const ap1 = new APlayer({
+        container: document.getElementById('player1'),
+        audio: [
+            {
+                name: 'Komm,süsser Tod (M-10 Director’s Edit. Version)',
+                artist: 'arianne schreiber',
+                url: 'https://lizhuo.space/Komm%2C%20s%C3%BCsser%20Tod%20%EF%BC%8F%E7%94%98%E3%81%8D%E6%AD%BB%E3%82%88%E3%80%81%E6%9D%A5%E3%81%9F%E3%82%8C%20(M-10%20Director%E2%80%99s%20Edit.%20Version).flac',
+                cover: 'https://lizhuo.space/evas.png'
+            }
+        ]
+    });
+</script>
+</div>
+<div id="player4" style="--background-url: url('https://lizhuo.space/eva-15.jpg');">
+<script>
+    const ap4 = new APlayer({
+        container: document.getElementById('player4'),
+        audio: [
+            {
+                name: '残酷な天使のテーゼ',
+                artist: '高桥洋子',
+                url: 'https://lizhuo.space/残酷な天使のテーゼ.flac',
+                cover: 'https://lizhuo.space/evas.png'
+            }
+        ]
+    });
+</script>
+</div>
+<!-- berserk -->
+<div id="player3" style="--background-url: url('https://lizhuo.space/berserk-12.jpg');">
+    <script>
+        const ap3 = new APlayer({
+            container: document.getElementById('player3'),
+            audio: [
+                {
+                    name: 'BERSERK -Forces- (GOD HAND MIX)',
+                    artist: '平泽进',
+                    url: 'https://lizhuo.space/BERSERK -Forces- (GOD HAND MIX).flac',
+                    cover: 'https://lizhuo.space/berserk-16.png'
+                }
+            ]
+        });
+    </script>
+</div>
 <div id="player0" style="--background-url: url('https://lizhuo.space/berserk-12.jpg');">
 <script>
     const ap0 = new APlayer({
@@ -285,22 +324,23 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
     });
 </script>
 </div>
-<div id="player1" style="--background-url: url('https://lizhuo.space/eva-3.png');">
-<script>
-    const ap1 = new APlayer({
-        container: document.getElementById('player1'),
-        audio: [
-            {
-                name: 'Komm, süsser Tod／甘き死よ、来たれ (M-10 Director’s Edit. Version)',
-                artist: 'arianne schreiber',
-                url: 'https://lizhuo.space/Komm%2C%20s%C3%BCsser%20Tod%20%EF%BC%8F%E7%94%98%E3%81%8D%E6%AD%BB%E3%82%88%E3%80%81%E6%9D%A5%E3%81%9F%E3%82%8C%20(M-10%20Director%E2%80%99s%20Edit.%20Version).flac',
-                cover: 'https://lizhuo.space/evas.png'
-            }
-        ]
-    });
-</script>
+<!-- samurai -->
+<div id="player5" style="--background-url: url('https://lizhuo.space/samurai-29.png');">
+    <script>
+        const ap5 = new APlayer({
+            container: document.getElementById('player5'),
+            audio: [
+                {
+                    name: 'Battlecry (Saib. Mix)',
+                    artist: 'Saib.',
+                    url: 'https://lizhuo.space/Battlecry (Saib. Mix).flac',
+                    cover: 'https://lizhuo.space/samurai-8.jpg'
+                }
+            ]
+        });
+    </script>
 </div>
-<div id="player2" style="--background-url: url('');">
+<div id="player2" style="--background-url: url('https://lizhuo.space/samurai-29.png');">
     <script>
         const ap2 = new APlayer({
             container: document.getElementById('player2'),
@@ -309,14 +349,14 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
                     name: 'Aruarian dance',
                     artist: 'Nujabes',
                     url: 'https://lizhuo.space/aruarian dance.flac',
-                    cover: 'https://lizhuo.space/64.png'
+                    cover: 'https://lizhuo.space/samurai-8.jpg'
                 }
             ]
         });
     </script>
 </div>
-<div class="aplayer" data-id="409931420" data-server="netease" data-type="song" data-mode="single" style="--background-url: url('https://lizhuo.space/lc.jpg');"></div>
-<div class="aplayer" data-id="29718176" data-server="netease" data-type="song" data-mode="single" style="--background-url: url('https://lizhuo.space/dog.png');"></div>
+<div class="aplayer" data-id="409931420" data-server="netease" data-type="song" data-mode="single" style="--background-url: url('https://lizhuo.space/dog.png');"></div>
+<!-- <div class="aplayer" data-id="29718176" data-server="netease" data-type="song" data-mode="single" style="--background-url: url('https://lizhuo.space/lc.jpg');"></div> -->
 <!-- <div class="aplayer" data-id="18666397" data-server="netease" data-type="song" data-mode="single"></div> -->
 <!-- <div class="aplayer" data-id="1483488615" data-server="netease" data-type="song" data-mode="single"></div> -->
 <!-- <div class="aplayer" data-id="29718176" data-server="netease" data-type="song" data-mode="single"></div> -->
