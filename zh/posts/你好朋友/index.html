@@ -16,6 +16,13 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
 
 
 
+    
+
+
+
+
+
+
 ">
 <meta name="author" content="Lz0o0">
 <link rel="canonical" href="https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/">
@@ -67,9 +74,15 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
         }
 
     </style>
-</noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
 <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script><meta property="og:url" content="https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/">
+<script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+<meta property="og:url" content="https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/">
   <meta property="og:site_name" content="Le blog de Lz0o0">
   <meta property="og:title" content="热爱，让你成为自己~">
   <meta property="og:description" content="Hiii！ 我是 lz0o0 ，以后在本站就自称本鲤了😎！ 听听我喜欢的歌吧~">
@@ -83,6 +96,13 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
 <meta name="twitter:description" content="
 Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜欢的歌吧~
 
+
+
+
+
+
+
+    
 
 
 
@@ -250,10 +270,25 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
   <div class="post-content"><!-- {{< music id="557578993" type="song" server="netease" >}}
  -->
 <p><em>Hiii！</em>   <strong>我是 lz0o0 ，以后在本站就自称本鲤了😎！</strong>  <strong>听听我喜欢的歌吧~</strong></p>
-<div id="player" style="--background-url: url('https://lizhuo.space/lc.jpg');"></div>
+<div id="player0" style="--background-url: url('https://lizhuo.space/berserk-12.jpg');">
 <script>
-    const ap = new APlayer({
-        container: document.getElementById('player'),
+    const ap0 = new APlayer({
+        container: document.getElementById('player0'),
+        audio: [
+            {
+                name: 'Guts',
+                artist: '平泽进',
+                url: 'https://lizhuo.space/Guts.flac',
+                cover: 'https://lizhuo.space/berserk-16.png'
+            }
+        ]
+    });
+</script>
+</div>
+<div id="player1" style="--background-url: url('https://lizhuo.space/eva-3.png');">
+<script>
+    const ap1 = new APlayer({
+        container: document.getElementById('player1'),
         audio: [
             {
                 name: 'Komm, süsser Tod／甘き死よ、来たれ (M-10 Director’s Edit. Version)',
@@ -264,8 +299,24 @@ Hiii！   我是 lz0o0 ，以后在本站就自称本鲤了😎！  听听我喜
         ]
     });
 </script>
-<br>
-<div class="aplayer" data-id="409931420" data-server="netease" data-type="song" data-mode="single" style="--background-url: url('https://lizhuo.space/dog.png');"></div>
+</div>
+<div id="player2" style="--background-url: url('');">
+    <script>
+        const ap2 = new APlayer({
+            container: document.getElementById('player2'),
+            audio: [
+                {
+                    name: 'Aruarian dance',
+                    artist: 'Nujabes',
+                    url: 'https://lizhuo.space/aruarian dance.flac',
+                    cover: 'https://lizhuo.space/64.png'
+                }
+            ]
+        });
+    </script>
+</div>
+<div class="aplayer" data-id="409931420" data-server="netease" data-type="song" data-mode="single" style="--background-url: url('https://lizhuo.space/lc.jpg');"></div>
+<div class="aplayer" data-id="29718176" data-server="netease" data-type="song" data-mode="single" style="--background-url: url('https://lizhuo.space/dog.png');"></div>
 <!-- <div class="aplayer" data-id="18666397" data-server="netease" data-type="song" data-mode="single"></div> -->
 <!-- <div class="aplayer" data-id="1483488615" data-server="netease" data-type="song" data-mode="single"></div> -->
 <!-- <div class="aplayer" data-id="29718176" data-server="netease" data-type="song" data-mode="single"></div> -->
