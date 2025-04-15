@@ -11,16 +11,16 @@
     <atom:link href="https://lz0o0.github.io/zh/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blog == 管理 &#43; 输出</title>
-      <link>https://lz0o0.github.io/zh/posts/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</link>
+      <link>https://lz0o0.github.io/zh/posts/affair-logs/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</link>
       <pubDate>Sat, 05 Apr 2025 13:41:46 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/affair-logs/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</guid>
       <description>如何理解博客？博客构建的逻辑和步骤是怎样的？</description>
     </item>
     <item>
       <title>hugo发布后css无法加载</title>
-      <link>https://lz0o0.github.io/zh/posts/hugo%E5%8F%91%E5%B8%83%E5%90%8Ecss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</link>
+      <link>https://lz0o0.github.io/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8Ecss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</link>
       <pubDate>Thu, 10 Apr 2025 15:21:26 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/hugo%E5%8F%91%E5%B8%83%E5%90%8Ecss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8Ecss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</guid>
       <description>本文分析并解决了Hugo+Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题</description>
     </item>
   </channel>
