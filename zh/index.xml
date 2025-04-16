@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2024 Le blog de Lz0o0</copyright>
-    <lastBuildDate>Tue, 15 Apr 2025 23:05:12 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 16 Apr 2025 15:22:25 +0800</lastBuildDate>
     <atom:link href="https://lz0o0.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>热爱，让你成为自己~</title>
@@ -107,22 +107,20 @@
                     cover: &#39;https://lizhuo.space/samurai-8.jpg&#39;
                 }
             ]
-        });
+/        });
     &lt;/script&gt;
 &lt;/div&gt;
-&lt;div class=&#34;aplayer&#34; data-id=&#34;409931420&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/dog.png&#39;);&#34;&gt;&lt;/div&gt;
-&lt;!-- &lt;div class=&#34;aplayer&#34; data-id=&#34;29718176&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/lc.jpg&#39;);&#34;&gt;&lt;/div&gt; --&gt;
-&lt;!-- &lt;div class=&#34;aplayer&#34; data-id=&#34;18666397&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34;&gt;&lt;/div&gt; --&gt;
-&lt;!-- &lt;div class=&#34;aplayer&#34; data-id=&#34;1483488615&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34;&gt;&lt;/div&gt; --&gt;
-&lt;!-- &lt;div class=&#34;aplayer&#34; data-id=&#34;29718176&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34;&gt;&lt;/div&gt; --&gt;
-&lt;!-- &lt;div class=&#34;aplayer&#34; data-id=&#34;857983&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34;&gt;&lt;/div&gt; --&gt;</description>
+&lt;!-- else --&gt;
+&lt;div class=&#34;aplayer&#34; data-id=&#34;409931420&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/dog.png&#39;);&#34;&gt;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Blog == 管理 &#43; 输出</title>
-      <link>https://lz0o0.github.io/zh/posts/affair-logs/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</link>
-      <pubDate>Sat, 05 Apr 2025 13:41:46 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/affair-logs/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</guid>
-      <description>如何理解博客？博客构建的逻辑和步骤是怎样的？</description>
+      <title>AI 内容防火墙设计</title>
+      <link>https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Wed, 16 Apr 2025 15:22:25 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;!-- more --&gt;
+&lt;h3 id=&#34;背景&#34;&gt;背景&lt;/h3&gt;
+&lt;p&gt;  2020年至今，AI 应用井喷式爆发，各种通用 AI 大模型和一众垂类 AI 应用的相继出现。AI 的迅速推广、普及，为社会的各行各业带来强大助力，也为广大用户的学习生活提供诸多便利，但于此同时， AI 应用服务从用户接入、智能体处理、外部调用到模型训练的全生命周期，普遍缺乏透明度和内容安全监管，用户隐私、模型内生安全、越狱攻击、意识渗透等安全风险缺乏可靠性，AI 应用安全面临新一轮挑战。&lt;/p&gt;</description>
     </item>
     <item>
       <title>家用摄像头数据安全分析</title>
@@ -132,10 +130,10 @@
       <description>本文对目前国内主流家用摄像头的情况进行了梳理，分析了市场情况和发展趋势；着眼于数据安全，侧重分析了摄像头目前数据采集存储，以及传输的模式特点，旨在揭示家用摄像头中潜藏的数据安全问题和风险</description>
     </item>
     <item>
-      <title>hugo发布后css无法加载</title>
-      <link>https://lz0o0.github.io/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8Ecss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</link>
+      <title>hugo发布后仅文本显示css无法加载</title>
+      <link>https://lz0o0.github.io/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8E%E4%BB%85%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BAcss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</link>
       <pubDate>Thu, 10 Apr 2025 15:21:26 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8Ecss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8E%E4%BB%85%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BAcss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</guid>
       <description>本文分析并解决了Hugo+Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题</description>
     </item>
     <item>
@@ -151,6 +149,13 @@
       <pubDate>Sun, 06 Apr 2025 23:57:22 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/nice-techs/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
       <description>frp 是一种反向代理工具, 被广泛用于内网穿透，能够将外网暴露内网服务，本文具体介绍了如何基于云服务器和frp源码实现简单的内网穿透，是一种很有意思和实际用处的技术</description>
+    </item>
+    <item>
+      <title>Blog == 管理 &#43; 输出</title>
+      <link>https://lz0o0.github.io/zh/posts/affair-logs/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</link>
+      <pubDate>Sat, 05 Apr 2025 13:41:46 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/affair-logs/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</guid>
+      <description>如何理解博客？博客构建的逻辑和步骤是怎样的？</description>
     </item>
     <item>
       <title>🤝 友链</title>

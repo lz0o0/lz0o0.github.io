@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI 内容防火墙设计 | Le blog de Lz0o0</title>
+<meta name="keywords" content="word 1, word 2">
+<meta name="description" content="
+背景
+  2020年至今，AI 应用井喷式爆发，各种通用 AI 大模型和一众垂类 AI 应用的相继出现。AI 的迅速推广、普及，为社会的各行各业带来强大助力，也为广大用户的学习生活提供诸多便利，但于此同时， AI 应用服务从用户接入、智能体处理、外部调用到模型训练的全生命周期，普遍缺乏透明度和内容安全监管，用户隐私、模型内生安全、越狱攻击、意识渗透等安全风险缺乏可靠性，AI 应用安全面临新一轮挑战。">
+<meta name="author" content="Lz0o0">
+<link rel="canonical" href="https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E8%AE%A1/">
+
+
+
+<link crossorigin="anonymous" href="/assets/css/stylesheet.68972c9164cac49dd78c607b41ce6f131c61b5eea5f8507777b389422ef188ec.css" integrity="" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lz0o0.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lz0o0.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lz0o0.github.io/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E8%AE%A1/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+<meta property="og:url" content="https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E8%AE%A1/">
+  <meta property="og:site_name" content="Le blog de Lz0o0">
+  <meta property="og:title" content="AI 内容防火墙设计">
+  <meta property="og:description" content="背景 2020年至今，AI 应用井喷式爆发，各种通用 AI 大模型和一众垂类 AI 应用的相继出现。AI 的迅速推广、普及，为社会的各行各业带来强大助力，也为广大用户的学习生活提供诸多便利，但于此同时， AI 应用服务从用户接入、智能体处理、外部调用到模型训练的全生命周期，普遍缺乏透明度和内容安全监管，用户隐私、模型内生安全、越狱攻击、意识渗透等安全风险缺乏可靠性，AI 应用安全面临新一轮挑战。">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-16T15:22:25+08:00">
+    <meta property="article:modified_time" content="2025-04-16T15:22:25+08:00">
+    <meta property="article:tag" content="技术学习">
+    <meta property="article:tag" content="热点探索">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI 内容防火墙设计">
+<meta name="twitter:description" content="
+背景
+  2020年至今，AI 应用井喷式爆发，各种通用 AI 大模型和一众垂类 AI 应用的相继出现。AI 的迅速推广、普及，为社会的各行各业带来强大助力，也为广大用户的学习生活提供诸多便利，但于此同时， AI 应用服务从用户接入、智能体处理、外部调用到模型训练的全生命周期，普遍缺乏透明度和内容安全监管，用户隐私、模型内生安全、越狱攻击、意识渗透等安全风险缺乏可靠性，AI 应用安全面临新一轮挑战。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "๑✦ˑ_✦",
+      "item": "https://lz0o0.github.io/zh/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "AI 内容防火墙设计",
+      "item": "https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E8%AE%A1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI 内容防火墙设计",
+  "name": "AI 内容防火墙设计",
+  "description": "\r背景 2020年至今，AI 应用井喷式爆发，各种通用 AI 大模型和一众垂类 AI 应用的相继出现。AI 的迅速推广、普及，为社会的各行各业带来强大助力，也为广大用户的学习生活提供诸多便利，但于此同时， AI 应用服务从用户接入、智能体处理、外部调用到模型训练的全生命周期，普遍缺乏透明度和内容安全监管，用户隐私、模型内生安全、越狱攻击、意识渗透等安全风险缺乏可靠性，AI 应用安全面临新一轮挑战。\n",
+  "keywords": [
+    "word 1", "word 2"
+  ],
+  "articleBody": "\r背景 2020年至今，AI 应用井喷式爆发，各种通用 AI 大模型和一众垂类 AI 应用的相继出现。AI 的迅速推广、普及，为社会的各行各业带来强大助力，也为广大用户的学习生活提供诸多便利，但于此同时， AI 应用服务从用户接入、智能体处理、外部调用到模型训练的全生命周期，普遍缺乏透明度和内容安全监管，用户隐私、模型内生安全、越狱攻击、意识渗透等安全风险缺乏可靠性，AI 应用安全面临新一轮挑战。\n想实现全周期的内容安全监管十分复杂，但在 AI 用户和 AI 应用间，进行交互内容的监管、过滤却相对可行，最直观的思路是部署一个 AI 内容防火墙，下文简记为 AI-CFW。简言之，本项目的目标即实现一个 AI-CFW 原型系统，该系统部署于 AI 应用和 AI 使用者之间，对使用者的提问以及 AI 应用的回复内容进行过滤，要求 AI-CFW 满足以下要求：\n实时发现恶意指令、越狱尝试、价值观异常的 AI 回复内容或违反内容合规及数据隐私要求的各类情况 进行格式回复、拒绝应答或会话阻断等操作 此项目需求来源于UCAS课程，本文作记录归档\nAI-CFW 设计难点与目标 AI-CFW 设计面临的主要挑战如下：\n如何将对所有大模型的访问都纳入监管？ https应用普遍情况下如何获得交互内容？ 如何判定大模型输出结果是否违规？ AI-CFW 设计面临的预期目标（判断标准）如下：\n流量还原与 AI 机器人的对话内容（包括但不限于文本，图片，文档等） ✓ 核心相关知识点：流量还原，应用识别，加密内容获取等； 研究审核 AI 聊天内容中的违规内容 ✓ 核心相关知识点：字符串匹配过滤，内容理解，虚假信息检测等； 已有方案与解法： 火山引擎：大模型应用防火墙，发布！\n启明星辰：大模型访问脱敏罩MADA Mask\nCloudflare：[AI gateway](AI Gateway | Cloudflare) + 解读\n初步计划与设计 Refer 使用Cloudflare AI Gateway监控、控制和优化 AI 应用 - waka’s blog ",
+  "wordCount" : "722",
+  "inLanguage": "zh",
+  "datePublished": "2025-04-16T15:22:25+08:00",
+  "dateModified": "2025-04-16T15:22:25+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "Lz0o0"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E8%AE%A1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Le blog de Lz0o0",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lz0o0.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lz0o0.github.io/zh/" accesskey="h" title="Le blog de Lz0o0 (Alt + H)">Le blog de Lz0o0</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lz0o0.github.io/zh/search" title="🔍Search (Alt &#43; /)" accesskey=/>
+                    <span>🔍Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/" title="🏠Home">
+                    <span>🏠Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/posts" title="📓Blogs">
+                    <span>📓Blogs</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/tags" title="🔖tags">
+                    <span>🔖tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/archive" title="⏱archives">
+                    <span>⏱archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/links" title="🤝links">
+                    <span>🤝links</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/about" title="😎about">
+                    <span>😎about</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://lz0o0.github.io/zh/">🏠Home</a>&nbsp;»&nbsp;<a href="https://lz0o0.github.io/zh/posts/">๑✦ˑ_✦</a></div>
+    <h1 class="post-title entry-hint-parent">
+      AI 内容防火墙设计
+    </h1>
+    <div class="post-meta"><span title='2025-04-16 15:22:25 +0800 CST'>2025-04-16</span>&nbsp;·&nbsp;2 mins&nbsp;·&nbsp;Lz0o0
+
+</div>
+  </header>
+
+  
+  <div class="post-tags">
+      <ul class="post-tags">
+        <li><a href="https://lz0o0.github.io/zh/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/">技术学习</a></li>
+        <li><a href="https://lz0o0.github.io/zh/tags/%E7%83%AD%E7%82%B9%E6%8E%A2%E7%B4%A2/">热点探索</a></li>
+      </ul>
+  </div> 
+  
+  <div class="toc-container"><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Directory</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e8%83%8c%e6%99%af" aria-label="背景">背景</a></li>
+                <li>
+                    <a href="#ai-cfw-%e8%ae%be%e8%ae%a1%e9%9a%be%e7%82%b9%e4%b8%8e%e7%9b%ae%e6%a0%87" aria-label="AI-CFW 设计难点与目标">AI-CFW 设计难点与目标</a></li>
+                <li>
+                    <a href="#%e5%b7%b2%e6%9c%89%e6%96%b9%e6%a1%88%e4%b8%8e%e8%a7%a3%e6%b3%95" aria-label="已有方案与解法：">已有方案与解法：</a></li>
+                <li>
+                    <a href="#%e5%88%9d%e6%ad%a5%e8%ae%a1%e5%88%92%e4%b8%8e%e8%ae%be%e8%ae%a1" aria-label="初步计划与设计">初步计划与设计</a></li>
+                <li>
+                    <a href="#refer" aria-label="Refer">Refer</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  </div>
+  <div class="post-content"><!-- more -->
+<h3 id="背景">背景<a hidden class="anchor" aria-hidden="true" href="#背景">#</a></h3>
+<p>  2020年至今，AI 应用井喷式爆发，各种通用 AI 大模型和一众垂类 AI 应用的相继出现。AI 的迅速推广、普及，为社会的各行各业带来强大助力，也为广大用户的学习生活提供诸多便利，但于此同时， AI 应用服务从用户接入、智能体处理、外部调用到模型训练的全生命周期，普遍缺乏透明度和内容安全监管，用户隐私、模型内生安全、越狱攻击、意识渗透等安全风险缺乏可靠性，AI 应用安全面临新一轮挑战。</p>
+<p>  想实现全周期的内容安全监管十分复杂，但在 AI 用户和 AI 应用间，进行交互内容的监管、过滤却相对可行，最直观的思路是部署一个 AI 内容防火墙，下文简记为 AI-CFW。简言之，本项目的目标即实现一个 AI-CFW 原型系统，该系统部署于 AI 应用和 AI 使用者之间，对<strong>使用者的提问</strong>以及 <strong>AI 应用的回复内容</strong>进行过滤，要求 AI-CFW 满足以下要求：</p>
+<ul>
+<li>实时发现<strong>恶意指令、越狱尝试、价值观异常</strong>的 AI 回复内容或违反<strong>内容合规</strong>及<strong>数据隐私</strong>要求的各类情况</li>
+<li>进行格式回复、拒绝应答或会话阻断等操作</li>
+</ul>
+<p> 此项目需求来源于UCAS课程，本文作记录归档</p>
+<h3 id="ai-cfw-设计难点与目标">AI-CFW 设计难点与目标<a hidden class="anchor" aria-hidden="true" href="#ai-cfw-设计难点与目标">#</a></h3>
+<p>AI-CFW 设计面临的主要挑战如下：</p>
+<ol>
+<li>如何将对所有大模型的访问都纳入监管？</li>
+<li>https应用普遍情况下如何获得交互内容？</li>
+<li>如何判定大模型输出结果是否违规？</li>
+</ol>
+<p>AI-CFW 设计面临的预期目标（判断标准）如下：</p>
+<ol>
+<li>流量还原与 AI 机器人的对话内容（包括但不限于文本，图片，文档等）
+<ul>
+<li>✓ 核心相关知识点：流量还原，应用识别，加密内容获取等；</li>
+</ul>
+</li>
+<li>研究审核 AI 聊天内容中的违规内容
+<ul>
+<li>✓ 核心相关知识点：字符串匹配过滤，内容理解，虚假信息检测等；</li>
+</ul>
+</li>
+</ol>
+<h3 id="已有方案与解法">已有方案与解法：<a hidden class="anchor" aria-hidden="true" href="#已有方案与解法">#</a></h3>
+<ul>
+<li>
+<p>火山引擎：<a href="https://mp.weixin.qq.com/s/wKImp_azFYGuCjAv3A5ndg">大模型应用防火墙，发布！</a></p>
+</li>
+<li>
+<p>启明星辰：<a href="https://www.venustech.com.cn/new_type/cpdt/20250303/28389.html">大模型访问脱敏罩MADA Mask</a></p>
+</li>
+<li>
+<p>Cloudflare：[AI gateway](<a href="https://www.cloudflare-cn.com/developer-platform/products/ai-gateway/">AI Gateway | Cloudflare</a>) + <a href="https://www.aisharenet.com/cloudflare-ai-gateway-ai-api/">解读</a></p>
+</li>
+</ul>
+<h3 id="初步计划与设计">初步计划与设计<a hidden class="anchor" aria-hidden="true" href="#初步计划与设计">#</a></h3>
+<h3 id="refer">Refer<a hidden class="anchor" aria-hidden="true" href="#refer">#</a></h3>
+<ul>
+<li><font size ='2'><a href="https://blog.wakaplus.com/posts/aigate/">使用Cloudflare AI Gateway监控、控制和优化 AI 应用 - waka&rsquo;s blog</a></font></li>
+<li><font size ='2'></font></li>
+<li><font size ='2'></font></li>
+<li><font size ='2'></font></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    
+<nav class="paginav">
+  <a class="prev" href="https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/">
+    <span class="title">« Last Page</span>
+    <br>
+    <span>热爱，让你成为自己~</span>
+  </a>
+  <a class="next" href="https://lz0o0.github.io/zh/posts/affair-logs/%E5%AE%B6%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>家用摄像头数据安全分析</span>
+  </a>
+</nav>
+
+  </footer>
+<script src="https://utteranc.es/client.js"
+        repo="lz0o0/lz0o0.github.io"
+        issue-term="pathname"
+        theme="icy-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span><a href="https://lz0o0.github.io/">©2024  Le blog de Lz0o0</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
