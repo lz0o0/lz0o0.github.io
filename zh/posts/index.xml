@@ -16,7 +16,7 @@
       <guid>https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/</guid>
       <description>&lt;!-- {{&lt; music id=&#34;557578993&#34; type=&#34;song&#34; server=&#34;netease&#34; &gt;}}
  --&gt;
-&lt;p&gt;&lt;em&gt;Hiii！&lt;/em&gt;   &lt;strong&gt;我是 lz0o0 ，以后在本站就自称本鲤了😎！&lt;/strong&gt;  &lt;strong&gt;听听我喜欢的歌吧~&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Hiii！&lt;/em&gt;   &lt;strong&gt;我是 lz0o0 ，以后在本站就自称本鲤了😎！&lt;/strong&gt;  &lt;strong&gt;听首我喜欢的歌吧~&lt;/strong&gt;&lt;/p&gt;
 &lt;!-- eva --&gt;
 &lt;div id=&#34;player1&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/eva-15.jpg&#39;);&#34;&gt;
 &lt;script&gt;
@@ -32,86 +32,7 @@
         ]
     });
 &lt;/script&gt;
-&lt;/div&gt;
-&lt;div id=&#34;player4&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/eva-15.jpg&#39;);&#34;&gt;
-&lt;script&gt;
-    const ap4 = new APlayer({
-        container: document.getElementById(&#39;player4&#39;),
-        audio: [
-            {
-                name: &#39;残酷な天使のテーゼ&#39;,
-                artist: &#39;高桥洋子&#39;,
-                url: &#39;https://lizhuo.space/残酷な天使のテーゼ.flac&#39;,
-                cover: &#39;https://lizhuo.space/evas.png&#39;
-            }
-        ]
-    });
-&lt;/script&gt;
-&lt;/div&gt;
-&lt;!-- berserk --&gt;
-&lt;div id=&#34;player3&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/berserk-12.jpg&#39;);&#34;&gt;
-    &lt;script&gt;
-        const ap3 = new APlayer({
-            container: document.getElementById(&#39;player3&#39;),
-            audio: [
-                {
-                    name: &#39;BERSERK -Forces- (GOD HAND MIX)&#39;,
-                    artist: &#39;平泽进&#39;,
-                    url: &#39;https://lizhuo.space/BERSERK -Forces- (GOD HAND MIX).flac&#39;,
-                    cover: &#39;https://lizhuo.space/berserk-16.png&#39;
-                }
-            ]
-        });
-    &lt;/script&gt;
-&lt;/div&gt;
-&lt;div id=&#34;player0&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/berserk-12.jpg&#39;);&#34;&gt;
-&lt;script&gt;
-    const ap0 = new APlayer({
-        container: document.getElementById(&#39;player0&#39;),
-        audio: [
-            {
-                name: &#39;Guts&#39;,
-                artist: &#39;平泽进&#39;,
-                url: &#39;https://lizhuo.space/Guts.flac&#39;,
-                cover: &#39;https://lizhuo.space/berserk-16.png&#39;
-            }
-        ]
-    });
-&lt;/script&gt;
-&lt;/div&gt;
-&lt;!-- samurai --&gt;
-&lt;div id=&#34;player5&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/samurai-29.png&#39;);&#34;&gt;
-    &lt;script&gt;
-        const ap5 = new APlayer({
-            container: document.getElementById(&#39;player5&#39;),
-            audio: [
-                {
-                    name: &#39;Battlecry (Saib. Mix)&#39;,
-                    artist: &#39;Saib.&#39;,
-                    url: &#39;https://lizhuo.space/Battlecry (Saib. Mix).flac&#39;,
-                    cover: &#39;https://lizhuo.space/samurai-8.jpg&#39;
-                }
-            ]
-        });
-    &lt;/script&gt;
-&lt;/div&gt;
-&lt;div id=&#34;player2&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/samurai-29.png&#39;);&#34;&gt;
-    &lt;script&gt;
-        const ap2 = new APlayer({
-            container: document.getElementById(&#39;player2&#39;),
-            audio: [
-                {
-                    name: &#39;Aruarian dance&#39;,
-                    artist: &#39;Nujabes&#39;,
-                    url: &#39;https://lizhuo.space/aruarian dance.flac&#39;,
-                    cover: &#39;https://lizhuo.space/samurai-8.jpg&#39;
-                }
-            ]
-        });
-    &lt;/script&gt;
-&lt;/div&gt;
-&lt;!-- else --&gt;
-&lt;div class=&#34;aplayer&#34; data-id=&#34;409931420&#34; data-server=&#34;netease&#34; data-type=&#34;song&#34; data-mode=&#34;single&#34; style=&#34;--background-url: url(&#39;https://lizhuo.space/dog.png&#39;);&#34;&gt;&lt;/div&gt;</description>
+&lt;/div&gt;</description>
     </item>
     <item>
       <title>AI 内容防火墙</title>

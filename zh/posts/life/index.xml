@@ -8,5 +8,19 @@
     <language>zh</language>
     <copyright>©2024 Le blog de Lz0o0</copyright>
     <atom:link href="https://lz0o0.github.io/zh/posts/life/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>💭 See what I Says</title>
+      <link>https://lz0o0.github.io/zh/posts/life/says/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/life/says/</guid>
+      <description>😁 碎碎念页面完成了, So easy！</description>
+    </item>
+    <item>
+      <title>🎧 我的歌单Songs</title>
+      <link>https://lz0o0.github.io/zh/posts/life/songs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/life/songs/</guid>
+      <description>🤩 真的，好好好&amp;hellip;..好好听！</description>
+    </item>
   </channel>
 </rss>
