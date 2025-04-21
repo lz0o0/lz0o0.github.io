@@ -90,8 +90,8 @@
   "keywords": [
     "word 1", "word 2"
   ],
-  "articleBody": "\r一、zero-to-one 1. 什么是MCP？ MCP（Model Context Protocol）即模型上下文协议，由Anthropic在2024年11月25日发布的一篇文章中最早向公众提出：Introducing the Model Context Protocol。该文章将MCP描述为一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式，以期帮助前端模型完成更高质量的工作。\n2. MCP的提出背景和拟解决问题？ 问题与需求：随着AI助手得到广泛运用，整个行业对AI模型功能的投入相继加码，实现了推理能力和响应质量的巨大进步。然而，即便是目前最精良复杂的模型也存在与数据源相隔离的限制，它们各自隔离并处在遗留系统和信息孤岛之上，每个数据源的调用和访问都需要用户单独自定义实现（此前主要通过function calling，模式类似一把钥匙开一把锁，但配这么多钥匙并不轻松），这使得真正连接的系统（比如Manus）难以扩展其能力。\n3. MCP的核心思想？ MCP的方案：MCP核心思想是采取单一通信协议，取代碎片化集成。在原有混乱多样的连接形式下，只要大家都按照统一的标准开发和提供接口，原本需要针对每个数据源单独自定义连接方法的问题，就可以得到有效解决。而Anthropic推动并提供了这样一个通用的开放连接标准——MCP，对AI系统和数据源之间的连接进行了规范和统一。\n4. MCP的组成结构？ MCP的架构：采用典型的“C-S”架构，在数据源（借助MCP Server）和AI助手（借助MCP Client）间构建双向连接，开发者可以选择构建MCP Server以公开其数据访问提供服务，亦可选择开发MCP Client用以连接各种类型的MCP Server访问其服务。\nMCP的组成成分：由上图可见，MCP主要包含三个核心组件：MCP Host、MCP Client、MCP Server，囊括两类数据服务：Local Data Sources、Remote Services。\nMCP Host：宿主机，即希望通过 MCP 访问数据的 Claude Desktop、IDE 或 AI 工具等宿主机应用程序\nMCP Client：客户端，在宿主机应用程序内部，负责与MCP服务端保持一对一连接，可以理解为连接会话，可以配置MCP Server\nMCP Server：服务端，一些轻量级程序，每个这样的程序都通过标准化的 Model Context Protocol 公开特定功能(比如查询时间\nLocal Data Sources：本地数据源，即MCP 服务器可以安全访问的本地计算机文件、数据库和服务\nRemote Services：远程服务，即MCP 服务器可以连接到的 Internet 上可用的外部系统（比如通过 WebAPI，访问git和github）\n5. MCP的工作流？ 以一个 \u003c问题查询并通过邮件返回通知\u003e 的任务为例，MCP的整个工作流程是这样的：你的问题 → MCP Hosts（如 Chat Apps、IDEs、AI Agents 等）接收问题 → MCP Clients 进行意图分析 → 根据分析结果进行任务编排 → 选择合适的工具（如通知工具、采样工具等） → 通过 Transfer Layer，MCP Clients 向 MCP Servers 发送初始请求 → MCP Servers 收到请求后，利用其本地能力（如工具、资源、提示等）进行处理 → MCP Servers 可能会调用外部的 API（如 Web Services、Database、Local Files 等）来获取所需数据 → MCP Servers 将初始响应返回给 MCP Clients → 如果需要，MCP Clients 可能会进行进一步的通知操作 → 最终结果由 MCP Hosts 选择通知方式返回给用户，并告知任务完成状态。\nMCP这种“C-S”架构和工作流的设计使得宿主机应用程序（比如 Claude ）可以在不同场景下灵活调用各种工具和数据源，而开发者也只需专注于开发对应的 MCP Server，无需关心 Host 和 Client 的实现细节，解决现有问题基础上能够模块化分离各方开发的重心，提高开发效率。\n二、MCP核心工作机制 基于上图的工作流，我们发现MCP工作过程中尤为重要的三个阶段，而这三个阶段的实施逻辑具体描述了MCP核心工作机制的特点。\n在MCP宿主机中如何进行意图分析和任务编排？\nMCP客户端如何智能选择合适的MCP服务端工具？\nMCP服务端工具的执行逻辑以及反馈机制是怎样的？\nRefer MCP开源库：Model Context Protocol 什么是MCP｜工作原理｜如何使用MCP｜图解MCP - 知乎 ",
-  "wordCount" : "1672",
+  "articleBody": "\r一、zero-to-one 1. 什么是MCP？ MCP（Model Context Protocol）即模型上下文协议，由Anthropic在2024年11月25日发布的一篇文章中最早向公众提出：Introducing the Model Context Protocol。该文章将MCP描述为一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式，以期帮助前端模型完成更高质量的工作。\n2. MCP的提出背景和拟解决问题？ 问题与需求：随着AI助手得到广泛运用，整个行业对AI模型功能的投入相继加码，实现了推理能力和响应质量的巨大进步。然而，即便是目前最精良复杂的模型也存在与数据源相隔离的限制，它们各自隔离并处在遗留系统和信息孤岛之上，每个数据源的调用和访问都需要用户单独自定义实现（此前主要通过function calling，模式类似一把钥匙开一把锁，但配这么多钥匙并不轻松），这使得真正连接的系统（比如Manus）难以扩展其能力。\n3. MCP的核心思想？ MCP的方案：MCP核心思想是采取单一通信协议，取代碎片化集成。在原有混乱多样的连接形式下，只要大家都按照统一的标准开发和提供接口，原本需要针对每个数据源单独自定义连接方法的问题，就可以得到有效解决。而Anthropic推动并提供了这样一个通用的开放连接标准——MCP，对AI系统和数据源之间的连接进行了规范和统一。\n4. MCP的组成结构？ MCP的架构：采用典型的“C-S”架构，在数据源（借助MCP Server）和AI助手（借助MCP Client）间构建双向连接，开发者可以选择构建MCP Server以公开其数据访问提供服务，亦可选择开发MCP Client用以连接各种类型的MCP Server访问其服务。\nMCP的组成成分：由上图可见，MCP主要包含三个核心组件：MCP Host、MCP Client、MCP Server，囊括两类数据服务：Local Data Sources、Remote Services。\nMCP Host：宿主机，即希望通过 MCP 访问数据的 Claude Desktop、IDE 或 AI 工具等宿主机应用程序\nMCP Client：客户端，在宿主机应用程序内部，负责与MCP服务端保持一对一连接，可以理解为连接进程的端点，可以配置MCP Server\nMCP Server：服务端，一些轻量级程序，每个这样的程序都通过标准化的 Model Context Protocol 公开特定功能(比如查询时间\nLocal Data Sources：本地数据源，即MCP 服务器可以安全访问的本地计算机文件、数据库和服务\nRemote Services：远程服务，即MCP 服务器可以连接到的 Internet 上可用的外部系统（比如通过 WebAPI，访问git和github）\n5. MCP的工作流？ 下图是MCP运行时的大致工作流。以一个 \u003c问题查询并通过邮件返回通知\u003e 的任务为例，MCP的整个工作流程是这样的：用户问题 → MCP Hosts（如 Chat Apps）接收问题 → 大模型进行意图分析，根据分析结果进行响应或任务编排 → MCP Clients 按照编排选择工具完成任务（if need） → 【 ① MCP Servers 利用其能力（如工具、资源、提示等）进行处理 or ② MCP Servers 可能会调用外部的 API（如 Web Services、Database、Local Files 等）来获取所需数据 】 → MCP Servers 将初始响应返回给 MCP Clients → 客户端初将始响应告知大模型，大模型进行优化，并再返回给 MCP Clients （Clients 可能会进行进一步的通知操作 ）→ MCP Clients 显示最终响应，并向用户显示任务执行结果。\n对应图中 Transfer Layer 的部分是 MCP Clients和 MCP Server 进行初始化的过程，这个阶段发生在任务执行之前，因而未在工作流中提及。这一阶段主要是完成 MCP Servers 的注册，初始化之后，Client 与 Server 维持 1:1连接，方便后续调用。\nMCP这种“C-S”架构和工作流的设计使得宿主机应用程序（比如 Claude ）可以在不同场景下灵活调用各种工具和数据源，而开发者也只需专注于开发对应的 MCP Server，无需关心 Host 和 Client 的实现细节，解决现有问题基础上能够模块化分离各方开发的重心，提高开发效率。\n二、MCP 工作机制的核心 基于上图的工作流，我们发现MCP工作过程中尤为重要的三个阶段，理解这三个阶段的实施和逻辑，能够帮助我们掌握 MCP 工作机制的核心特点。\n如何理解 MCP Server 的初始化？\n如何智能选择 MCP Server，进行任务编排？\nMCP Server 执行结果的反馈机制是怎样的？\n1. 如何理解 MCP Server 的初始化？ MCP 服务端的初始化是在启动 Host 读取配置文件后，预先完成的。在上一节的工作流介绍中并未提及 MCP Server 进行初始化的细节，具体过程如下（见下图）：MCP Clients 向 MCP Servers 发送初始请求 → MCP Servers 收到请求后，进行初始化响应，告知其可用tools/list → 完成初始化通知，所有的 MCP Servers 完成注册。\n这里有两个问题需要思考，为什么要预先进行初始化注册？初始化之后具体发生了什么变化？\n2. 如何智能选择 MCP Server，进行任务编排？ 首先， MCP Server 的选择范围受到初始化结果的限制，这是智能选择的前提条件，也是问题解决的一个限制因素。其次，大模型理解用户任务需求后，进行意图分析，确定需要返回的内容和获取内容的方法，这是对任务目标的明确。最后，大模型综合意图分析结果（目标），已有 MCP Servers 的可选项（条件和限制），从中选择特定的 Server，指定访问的工具和参数（智能选择），即完成任务编排过程。\nRefer MCP开源库：Model Context Protocol 什么是MCP｜工作原理｜如何使用MCP｜图解MCP - 知乎 MCP 是什么，现状和未来 | OneV’s Den ",
+  "wordCount" : "2156",
   "inLanguage": "zh",
   "datePublished": "2025-04-21T00:11:27+08:00",
   "dateModified": "2025-04-21T00:11:27+08:00",
@@ -197,7 +197,7 @@
     <h1 class="post-title entry-hint-parent">
       MCP 模型上下文协议全解
     </h1>
-    <div class="post-meta"><span title='2025-04-21 00:11:27 +0800 CST'>2025-04-21</span>&nbsp;·&nbsp;4 mins&nbsp;·&nbsp;Lz0o0
+    <div class="post-meta"><span title='2025-04-21 00:11:27 +0800 CST'>2025-04-21</span>&nbsp;·&nbsp;5 mins&nbsp;·&nbsp;Lz0o0
 
 </div>
   </header>
@@ -232,7 +232,13 @@
                     <a href="#5-mcp%e7%9a%84%e5%b7%a5%e4%bd%9c%e6%b5%81" aria-label="5. MCP的工作流？">5. MCP的工作流？</a></li></ul>
                 </li>
                 <li>
-                    <a href="#%e4%ba%8cmcp%e6%a0%b8%e5%bf%83%e5%b7%a5%e4%bd%9c%e6%9c%ba%e5%88%b6" aria-label="二、MCP核心工作机制">二、MCP核心工作机制</a></li>
+                    <a href="#%e4%ba%8cmcp-%e5%b7%a5%e4%bd%9c%e6%9c%ba%e5%88%b6%e7%9a%84%e6%a0%b8%e5%bf%83" aria-label="二、MCP 工作机制的核心">二、MCP 工作机制的核心</a></li>
+                <li>
+                    <a href="#1-%e5%a6%82%e4%bd%95%e7%90%86%e8%a7%a3-mcp-server-%e7%9a%84%e5%88%9d%e5%a7%8b%e5%8c%96" aria-label="1. 如何理解 MCP Server 的初始化？">1. 如何理解 MCP Server 的初始化？</a><ul>
+                        
+                <li>
+                    <a href="#2-%e5%a6%82%e4%bd%95%e6%99%ba%e8%83%bd%e9%80%89%e6%8b%a9-mcp-server%e8%bf%9b%e8%a1%8c%e4%bb%bb%e5%8a%a1%e7%bc%96%e6%8e%92" aria-label="2. 如何智能选择 MCP Server，进行任务编排？">2. 如何智能选择 MCP Server，进行任务编排？</a></li></ul>
+                </li>
                 <li>
                     <a href="#refer" aria-label="Refer">Refer</a>
                 </li>
@@ -258,52 +264,39 @@
 <p>  <strong>MCP的架构</strong>：采用<strong>典型的“C-S”架构</strong>，在数据源（借助MCP Server）和AI助手（借助MCP Client）间构建<strong>双向连接</strong>，开发者可以选择构建MCP Server以公开其数据访问提供服务，亦可选择开发MCP Client用以连接各种类型的MCP Server访问其服务。</p>
 <img src="https://lizhuo.space/mcp-topo.png" alt="MCP的C-S架构" style="zoom: 40%;" />
 <p>  <strong>MCP的组成成分</strong>：由上图可见，MCP主要包含<strong>三个核心组件</strong>：MCP Host、MCP Client、MCP Server，囊括<strong>两类数据服务</strong>：Local Data Sources、Remote Services。</p>
-<ul>
-<li>
 <blockquote>
 <p><font size=2>MCP Host：宿主机，即希望通过 MCP 访问数据的 Claude Desktop、IDE 或 AI 工具等宿主机应用程序</font></p></blockquote>
-</li>
-<li>
 <blockquote>
-<p><font size=2>MCP Client：客户端，在宿主机应用程序内部，负责与MCP服务端保持一对一连接，可以理解为连接会话，可以配置MCP Server</font></p></blockquote>
-</li>
-<li>
+<p><font size=2>MCP Client：客户端，在宿主机应用程序内部，负责与MCP服务端保持一对一连接，可以理解为连接进程的端点，可以配置MCP Server</font></p></blockquote>
 <blockquote>
 <p><font size=2>MCP Server：服务端，一些轻量级程序，每个这样的程序都通过标准化的 Model Context Protocol 公开特定功能(比如查询时间</font></p></blockquote>
-</li>
-<li>
 <blockquote>
 <p><font size=2>Local Data Sources：本地数据源，即MCP 服务器可以安全访问的本地计算机文件、数据库和服务</font></p></blockquote>
-</li>
-<li>
 <blockquote>
 <p><font size=2>Remote Services：远程服务，即MCP 服务器可以连接到的 Internet 上可用的外部系统（比如通过 WebAPI，访问git和github）</font></p></blockquote>
-</li>
-</ul>
 <h4 id="5-mcp的工作流">5. MCP的工作流？<a hidden class="anchor" aria-hidden="true" href="#5-mcp的工作流">#</a></h4>
-<p>  以一个 &lt;问题查询并通过邮件返回通知&gt; 的任务为例，MCP的整个工作流程是这样的：<strong>你的问题</strong> → MCP Hosts（如 Chat Apps、IDEs、AI Agents 等）接收问题 → MCP Clients 进行<strong>意图分析</strong> → 根据分析结果进行<strong>任务编排</strong> → <strong>选择合适的工具</strong>（如通知工具、采样工具等） → 通过 Transfer Layer，MCP Clients 向 MCP Servers 发送初始请求 → MCP Servers 收到请求后，<strong>利用其本地能力</strong>（如工具、资源、提示等）进行处理 → MCP Servers 可能会<strong>调用外部的 API</strong>（如 Web Services、Database、Local Files 等）来获取所需数据 → MCP Servers 将初始响应返回给 MCP Clients → 如果需要，MCP Clients 可能会进行进一步的通知操作 → 最终结果由 MCP Hosts 选择通知方式返回给用户，并告知任务完成状态。</p>
+<p>  下图是MCP运行时的大致工作流。以一个 &lt;问题查询并通过邮件返回通知&gt; 的任务为例，MCP的整个工作流程是这样的：<strong>用户问题</strong> → MCP Hosts（如 Chat Apps）接收问题 → 大模型进行<strong>意图分析</strong>，根据分析结果<strong>进行响应或任务编排</strong> → MCP Clients <strong>按照编排选择工具完成任务</strong>（if need）  → 【 ① MCP Servers 利用其能力（如工具、资源、提示等）进行处理 or ② MCP Servers 可能会<strong>调用外部的 API</strong>（如 Web Services、Database、Local Files 等）来获取所需数据 】 → MCP Servers 将初始响应返回给 MCP Clients → 客户端初将始响应告知大模型，大模型进行优化，并再返回给 MCP Clients （Clients 可能会进行进一步的通知操作 ）→ MCP Clients 显示最终响应，并向用户显示任务执行结果。</p>
+<p>  对应图中 Transfer Layer 的部分是 MCP Clients和 MCP Server 进行初始化的过程，这个阶段发生在任务执行之前，因而未在工作流中提及。这一阶段主要是完成 MCP Servers 的注册，初始化之后，Client 与 Server 维持 1:1连接，方便后续调用。</p>
 <img src="https://lizhuo.space/workflow-MCP.png" alt="MCP-任务工作流" style="zoom: 50%;" />
 <p>  MCP这种“C-S”架构和工作流的设计使得宿主机应用程序（比如 Claude ）可以在不同场景下灵活调用各种工具和数据源，而开发者也只需专注于开发对应的 MCP Server，无需关心 Host 和 Client 的实现细节，解决现有问题基础上能够模块化分离各方开发的重心，提高开发效率。</p>
-<h3 id="二mcp核心工作机制">二、MCP核心工作机制<a hidden class="anchor" aria-hidden="true" href="#二mcp核心工作机制">#</a></h3>
-<p>  基于上图的工作流，我们发现MCP工作过程中尤为重要的三个阶段，而这三个阶段的实施逻辑具体描述了MCP核心工作机制的特点。</p>
-<ul>
-<li>
+<img src="https://lizhuo.space/moduled-MCP.png" alt="MCP-模块化分离的开发结构" style="zoom: 67%;" />
+<h3 id="二mcp-工作机制的核心">二、MCP 工作机制的核心<a hidden class="anchor" aria-hidden="true" href="#二mcp-工作机制的核心">#</a></h3>
+<p>  基于上图的工作流，我们发现MCP工作过程中尤为重要的三个阶段，理解这三个阶段的实施和逻辑，能够帮助我们掌握 MCP 工作机制的核心特点。</p>
 <blockquote>
-<p><font size=2>在MCP宿主机中如何进行意图分析和任务编排？</font></p></blockquote>
-</li>
-<li>
-<blockquote>
-<p><font size=2>MCP客户端如何智能选择合适的MCP服务端工具？</font></p></blockquote>
-</li>
-<li>
-<blockquote>
-<p><font size=2>MCP服务端工具的执行逻辑以及反馈机制是怎样的？</font></p></blockquote>
-</li>
-</ul>
+<p><font size=2>如何理解 MCP Server 的初始化？</font></p>
+<p><font size=2>如何智能选择 MCP Server，进行任务编排？</font></p>
+<p><font size=2>MCP Server 执行结果的反馈机制是怎样的？</font></p></blockquote>
+<h3 id="1-如何理解-mcp-server-的初始化">1. 如何理解 MCP Server 的初始化？<a hidden class="anchor" aria-hidden="true" href="#1-如何理解-mcp-server-的初始化">#</a></h3>
+<p>  MCP 服务端的初始化是在启动 Host 读取配置文件后，预先完成的。在上一节的工作流介绍中并未提及 MCP Server 进行初始化的细节，具体过程如下（见下图）：MCP Clients 向 MCP Servers 发送初始请求 → MCP Servers 收到请求后，进行初始化响应，告知其可用tools/list → 完成初始化通知，所有的 MCP Servers 完成注册。</p>
+<img src="https://lizhuo.space/whole-mcp.png" alt="MCP-详细工作流示意" style="zoom:60%;" />
+<p>   这里有两个问题需要思考，<strong>为什么要预先进行初始化注册？初始化之后具体发生了什么变化？</strong></p>
+<h4 id="2-如何智能选择-mcp-server进行任务编排">2. 如何智能选择 MCP Server，进行任务编排？<a hidden class="anchor" aria-hidden="true" href="#2-如何智能选择-mcp-server进行任务编排">#</a></h4>
+<p>  首先， MCP Server 的选择范围受到初始化结果的限制，这是智能选择的前提条件，也是问题解决的一个限制因素。其次，大模型理解用户任务需求后，进行意图分析，确定需要返回的内容和获取内容的方法，这是对任务目标的明确。最后，大模型综合意图分析结果（目标），已有 MCP Servers 的可选项（条件和限制），从中选择特定的 Server，指定访问的工具和参数（智能选择），即完成任务编排过程。</p>
 <h3 id="refer">Refer<a hidden class="anchor" aria-hidden="true" href="#refer">#</a></h3>
 <ul>
 <li><font size=3>MCP开源库：<a href="https://github.com/modelcontextprotocol">Model Context Protocol</a></font></li>
 <li><font size=3><a href="https://zhuanlan.zhihu.com/p/32975857666">什么是MCP｜工作原理｜如何使用MCP｜图解MCP - 知乎</a></font></li>
+<li><font size=3><a href="https://onevcat.com/2025/02/mcp/">MCP 是什么，现状和未来 | OneV&rsquo;s Den</a></font></li>
 </ul>
 
 
