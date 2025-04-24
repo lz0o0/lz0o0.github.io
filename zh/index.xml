@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2024 Le blog de Lz0o0</copyright>
-    <lastBuildDate>Mon, 21 Apr 2025 00:11:27 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 24 Apr 2025 13:36:50 +0800</lastBuildDate>
     <atom:link href="https://lz0o0.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>热爱，让你成为自己~</title>
@@ -40,6 +40,17 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/life/says/</guid>
       <description>😁 碎碎念页面完成了, So easy！</description>
+    </item>
+    <item>
+      <title>关于WAF你需要知道什么？</title>
+      <link>https://lz0o0.github.io/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</link>
+      <pubDate>Thu, 24 Apr 2025 13:36:50 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</guid>
+      <description>&lt;!-- more --&gt;
+&lt;h3 id=&#34;1-waf的定义&#34;&gt;1. WAF的定义&lt;/h3&gt;
+&lt;p&gt;  WAF全称 Web Application Firewall，即Web应用防火墙，是一种专门用于保护Web应用服务免受各种网络攻击的安全防护工具。&lt;/p&gt;
+&lt;img src=&#34;https://lizhuo.space/WAF-case.png&#34; alt=&#34;WAF工作场景拓扑&#34; style=&#34;zoom:80%;&#34; /&gt;
+&lt;p&gt;  了解网络技术最好先对场景有个整体的概念，WAF的工作场景如上图所示（这次试一下Excalidraw手绘风格）。一般来说需要运营web业务的主体有部署WAF的需求，比如拥有网站服务的一般机构网络、Web服务提供商等。实际中的WAF部署会复杂许多，后面也会专门介绍。&lt;/p&gt;</description>
     </item>
     <item>
       <title>MCP 模型上下文协议全解</title>
