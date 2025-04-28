@@ -14,10 +14,7 @@
       <link>https://lz0o0.github.io/zh/posts/nice-techs/mcp-%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE%E5%85%A8%E8%A7%A3/</link>
       <pubDate>Mon, 21 Apr 2025 00:11:27 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/nice-techs/mcp-%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE%E5%85%A8%E8%A7%A3/</guid>
-      <description>&lt;!-- more --&gt;
-&lt;h3 id=&#34;一zero-to-one&#34;&gt;一、zero-to-one&lt;/h3&gt;
-&lt;h4 id=&#34;1-什么是mcp&#34;&gt;1. 什么是MCP？&lt;/h4&gt;
-&lt;p&gt;  &lt;strong&gt;MCP（Model Context Protocol）即模型上下文协议&lt;/strong&gt;，由Anthropic在2024年11月25日发布的一篇文章中最早向公众提出：&lt;a href=&#34;https://www.anthropic.com/news/model-context-protocol&#34;&gt;Introducing the Model Context Protocol&lt;/a&gt;。该文章将MCP描述为一种&lt;strong&gt;新的连接标准（即通信协议）&lt;/strong&gt;，用于统一前端AI助手和后端数据系统之间的连接方式，以期帮助前端模型完成更高质量的工作。&lt;/p&gt;</description>
+      <description>MCP即模型上下文协议,是一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式。MCP采取单一通信协议，取代碎片化集成，对AI系统和数据源之间的连接进行了规范和统一，打破了传统模型和数据源之间互相隔离和访问繁琐的限制，重塑了模型和数据的操作和安全边界。</description>
     </item>
     <item>
       <title>AI 内容防火墙</title>

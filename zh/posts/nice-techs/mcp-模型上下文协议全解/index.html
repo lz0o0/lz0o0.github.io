@@ -7,10 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>MCP 模型上下文协议全解 | Le blog de Lz0o0</title>
 <meta name="keywords" content="word 1, word 2">
-<meta name="description" content="
-一、zero-to-one
-1. 什么是MCP？
-  MCP（Model Context Protocol）即模型上下文协议，由Anthropic在2024年11月25日发布的一篇文章中最早向公众提出：Introducing the Model Context Protocol。该文章将MCP描述为一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式，以期帮助前端模型完成更高质量的工作。">
+<meta name="description" content="MCP即模型上下文协议,是一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式。MCP采取单一通信协议，取代碎片化集成，对AI系统和数据源之间的连接进行了规范和统一，打破了传统模型和数据源之间互相隔离和访问繁琐的限制，重塑了模型和数据的操作和安全边界。">
 <meta name="author" content="Lz0o0">
 <link rel="canonical" href="https://lz0o0.github.io/zh/posts/nice-techs/mcp-%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE%E5%85%A8%E8%A7%A3/">
 
@@ -44,7 +41,7 @@
 <meta property="og:url" content="https://lz0o0.github.io/zh/posts/nice-techs/mcp-%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE%E5%85%A8%E8%A7%A3/">
   <meta property="og:site_name" content="Le blog de Lz0o0">
   <meta property="og:title" content="MCP 模型上下文协议全解">
-  <meta property="og:description" content="一、zero-to-one 1. 什么是MCP？ MCP（Model Context Protocol）即模型上下文协议，由Anthropic在2024年11月25日发布的一篇文章中最早向公众提出：Introducing the Model Context Protocol。该文章将MCP描述为一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式，以期帮助前端模型完成更高质量的工作。">
+  <meta property="og:description" content="MCP即模型上下文协议,是一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式。MCP采取单一通信协议，取代碎片化集成，对AI系统和数据源之间的连接进行了规范和统一，打破了传统模型和数据源之间互相隔离和访问繁琐的限制，重塑了模型和数据的操作和安全边界。">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -54,10 +51,7 @@
     <meta property="article:tag" content="热点探索">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MCP 模型上下文协议全解">
-<meta name="twitter:description" content="
-一、zero-to-one
-1. 什么是MCP？
-  MCP（Model Context Protocol）即模型上下文协议，由Anthropic在2024年11月25日发布的一篇文章中最早向公众提出：Introducing the Model Context Protocol。该文章将MCP描述为一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式，以期帮助前端模型完成更高质量的工作。">
+<meta name="twitter:description" content="MCP即模型上下文协议,是一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式。MCP采取单一通信协议，取代碎片化集成，对AI系统和数据源之间的连接进行了规范和统一，打破了传统模型和数据源之间互相隔离和访问繁琐的限制，重塑了模型和数据的操作和安全边界。">
 
 
 <script type="application/ld+json">
@@ -86,7 +80,7 @@
   "@type": "BlogPosting",
   "headline": "MCP 模型上下文协议全解",
   "name": "MCP 模型上下文协议全解",
-  "description": "\r一、zero-to-one 1. 什么是MCP？ MCP（Model Context Protocol）即模型上下文协议，由Anthropic在2024年11月25日发布的一篇文章中最早向公众提出：Introducing the Model Context Protocol。该文章将MCP描述为一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式，以期帮助前端模型完成更高质量的工作。\n",
+  "description": "MCP即模型上下文协议,是一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式。MCP采取单一通信协议，取代碎片化集成，对AI系统和数据源之间的连接进行了规范和统一，打破了传统模型和数据源之间互相隔离和访问繁琐的限制，重塑了模型和数据的操作和安全边界。",
   "keywords": [
     "word 1", "word 2"
   ],
