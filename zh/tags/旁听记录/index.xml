@@ -1,34 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>(*▼-▼) on Le blog de Lz0o0</title>
-    <link>https://lz0o0.github.io/zh/posts/life/</link>
-    <description>Recent content in (*▼-▼) on Le blog de Lz0o0</description>
+    <title>旁听记录 on Le blog de Lz0o0</title>
+    <link>https://lz0o0.github.io/zh/tags/%E6%97%81%E5%90%AC%E8%AE%B0%E5%BD%95/</link>
+    <description>Recent content in 旁听记录 on Le blog de Lz0o0</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2024 Le blog de Lz0o0</copyright>
     <lastBuildDate>Sat, 17 May 2025 08:52:09 +0800</lastBuildDate>
-    <atom:link href="https://lz0o0.github.io/zh/posts/life/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>💭 See what I Says</title>
-      <link>https://lz0o0.github.io/zh/posts/life/says/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/life/says/</guid>
-      <description>😁 碎碎念页面完成了, So easy！</description>
-    </item>
+    <atom:link href="https://lz0o0.github.io/zh/tags/%E6%97%81%E5%90%AC%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>毕业答辩旁听纪要</title>
       <link>https://lz0o0.github.io/zh/posts/life/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</link>
       <pubDate>Sat, 17 May 2025 08:52:09 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/life/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</guid>
       <description>今天组内两位师兄毕业，和之前旁听的感觉很不一样，去年旁听dk师兄时，其实还没什么概念，恭喜他们，走上了人生一个新的阶段，我也拿到了未来的一块新的拼图</description>
-    </item>
-    <item>
-      <title>🎧 我的歌单Songs</title>
-      <link>https://lz0o0.github.io/zh/posts/life/songs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/life/songs/</guid>
-      <description>🤩 真的，好好好&amp;hellip;..好好听！</description>
     </item>
   </channel>
 </rss>
