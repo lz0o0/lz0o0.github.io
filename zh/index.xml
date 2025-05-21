@@ -218,6 +218,18 @@
         &lt;/a&gt;
     &lt;/div&gt;
     
+    &lt;div class=&#34;friend-skeleton&#34;&gt;
+        &lt;a href=&#34;https://irithys.com&#34; target=&#34;_blank&#34;&gt;
+            &lt;div class=&#34;friend&#34;&gt;
+                &lt;img class=&#34;friend-avatar&#34; src=&#34;https://pic.imgdb.cn/item/63e38acc4757feff3372eb7e.webp&#34; /&gt;
+                &lt;div class=&#34;friend-content&#34;&gt;
+                    &lt;div class=&#34;friend-name&#34;&gt;吕楪&lt;/div&gt;
+                    &lt;div class=&#34;friend-description&#34;&gt;吕楪在记录自己的生活&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    
 &lt;/div&gt;
 
 
