@@ -13,7 +13,7 @@
 
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.1bbfe75a6db9c99b1388dcf037e3d000ee0e3bb9a25ad7bfbb40b12e7d606ace.css" integrity="" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6b7440f49e1c0e3261083fac21a81fcf2ec283d6b90f82fa9617c9bca5296123.css" integrity="" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lz0o0.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
@@ -274,7 +274,7 @@
 <h3 id="1-waf的定义">1. WAF的定义<a hidden class="anchor" aria-hidden="true" href="#1-waf的定义">#</a></h3>
 <p>  WAF全称 Web Application Firewall，即Web应用防火墙，是一种专门用于保护Web应用服务免受各种网络攻击的安全防护工具。在现有网络中，WAF可能作为一个独立的硬件设备安装在网络中，也可能以软件形式作为模块集成到服务器上。随着云化趋势的深度扩展，云化接入、云集成的形式将成为主流发展方向。</p>
 <p>  这里看似WAF有多种表现形态，为防止疑惑，有必要重塑一下对于防火墙的理解。所谓的“防火墙”，指的是一个处在外网和内网之间、由软件和硬件设备组合构成的保护屏障，“墙”的概念是一种获取安全性方法的形象说明。也就是说，防火墙本身就是计算机软件和硬件的结合，任何正常的、合规的网络通信和数据包能够通过此“墙”的筛查、过滤，而那些“坏东西”无法穿墙而过。</p>
-<img src="https://lizhuo.space/WAF-case.png" alt="WAF工作场景拓扑" style="zoom:80%;" />
+<img src="https://img.lizhuo.space/WAF-case.png" alt="WAF工作场景拓扑" style="zoom:80%;" />
 <p>  了解网络技术最好先对场景有个整体的概念，WAF的工作场景如上图所示（这次试一下Excalidraw的手绘风格）。一般来说需要运营web业务的主体有部署WAF的需求，比如拥有网站服务的一般机构网络、Web服务提供商等。实际中，WAF部署选择会复杂许多，后面会专门介绍。</p>
 <p>  区别于传统防火墙，WAF工作在应用层，处于Web业务服务器和客户端（比如，浏览器）之间，对Web网站或App业务的HTTP/HTTPS流量进行监测和过滤，通过一系列安全策略和规则来进行恶意特征识别及防护，就像在Web应用周围建立了一道安全屏障。</p>
 <hr>
@@ -285,12 +285,12 @@
 <p>  攻击者选定的目标由大到小大致如下，一般目标越大造成的危害越广泛，收益也越高。在选定目标之后，本鲤自然不会冒失地去搞一些小伎俩，我首先做的就是对目标画像，从多个维度了解目标，尽可能找出他的缺点或弱点，然后伺机而启，一击毙命。因此我会进行网络探测（踩点扫描）、服务版本识别等操作，从多个维度为目标画像，找缺点、弱点。</p>
 <blockquote>
 <p><font size=3>全网 &gt; 网络主机 &gt; 主机数据库 &gt; 主机WEB系统管理员 &gt; 主机WEB系统其余用户 </font></p></blockquote>
-<img src="https://lizhuo.space/without-WAF.png" alt="Web网络结构示意" style="zoom: 60%;" />
+<img src="https://img.lizhuo.space/without-WAF.png" alt="Web网络结构示意" style="zoom: 60%;" />
 <p>  一个Web网络的结构如上图所示，我们假设网络的管理者安全意识足够，已经用传统防火墙对Web业务服务器进行了保护。很显然，由于防火墙在网络层和传输层进行了过滤，我们再想用主机发现、端口扫描之类的简单攻击行为就基本无效了，攻击者可能只能获取到Web业务服务域名信息（图中为www.0w0.com），想获得主机相关的IP、端口状态、系统等信息只能在其它层（比如应用层）想想办法。</p>
 <ul>
 <li>首先，可以通过Options、Trace方法探测目标服务域的节点拓扑。如果Web服务器支持这两个方法的话（一般来说，目前安全点的网站都不会允许这两个方法），可以通过检查响应包的Via或Max-forwards字段，得到各个节点的域名。然后，进一步查找对应的IP，尝试对IP直接进行扫描。</li>
 </ul>
-<img src="https://lizhuo.space/option-trace-gettopo.png" alt="Web服务器不支持：以本站为例" style="zoom: 50%;" />
+<img src="https://img.lizhuo.space/option-trace-gettopo.png" alt="Web服务器不支持：以本站为例" style="zoom: 50%;" />
 <ul>
 <li>如果失败了，可以直接访问服务，检查响应包的<strong>Server字段或X-Powered-By字段</strong>确定业务域各个节点的http服务器软件版本和脚本语言解释器版本。可能需要扫描页面查看能否获取系统信息，如操作系统类型、版本，开启服务类型等，如有则可进一步查询CVE版本漏洞，并在exploit-db上寻找相应方法攻陷主机。</li>
 <li>复杂一些，可以检查有无<strong>文件路径遍历，文件包含注入，API注入，命令注入</strong>之类的漏洞，来获取整个站点的系统信息甚至获取webshell。或者寻找有无SQL注入、XSS和URL注入等漏洞 —— <strong>总言之，作为攻击者，拥有的武器库非常之丰富强大</strong></li>
@@ -312,7 +312,7 @@
 <li><font size=3>&hellip;&hellip;</font></li>
 </ul></blockquote>
 <p>  截至目前，WAF已经进化到WAF3.0，除了常见Web应用攻击的防护外，能够防御CC攻击，还能支持精确防护，进行攻击事件管理等，功能可以说已经十分强大，可以简单看看<a href="https://help.aliyun.com/zh/waf/web-application-firewall-3-0/product-overview/what-is-waf">阿里云WAF3.0</a>的介绍：</p>
-<img src="https://lizhuo.space/alyun-WAF3.png" alt="阿里云WAF3.0" style="zoom: 100%;" />
+<img src="https://img.lizhuo.space/alyun-WAF3.png" alt="阿里云WAF3.0" style="zoom: 100%;" />
 <hr>
 <h3 id="3-waf发展历程和主要变化">3. WAF发展历程和主要变化<a hidden class="anchor" aria-hidden="true" href="#3-waf发展历程和主要变化">#</a></h3>
 <p>  随着 Web 技术的不断演进，WAF 也历经了从 1.0 到 3.0 的发展与变革。WAF 1.0 诞生于传统 Web 时代，基于签名规则应对基础攻击；WAF 2.0 随着 Web 2.0 的兴起而出现，引入动态分析与机器学习优化；如今的 WAF 3.0 则是在黑客利用零日漏洞攻击增多的背景下，以构建正常应用行为模型来实现更全面、更精准的防护，满足现代网络安全需求。</p>
@@ -334,7 +334,7 @@
 <hr>
 <h3 id="4-waf的工作原理和流程">4. WAF的工作原理和流程<a hidden class="anchor" aria-hidden="true" href="#4-waf的工作原理和流程">#</a></h3>
 <p>  Web 应用防火墙（WAF）通过深度检测和过滤 Web 应用的 HTTP/HTTPS 请求与响应，防御常见 Web 攻击。本部分介绍WAF的工作原理、关键模块和大致的工作流程。下图一般WAF的部署方式，直接插入到防火墙后面：</p>
-<img src="https://lizhuo.space/with-WAF.png" alt="WAF应用场景" style="zoom: 67%;" />
+<img src="https://img.lizhuo.space/with-WAF.png" alt="WAF应用场景" style="zoom: 67%;" />
 <h5 id="a-工作原理">A. 工作原理<a hidden class="anchor" aria-hidden="true" href="#a-工作原理">#</a></h5>
 <ul>
 <li>
@@ -359,7 +359,7 @@
 <p>  以请求处理为例，WAF的工作流程大致如下：WAF接收请求 → 请求检查（来源IP、URL路径、特殊字符等；黑白名单、规则集） → 规则匹配（与预定义规则对比；请求解密、头部&amp;内容过规则） → 判断是否恶意请求 → 是 → 防护动作（阻止请求、记录日志、报警） → 否 → 请求继续处理。</p>
 <p>  在处理过程中采取的操作可能包括直接放行（比如匹配到URL白名单，直接放行至Web服务器）、关卡放行（进入下一检测关卡），以及丢弃、拒绝、重定向、暂停（对于暴力攻击）、代理导流（如蜜罐）。</p>
 <p>  WAF同样会对响应作一定处理，但相比请求要简单许多。下图是WAF处理过程的工作流示意：</p>
-<p><img alt="WAF处理工作流" loading="lazy" src="https://lizhuo.space/workflows-WAF.png"></p>
+<p><img alt="WAF处理工作流" loading="lazy" src="https://img.lizhuo.space/workflows-WAF.png"></p>
 <hr>
 <h3 id="5-waf的部署模式">5. WAF的部署模式<a hidden class="anchor" aria-hidden="true" href="#5-waf的部署模式">#</a></h3>
 <p>  随着网络安全需求的不断演进和技术的持续创新，WAF的部署经历了一定的发展变化。早期的反向代理、透明代理和旁路监控等传统模式，与如今云原生的架构进行了融合，WAF的部署方式变得更加灵活、高效且适应性强。这些变化能够提升WAF在复杂网络环境中的适用性和性能表现，极大简化部署和管理流程，使其能够更好地满足现代企业对Web应用安全防护的多样化需求。</p>
@@ -369,15 +369,15 @@
 <ul>
 <li><strong>透明代理串接模式</strong> ：将WAF串接在网络中，实现即插即用，无需更改网络设备与服务器配置。其优点是部署简单、对网络结构无影响、安全防护性能强、故障恢复快可支持Bypass；缺点是对网络的依赖性较强，若网络出现故障可能会影响WAF的正常工作。</li>
 </ul>
-<img src="https://lizhuo.space/透明代理串接-WAF.png" alt="WAF-透明代理串接部署" style="zoom: 60%;" />
+<img src="https://img.lizhuo.space/透明代理串接-WAF.png" alt="WAF-透明代理串接部署" style="zoom: 60%;" />
 <ul>
 <li><strong>反向代理模式</strong> ：早期WAF多采用此模式，其部署在Web服务器前端，客户端请求先经过WAF，由WAF代为转发请求到后端服务器，再将服务器的响应返回给客户端。优点是部署相对简单，且能有效隐藏后端服务器地址等信息，对服务器有较好的保护作用；缺点是可能会成为性能瓶颈，且需要更改网络配置，故障恢复相对较慢。具体可细分为代理模式和牵引模式，主要区别在于映射转发的位置。</li>
 </ul>
-<img src="https://lizhuo.space/反向代理-WAF.png" alt="WAF-反向代理部署" style="zoom: 67%;" />
+<img src="https://img.lizhuo.space/反向代理-WAF.png" alt="WAF-反向代理部署" style="zoom: 67%;" />
 <ul>
 <li>
 <p><strong>旁路监控模式</strong> ：通过在交换机上做服务器端口镜像，将流量复制一份到WAF上，WAF仅对流量进行监控和告警而不阻断，部署时不影响在线业务。此模式优点是不影响现有网络业务，可作为安全监测手段；缺点是<strong>无法直接对攻击流量进行阻断，只能起到事后分析的作用</strong>。</p>
-<img src="https://lizhuo.space/旁路监控-WAF.png" alt="WAF-旁路监控模式" style="zoom: 67%;" />
+<img src="https://img.lizhuo.space/旁路监控-WAF.png" alt="WAF-旁路监控模式" style="zoom: 67%;" />
 </li>
 </ul>
 <h5 id="b-当前主流接入方式">B. 当前主流接入方式<a hidden class="anchor" aria-hidden="true" href="#b-当前主流接入方式">#</a></h5>

@@ -13,7 +13,7 @@
 
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.1bbfe75a6db9c99b1388dcf037e3d000ee0e3bb9a25ad7bfbb40b12e7d606ace.css" integrity="" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6b7440f49e1c0e3261083fac21a81fcf2ec283d6b90f82fa9617c9bca5296123.css" integrity="" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lz0o0.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
@@ -246,17 +246,17 @@
 <h3 id="一zero-to-one">一、zero-to-one<a hidden class="anchor" aria-hidden="true" href="#一zero-to-one">#</a></h3>
 <h4 id="1-什么是mcp">1. 什么是MCP？<a hidden class="anchor" aria-hidden="true" href="#1-什么是mcp">#</a></h4>
 <p>  <strong>MCP（Model Context Protocol）即模型上下文协议</strong>，由Anthropic在2024年11月25日发布的一篇文章中最早向公众提出：<a href="https://www.anthropic.com/news/model-context-protocol">Introducing the Model Context Protocol</a>。该文章将MCP描述为一种<strong>新的连接标准（即通信协议）</strong>，用于统一前端AI助手和后端数据系统之间的连接方式，以期帮助前端模型完成更高质量的工作。</p>
-<img src="https://lizhuo.space/MCP-typec.png" alt="MCP-前后端标准连接范式" style="zoom: 40%;" />
+<img src="https://img.lizhuo.space/MCP-typec.png" alt="MCP-前后端标准连接范式" style="zoom: 40%;" />
 <h4 id="2-mcp的提出背景和拟解决问题">2. MCP的提出背景和拟解决问题？<a hidden class="anchor" aria-hidden="true" href="#2-mcp的提出背景和拟解决问题">#</a></h4>
 <p>  <strong>问题与需求</strong>：随着AI助手得到广泛运用，整个行业对AI模型功能的投入相继加码，实现了推理能力和响应质量的巨大进步。然而，即便是目前最精良复杂的模型也存在与数据源相隔离的限制，它们各自隔离并处在遗留系统和信息孤岛之上，每个数据源的调用和访问都需要用户单独自定义实现（此前主要通过function calling，模式类似一把钥匙开一把锁，但配这么多钥匙并不轻松），这使得真正连接的系统（比如Manus）难以扩展其能力。</p>
-<img src="https://lizhuo.space/lock-key-MCP.png" alt="AI模型与各种数据隔离，需要大量繁复的单独自定义" style="zoom: 30%;" />
+<img src="https://img.lizhuo.space/lock-key-MCP.png" alt="AI模型与各种数据隔离，需要大量繁复的单独自定义" style="zoom: 30%;" />
 <h4 id="3-mcp的核心思想">3. MCP的核心思想？<a hidden class="anchor" aria-hidden="true" href="#3-mcp的核心思想">#</a></h4>
 <p>  <strong>MCP的方案</strong>：MCP核心思想是<strong>采取单一通信协议，取代碎片化集成</strong>。在原有混乱多样的连接形式下，只要大家都按照统一的标准开发和提供接口，原本需要针对每个数据源单独自定义连接方法的问题，就可以得到有效解决。而Anthropic推动并提供了这样一个通用的开放连接标准——MCP，对<strong>AI系统和数据源</strong>之间的连接进行了规范和统一。</p>
-<img src="https://lizhuo.space/w-o-MCP-p.png" alt="MCP-通用开放标准" style="zoom: 60%;" />
-<img src="https://lizhuo.space/w-o-MCP.png" alt="MCP-单一协议取代碎片化集成" style="zoom:45%;" />
+<img src="https://img.lizhuo.space/w-o-MCP-p.png" alt="MCP-通用开放标准" style="zoom: 60%;" />
+<img src="https://img.lizhuo.space/w-o-MCP.png" alt="MCP-单一协议取代碎片化集成" style="zoom:45%;" />
 <h4 id="4-mcp的组成结构">4. MCP的组成结构？<a hidden class="anchor" aria-hidden="true" href="#4-mcp的组成结构">#</a></h4>
 <p>  <strong>MCP的架构</strong>：采用<strong>典型的“C-S”架构</strong>，在数据源（借助MCP Server）和AI助手（借助MCP Client）间构建<strong>双向连接</strong>，开发者可以选择构建MCP Server以公开其数据访问提供服务，亦可选择开发MCP Client用以连接各种类型的MCP Server访问其服务。</p>
-<img src="https://lizhuo.space/mcp-topo.png" alt="MCP的C-S架构" style="zoom: 40%;" />
+<img src="https://img.lizhuo.space/mcp-topo.png" alt="MCP的C-S架构" style="zoom: 40%;" />
 <p>  <strong>MCP的组成成分</strong>：由上图可见，MCP主要包含<strong>三个核心组件</strong>：MCP Host、MCP Client、MCP Server，囊括<strong>两类数据服务</strong>：Local Data Sources、Remote Services。</p>
 <blockquote>
 <ol>
@@ -271,9 +271,9 @@
 <h4 id="5-mcp的工作流">5. MCP的工作流？<a hidden class="anchor" aria-hidden="true" href="#5-mcp的工作流">#</a></h4>
 <p>  下图是MCP运行时的大致工作流。以一个 &lt;问题查询并通过邮件返回通知&gt; 的任务为例，MCP的整个工作流程是这样的：<strong>用户问题</strong> → MCP Hosts（如 Chat Apps）接收问题 → 大模型进行<strong>意图分析</strong>，根据分析结果<strong>进行响应或任务编排</strong> → MCP Clients <strong>按照编排选择工具完成任务</strong>（if need）  → 【 ① MCP Servers 利用其能力（如工具、资源、提示等）进行处理 or ② MCP Servers 可能会<strong>调用外部的 API</strong>（如 Web Services、Database、Local Files 等）来获取所需数据 】 → MCP Servers 将初始响应返回给 MCP Clients → 客户端初将始响应告知大模型，大模型进行优化，并再返回给 MCP Clients （Clients 可能会进行进一步的通知操作 ）→ MCP Clients 显示最终响应，并向用户显示任务执行结果。</p>
 <p>  对应图中 Transfer Layer 的部分是 MCP Clients和 MCP Server 进行初始化的过程，这个阶段发生在任务执行之前，因而未在工作流中提及。这一阶段主要是完成 MCP Servers 的注册，初始化之后，Client 与 Server 维持 1:1连接，方便后续调用。</p>
-<img src="https://lizhuo.space/workflow-MCP.png" alt="MCP-任务工作流" style="zoom: 50%;" />
+<img src="https://img.lizhuo.space/workflow-MCP.png" alt="MCP-任务工作流" style="zoom: 50%;" />
 <p>  MCP这种“C-S”架构和工作流的设计使得宿主机应用程序（比如 Claude ）可以在不同场景下灵活调用各种工具和数据源，而开发者也只需专注于开发对应的 MCP Server，无需关心 Host 和 Client 的实现细节，解决现有问题基础上能够模块化分离各方开发的重心，提高开发效率。</p>
-<img src="https://lizhuo.space/moduled-MCP.png" alt="MCP-模块化分离的开发结构" style="zoom: 67%;" />
+<img src="https://img.lizhuo.space/moduled-MCP.png" alt="MCP-模块化分离的开发结构" style="zoom: 67%;" />
 <h3 id="二mcp-工作机制的核心">二、MCP 工作机制的核心<a hidden class="anchor" aria-hidden="true" href="#二mcp-工作机制的核心">#</a></h3>
 <p>  基于上图的工作流，我们发现MCP工作过程中尤为重要的三个阶段，理解这三个阶段的实施和逻辑，能够帮助我们掌握 MCP 工作机制的核心特点。</p>
 <blockquote>
@@ -284,7 +284,7 @@
 </ul></blockquote>
 <h3 id="1-如何理解-mcp-server-的初始化">1. 如何理解 MCP Server 的初始化？<a hidden class="anchor" aria-hidden="true" href="#1-如何理解-mcp-server-的初始化">#</a></h3>
 <p>  MCP 服务端的初始化是在启动 Host 读取配置文件后，预先完成的。在上一节的工作流介绍中并未提及 MCP Server 进行初始化的细节，具体过程如下（见下图）：MCP Clients 向 MCP Servers 发送初始请求 → MCP Servers 收到请求后，进行初始化响应，告知其可用tools/list → 完成初始化通知，所有的 MCP Servers 完成注册。</p>
-<img src="https://lizhuo.space/whole-mcp2.png" alt="MCP-详细工作流示意" style="zoom:60%;" />
+<img src="https://img.lizhuo.space/whole-mcp2.png" alt="MCP-详细工作流示意" style="zoom:60%;" />
 <p>   这里有几个问题需要思考，<strong>为什么要预先进行初始化注册？初始化之后具体发生了什么变化？什么时候需要初始化？</strong></p>
 <p>  <strong>为什么要预先进行初始化注册？</strong></p>
 <p>  MCP 要预先进行初始化注册是为了确保 MCP Server 在开始提供服务前处于可用且正确的状态，具备所需的资源和环境配置，并能够与其他组件（如 MCP Host 和 MCP Client）正常通信，同时确保服务的安全性和合法性。这一步骤有助于 MCP Server 正确暴露其功能接口，使得其他组件能够发现和调用其服务，同时也为后续的服务管理和动态更新打下基础，从而保障整个 MCP 系统的稳定运行和有效协作。</p>
@@ -300,9 +300,9 @@
 <li><font size=2><strong>服务暴露</strong>：MCP Server 向 MCP Host 注册了详细的服务信息，包括服务接口、功能描述等。这些信息使得 MCP Host 和其他组件能够了解该 Server 的能力，并在需要时快速找到并调用相应的服务</font></li>
 </ul></blockquote>
 <p>  最直观的变化一是相关配置确定，二是可通过MCP Client查看Server提供的工具或数据服务。至于注册信息的存储位置，通常由 MCP Host 负责管理，可能存储在 MCP Host 的内存中（以便快速查询和管理）、配置文件中（如 JSON、XML、YAML 格式文件，存储在 MCP Host 的配置目录下）、数据库（对于需要持久化的场景，可能存储在关系型或非关系型数据库中）或分布式缓存（如 Redis，用于提高查询效率和系统性能）。具体的存储位置和方式取决于 MCP Host 的实现细节和系统架构设计。</p>
-<img src="https://lizhuo.space/Timecnfig-mcp.png" alt="MCP Server 配置文件-Json格式：Time" style="zoom:67%;" />
+<img src="https://img.lizhuo.space/Timecnfig-mcp.png" alt="MCP Server 配置文件-Json格式：Time" style="zoom:67%;" />
 <p>  以 vscode 使用 cline 访问 Time MCP服务为例，按照 MCP 配置文件进行 Time 的初始化。(上图为配置文件, Cline 插件的配置文件位于 VSCode 的用户配置目录中, 此例中为 <code>C:\Users\&lt;YourUsername&gt;\AppData\Roaming\Code\User\globalStorage\saoudrizwan.claude-dev\settings\cline_mcp_settings.json</code>。具体的配置文件名和位置可能因插件而异，建议查看插件的文档获取准确信息。）Cline 启动 Time 后，能够查看其支持的 tools 和 resources，能够对该Server进行重启、删除等操作。而关于此 MCP Server 的相关信息，此后在与大模型交互时，也会告知大模型。</p>
-<img src="https://lizhuo.space/Timebook-mcp.png" alt="Cline中初始化完成后，可用Server（Time）的状态" style="zoom:67%;" />
+<img src="https://img.lizhuo.space/Timebook-mcp.png" alt="Cline中初始化完成后，可用Server（Time）的状态" style="zoom:67%;" />
 <p>  如果希望拥有多个可用的 MCP Servers，你需要分别对每个 MCP Server 进行初始化操作，或者通过某种批量处理机制来启动和初始化多个 Servers。每个 MCP Server 都需要单独完成其初始化流程，确保它们都正确注册到 MCP Host 并准备好提供服务。</p>
 <p>  <strong>什么时候需要初始化？</strong></p>
 <blockquote>

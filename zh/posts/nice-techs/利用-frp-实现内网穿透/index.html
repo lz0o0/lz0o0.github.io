@@ -13,7 +13,7 @@
 
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.1bbfe75a6db9c99b1388dcf037e3d000ee0e3bb9a25ad7bfbb40b12e7d606ace.css" integrity="" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6b7440f49e1c0e3261083fac21a81fcf2ec283d6b90f82fa9617c9bca5296123.css" integrity="" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lz0o0.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
@@ -277,9 +277,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p> 配置后启动即可，成功会显示初始化日志：<code>./frps -c frps.toml</code>，随后可以访问公网<code>IP：7500</code>网站查看访问面板，这步相当于将公网服务器的7000端口和frp转发绑定，通过用户登录限制，限制了可以访问共享服务的公网节点。需要注意的是，在服务器，必须开启以下端口（6000和6001是为内网节点共享服务配置）：</p>
-<p><img alt="服务端开放端口" loading="lazy" src="https://lizhuo.space/port.png"></p>
+<p><img alt="服务端开放端口" loading="lazy" src="https://img.lizhuo.space/port.png"></p>
 <p>  启动服务端之后，可以进入访问面板进行登录，并简单查看，当前绑定在7000端口：</p>
-<p><img alt="frp访问面板激活" loading="lazy" src="https://lizhuo.space/dashboard.png"></p>
+<p><img alt="frp访问面板激活" loading="lazy" src="https://img.lizhuo.space/dashboard.png"></p>
 <ol start="2">
 <li>后台挂载进程</li>
 </ol>
@@ -413,16 +413,16 @@
 </li>
 <li>
 <p>两端连接可以访问frp面板访问内网的文件内容；此时再次访问服务面板，共享的服务映射更新</p>
-<p><img alt="共享服务面板" loading="lazy" src="https://lizhuo.space/dashboard_flush.png"></p>
+<p><img alt="共享服务面板" loading="lazy" src="https://img.lizhuo.space/dashboard_flush.png"></p>
 </li>
 <li>
 <p>url访问共享的文件服务，此时可以看到局域网节点D盘符下的文件内容，支持访问下载</p>
-<p><img alt="frp访问内网节点文件服务" loading="lazy" src="https://lizhuo.space/fileshare_RESULT.png"></p>
+<p><img alt="frp访问内网节点文件服务" loading="lazy" src="https://img.lizhuo.space/fileshare_RESULT.png"></p>
 </li>
 </ol>
 <h3 id="frp-流量分析">Frp 流量分析<a hidden class="anchor" aria-hidden="true" href="#frp-流量分析">#</a></h3>
 <p>  在局域网节点，采集 frp 连接访问过程中的流量，分析其连接、数据传输过程的特点，寻找可能的风险问题</p>
-<p><img alt="监听采集访问流量" loading="lazy" src="https://lizhuo.space/trafficlog.png"></p>
+<p><img alt="监听采集访问流量" loading="lazy" src="https://img.lizhuo.space/trafficlog.png"></p>
 <h3 id="refer">refer<a hidden class="anchor" aria-hidden="true" href="#refer">#</a></h3>
 <ul>
 <li><font size="2"><a href="https://www.cnblogs.com/cyrus0w/p/13123504.html#%E4%B8%89%E8%AF%A6%E7%BB%86%E5%8E%9F%E7%90%86">内网穿透详解 - cyrus0w - 博客园</a></font>&gt;</li>
