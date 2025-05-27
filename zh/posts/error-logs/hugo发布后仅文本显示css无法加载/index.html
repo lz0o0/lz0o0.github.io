@@ -5,15 +5,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>hugo发布后仅文本显示css无法加载 | Le blog de Lz0o0</title>
-<meta name="keywords" content="博客搭建">
-<meta name="description" content="本文分析并解决了Hugo&#43;Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题">
+<title>hugo发布css无法加载问题 | Le blog de Lz0o0</title>
+<meta name="keywords" content="博客日志">
+<meta name="description" content="本文分析并解决了Hugo&#43;Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题。">
 <meta name="author" content="Lz0o0">
 <link rel="canonical" href="https://lz0o0.github.io/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8E%E4%BB%85%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BAcss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/">
 
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6b7440f49e1c0e3261083fac21a81fcf2ec283d6b90f82fa9617c9bca5296123.css" integrity="" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bb0cec0c7a539dacbd847d7d1e35eacffd8a2da750a88b5f1a6e68694059b4da.css" integrity="" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lz0o0.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
@@ -40,8 +40,8 @@
 <script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
 <meta property="og:url" content="https://lz0o0.github.io/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8E%E4%BB%85%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BAcss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/">
   <meta property="og:site_name" content="Le blog de Lz0o0">
-  <meta property="og:title" content="hugo发布后仅文本显示css无法加载">
-  <meta property="og:description" content="本文分析并解决了Hugo&#43;Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题">
+  <meta property="og:title" content="hugo发布css无法加载问题">
+  <meta property="og:description" content="本文分析并解决了Hugo&#43;Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题。">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -49,8 +49,8 @@
     <meta property="article:modified_time" content="2025-04-10T15:21:26+08:00">
     <meta property="article:tag" content="博客搭建">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hugo发布后仅文本显示css无法加载">
-<meta name="twitter:description" content="本文分析并解决了Hugo&#43;Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题">
+<meta name="twitter:title" content="hugo发布css无法加载问题">
+<meta name="twitter:description" content="本文分析并解决了Hugo&#43;Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题。">
 
 
 <script type="application/ld+json">
@@ -67,7 +67,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "hugo发布后仅文本显示css无法加载",
+      "name": "hugo发布css无法加载问题",
       "item": "https://lz0o0.github.io/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8E%E4%BB%85%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BAcss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/"
     }
   ]
@@ -77,11 +77,11 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "hugo发布后仅文本显示css无法加载",
-  "name": "hugo发布后仅文本显示css无法加载",
-  "description": "本文分析并解决了Hugo+Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题",
+  "headline": "hugo发布css无法加载问题",
+  "name": "hugo发布css无法加载问题",
+  "description": "本文分析并解决了Hugo+Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题。",
   "keywords": [
-    "博客搭建"
+    "博客日志"
   ],
   "articleBody": "\r1. 问题描述 本地使用 Hugo 启动时，网站样式能够正常显示，但部署到 GitHub Pages 后，样式无法加载（如上图所示）。通过浏览器 F12 调试，控制台报错信息如下：\n1 Failed to find a valid digest in the 'integrity' attribute for resource 'https://lz0o0.github.io/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a0，30e887a7dd3c3f3918e4cc113129361414bda.css' with computed SHA-256 integrity '9J1myq6eoP1D8h8p5xqNPihFF+13Dyqob6ASlTrTye8='. The resource has been blocked. SRI和校验失败： Subresource Integrity (SRI) 是一种安全机制，用于确保在加载资源时，它们的内容与预期的哈希值一致。如果资源的实际哈希值与 HTML 文件中 integrity 属性定义的不一致，浏览器会阻止加载资源。\n2. 原因\u0026解法 根据报错信息，大致确认问题是因为 SRI 校验时hash值不匹配，CSS加载失败，从而导致网页样式无法正常显示，无法看到多彩的网页。公网上主要的解释和解决办法，主要是以下三种：\n1. Cloudflare对 JS 和 CSS，默认执行\"Auto Minify\"，文件压缩后和 hugo 的处理存在冲突，导致校验失效；对应禁用选项，刷新缓存即可\r2. 修改 Hugo 的文件，禁用指纹校验选项。具体而言，在config.yaml或者hugo.yaml中添加以下代码\r1 2 3 params: assets: disableFingerprinting: true 3. 修改 html 文件索引入口，禁用 SRI 校验：将文件`(themes\\PaperMod\\layouts\\partials\\head.html)`中的 **integrity** 参数索引都置空`(integrity=\"\")`\r方法①本鲤不知道在哪配置，没有实操。但我认为可能是压缩的问题，因为本地加载并未出现类似问题，不一致大概来自云端的处理 方法②比较合理，然而，本鲤实际配置后没什么效果，可能是 hugo 不内置该参数了 使用方法③，本鲤成功显示了CSS样式。大部分教程只提示改(integrity=\"{{ $stylesheet.Data.Integrity }}\")，但我建议你把文件中所有的 integrity 参数索引都置空，因为另外一处索引时可能也会报错，因此建议都置空\nMind！ 可按照231的顺序，如能解决最好，前端的问题比较多样，本鲤发现甚至有因为LF和CRLF问题的（比较有用的讨论或文档，附在文末 3. 小结 本文描述了Hugo+Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载，不显示网页样式内容的问题。在文档中列举了三种主要的解决方法，并且分析了可能的问题（may优化导致校验失效）。博主实际通过修改配置的html索引，禁用 SRI 校验选项，解决了该问题\n如有意指点，或碰到问题，欢迎留言讨论~\nrefer https://swopnil.com/blog/valid-digest-integrity-error-hugo-styling/ https://github.com/alanorth/hugo-theme-bootstrap4-blog/issues/53 https://stackoverflow.com/questions/65040931/hugo-failed-to-find-a-valid-digest-in-the-integrity-attribute-for-resource ",
   "wordCount" : "1063",
@@ -188,7 +188,7 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://lz0o0.github.io/zh/">🏠Home</a>&nbsp;»&nbsp;<a href="https://lz0o0.github.io/zh/posts/">๑✦ˑ_✦</a></div>
     <h1 class="post-title entry-hint-parent">
-      hugo发布后仅文本显示css无法加载
+      hugo发布css无法加载问题
     </h1>
     <div class="post-meta"><span title='2025-04-10 15:21:26 +0800 CST'>2025-04-10</span>&nbsp;·&nbsp;3 mins&nbsp;·&nbsp;Lz0o0
 

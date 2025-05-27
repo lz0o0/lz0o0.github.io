@@ -14,14 +14,14 @@
       <link>https://lz0o0.github.io/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</link>
       <pubDate>Thu, 24 Apr 2025 13:36:50 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</guid>
-      <description>WAF即Web应用防火墙，专门用于保护Web应用服务免受各种网络攻击。区别于传统防火墙，WAF工作在应用层，对Web网站或App业务的HTTP/HTTPS流量进行监测和过滤，通过一系列安全策略和规则来进行恶意特征识别及防护，就像在Web应用周围建立了一道安全屏障。</description>
+      <description>WAF即Web应用防火墙，专门用于保护Web应用服务免受各种网络攻击。本文主介绍WAF的需求背景、工作流程和拓扑、主要业界厂商。</description>
     </item>
     <item>
       <title>MCP 模型上下文协议全解</title>
       <link>https://lz0o0.github.io/zh/posts/nice-techs/mcp-%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE%E5%85%A8%E8%A7%A3/</link>
       <pubDate>Mon, 21 Apr 2025 00:11:27 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/nice-techs/mcp-%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE%E5%85%A8%E8%A7%A3/</guid>
-      <description>MCP即模型上下文协议,是一种新的连接标准（即通信协议），用于统一前端AI助手和后端数据系统之间的连接方式。MCP采取单一通信协议，取代碎片化集成，对AI系统和数据源之间的连接进行了规范和统一，打破了传统模型和数据源之间互相隔离和访问繁琐的限制，重塑了模型和数据的操作和安全边界。</description>
+      <description>MCP模型上下文协议,通过采取单一通信协议，取代碎片化集成，对AI系统和数据源之间的连接进行了规范和统一，打破了传统模型和数据源之间互相隔离和访问繁琐的限制，重塑了模型和数据的操作和安全边界。</description>
     </item>
     <item>
       <title>AI 内容防火墙</title>
@@ -35,7 +35,7 @@
       <link>https://lz0o0.github.io/zh/posts/nice-techs/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
       <pubDate>Sun, 06 Apr 2025 23:57:22 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/nice-techs/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
-      <description>frp 是一种反向代理工具, 被广泛用于内网穿透，能够将外网暴露内网服务，本文具体介绍了如何基于云服务器和frp源码实现简单的内网穿透，是一种很有意思和实际用处的技术</description>
+      <description>frp 是一种反向代理工具, 被广泛用于内网穿透，能够将外网暴露内网服务，本文具体介绍了如何基于云服务器和frp源码实现简单的内网穿透，是一种很有意思和实际用处的技术。</description>
     </item>
   </channel>
 </rss>
