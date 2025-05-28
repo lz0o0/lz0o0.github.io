@@ -13,7 +13,7 @@
 
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bb0cec0c7a539dacbd847d7d1e35eacffd8a2da750a88b5f1a6e68694059b4da.css" integrity="" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.7091febde7787314335b94b2362830b60649093c80e4a31dc87e2fd7c20d2e67.css" integrity="" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lz0o0.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
@@ -437,13 +437,55 @@
     </main>
     
 <footer class="footer">
-        <span><a href="https://lz0o0.github.io/">©2024  Le blog de Lz0o0</a></span> · 
+    
+    <div class="poem-footer">
+        <span class="poem_sentence"></span>
+        <span class="poem_info"></span>
+    </div>
 
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+    
+
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    jinrishici.load(function(result) {
+        var sentence = document.querySelector(".poem_sentence");
+        var info = document.querySelector(".poem_info");
+        sentence.innerHTML = result.data.content;
+        info.innerHTML = '---- ' + result.data.origin.author;
+    });
+    </script>
+    
+    <script type="text/javascript">
+    jinrishici.load(function(result) {
+        var sentence = document.querySelector(".poem_sentence");
+        var info = document.querySelector(".poem_info");
+        sentence.innerHTML = result.data.content;
+        info.innerHTML = '---- ' + result.data.origin.author;
+    });
+
+    
+    function runtime() {
+        
+        var startTime = new Date('2025-04-04');
+        var currentTime = new Date();
+        var diffTime = currentTime - startTime;
+        var days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+        
+        document.getElementById("runtime_span").innerHTML = 
+            days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒";
+    }
+
+    
+    runtime();
+    
+    setInterval(runtime, 1000);
+    </script>
+    
+    
+
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">

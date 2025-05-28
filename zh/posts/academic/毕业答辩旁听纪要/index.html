@@ -13,7 +13,7 @@
 
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bb0cec0c7a539dacbd847d7d1e35eacffd8a2da750a88b5f1a6e68694059b4da.css" integrity="" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.7091febde7787314335b94b2362830b60649093c80e4a31dc87e2fd7c20d2e67.css" integrity="" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lz0o0.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
@@ -210,39 +210,138 @@
       </ul>
   </div> 
   
-  <div class="toc-container"><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Directory</span>
-        </summary>
+  <div class="toc-container"><aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Directory</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e4%b8%80%e7%ad%94%e8%be%a9%e4%b8%bb%e8%a6%81%e5%86%85%e5%ae%b9" aria-label="一、答辩主要内容">一、答辩主要内容</a><ul>
-                        <ul>
-                        
-                <li>
-                    <a href="#1-zm%e5%b8%88%e5%85%84" aria-label="1. zm师兄：">1. zm师兄：</a></li>
-                <li>
-                    <a href="#2-by%e5%b8%88%e5%85%84" aria-label="2. by师兄：">2. by师兄：</a></li></ul>
-                    </ul>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e4%b8%80%e7%ad%94%e8%be%a9%e4%b8%bb%e8%a6%81%e5%86%85%e5%ae%b9" aria-label="一、答辩主要内容">一、答辩主要内容</a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#1-zm%e5%b8%88%e5%85%84" aria-label="1. zm师兄：">1. zm师兄：</a></li>
+                    <li>
+                        <a href="#2-by%e5%b8%88%e5%85%84" aria-label="2. by师兄：">2. by师兄：</a></li></ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%ba%8c%e4%b8%aa%e4%ba%ba%e5%b0%8f%e7%bb%93" aria-label="二、个人小结：">二、个人小结：</a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#1-%e9%97%ae%e7%9a%84%e6%9c%80%e5%a4%9a%e7%9a%84%e5%87%a0%e4%b8%aa%e9%97%ae%e9%a2%98" aria-label="1. 问的最多的几个问题：">1. 问的最多的几个问题：</a></li>
+                    <li>
+                        <a href="#2-%e4%b8%aa%e4%ba%ba%e6%84%9f%e6%82%9f" aria-label="2. 个人感悟">2. 个人感悟</a>
+                    </li>
+                </ul>
+                </ul>
                 </li>
-                <li>
-                    <a href="#%e4%ba%8c%e4%b8%aa%e4%ba%ba%e5%b0%8f%e7%bb%93" aria-label="二、个人小结：">二、个人小结：</a><ul>
-                        <ul>
-                        
-                <li>
-                    <a href="#1-%e9%97%ae%e7%9a%84%e6%9c%80%e5%a4%9a%e7%9a%84%e5%87%a0%e4%b8%aa%e9%97%ae%e9%a2%98" aria-label="1. 问的最多的几个问题：">1. 问的最多的几个问题：</a></li>
-                <li>
-                    <a href="#2-%e4%b8%aa%e4%ba%ba%e6%84%9f%e6%82%9f" aria-label="2. 个人感悟">2. 个人感悟</a>
-                </li>
-            </ul>
-            </ul>
-            </li>
-            </ul>
-        </div>
-    </details>
-</div>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    
+    document.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+    
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        if (elements.length > 0) {
+            
+            activeElement = elements[0];
+            const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+            document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+        }
+    
+        
+        const topLink = document.getElementById('top-link');
+        if (topLink) {
+            topLink.addEventListener('click', (event) => {
+                
+                event.preventDefault();
+    
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }, false);
+    
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+    
+    window.addEventListener('scroll', () => {
+        
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    
+        
+        if (scrollPosition === 0) {
+            return;
+        }
+    
+        
+        if (elements && elements.length > 0) {
+            
+            activeElement = Array.from(elements).find((element) => {
+                if ((getOffsetTop(element) - scrollPosition) > 0 && 
+                    (getOffsetTop(element) - scrollPosition) < window.innerHeight / 2) {
+                    return element;
+                }
+            }) || activeElement;
+    
+            elements.forEach(element => {
+                const id = encodeURI(element.getAttribute('id')).toLowerCase();
+                const tocLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
+                if (element === activeElement){
+                    tocLink.classList.add('active');
+    
+                    
+                    const tocContainer = document.querySelector('.toc .inner');
+                    const linkOffsetTop = tocLink.offsetTop;
+                    const containerHeight = tocContainer.clientHeight;
+                    const linkHeight = tocLink.clientHeight;
+    
+                    
+                    const scrollPosition = linkOffsetTop - (containerHeight / 2) + (linkHeight / 2);
+                    tocContainer.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+                } else {
+                    tocLink.classList.remove('active');
+                }
+            });
+        }
+    }, false);
+    
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+    
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+    
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+    
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+    
+</script>
 
   </div>
   <div class="post-content"><!-- more -->
@@ -381,7 +480,7 @@
   <a class="next" href="https://lz0o0.github.io/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/">
     <span class="title">Next Page »</span>
     <br>
-    <span>关于WAF你需要知道什么？</span>
+    <span>关于WAF--Web应用防火墙</span>
   </a>
 </nav>
 
@@ -401,13 +500,55 @@
     </main>
     
 <footer class="footer">
-        <span><a href="https://lz0o0.github.io/">©2024  Le blog de Lz0o0</a></span> · 
+    
+    <div class="poem-footer">
+        <span class="poem_sentence"></span>
+        <span class="poem_info"></span>
+    </div>
 
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+    
+
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    jinrishici.load(function(result) {
+        var sentence = document.querySelector(".poem_sentence");
+        var info = document.querySelector(".poem_info");
+        sentence.innerHTML = result.data.content;
+        info.innerHTML = '---- ' + result.data.origin.author;
+    });
+    </script>
+    
+    <script type="text/javascript">
+    jinrishici.load(function(result) {
+        var sentence = document.querySelector(".poem_sentence");
+        var info = document.querySelector(".poem_info");
+        sentence.innerHTML = result.data.content;
+        info.innerHTML = '---- ' + result.data.origin.author;
+    });
+
+    
+    function runtime() {
+        
+        var startTime = new Date('2025-04-04');
+        var currentTime = new Date();
+        var diffTime = currentTime - startTime;
+        var days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+        
+        document.getElementById("runtime_span").innerHTML = 
+            days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒";
+    }
+
+    
+    runtime();
+    
+    setInterval(runtime, 1000);
+    </script>
+    
+    
+
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">

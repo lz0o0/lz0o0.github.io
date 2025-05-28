@@ -13,7 +13,7 @@
 
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bb0cec0c7a539dacbd847d7d1e35eacffd8a2da750a88b5f1a6e68694059b4da.css" integrity="" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.7091febde7787314335b94b2362830b60649093c80e4a31dc87e2fd7c20d2e67.css" integrity="" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lz0o0.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
@@ -204,42 +204,141 @@
       </ul>
   </div> 
   
-  <div class="toc-container"><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Directory</span>
-        </summary>
+  <div class="toc-container"><aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Directory</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e4%b8%80zero-to-one" aria-label="一、zero-to-one">一、zero-to-one</a><ul>
-                        
-                <li>
-                    <a href="#1-%e4%bb%80%e4%b9%88%e6%98%afmcp" aria-label="1. 什么是MCP？">1. 什么是MCP？</a></li>
-                <li>
-                    <a href="#2-mcp%e7%9a%84%e6%8f%90%e5%87%ba%e8%83%8c%e6%99%af%e5%92%8c%e6%8b%9f%e8%a7%a3%e5%86%b3%e9%97%ae%e9%a2%98" aria-label="2. MCP的提出背景和拟解决问题？">2. MCP的提出背景和拟解决问题？</a></li>
-                <li>
-                    <a href="#3-mcp%e7%9a%84%e6%a0%b8%e5%bf%83%e6%80%9d%e6%83%b3" aria-label="3. MCP的核心思想？">3. MCP的核心思想？</a></li>
-                <li>
-                    <a href="#4-mcp%e7%9a%84%e7%bb%84%e6%88%90%e7%bb%93%e6%9e%84" aria-label="4. MCP的组成结构？">4. MCP的组成结构？</a></li>
-                <li>
-                    <a href="#5-mcp%e7%9a%84%e5%b7%a5%e4%bd%9c%e6%b5%81" aria-label="5. MCP的工作流？">5. MCP的工作流？</a></li></ul>
-                </li>
-                <li>
-                    <a href="#%e4%ba%8cmcp-%e5%b7%a5%e4%bd%9c%e6%9c%ba%e5%88%b6%e7%9a%84%e6%a0%b8%e5%bf%83" aria-label="二、MCP 工作机制的核心">二、MCP 工作机制的核心</a><ul>
-                        
-                <li>
-                    <a href="#1-%e5%a6%82%e4%bd%95%e7%90%86%e8%a7%a3-mcp-server-%e7%9a%84%e5%88%9d%e5%a7%8b%e5%8c%96" aria-label="1. 如何理解 MCP Server 的初始化？">1. 如何理解 MCP Server 的初始化？</a></li>
-                <li>
-                    <a href="#2-%e5%a6%82%e4%bd%95%e6%99%ba%e8%83%bd%e9%80%89%e6%8b%a9-mcp-server%e8%bf%9b%e8%a1%8c%e4%bb%bb%e5%8a%a1%e7%bc%96%e6%8e%92" aria-label="2. 如何智能选择 MCP Server，进行任务编排？">2. 如何智能选择 MCP Server，进行任务编排？</a></li></ul>
-                </li>
-                <li>
-                    <a href="#refer" aria-label="Refer">Refer</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e4%b8%80zero-to-one" aria-label="一、zero-to-one">一、zero-to-one</a><ul>
+                            
+                    <li>
+                        <a href="#1-%e4%bb%80%e4%b9%88%e6%98%afmcp" aria-label="1. 什么是MCP？">1. 什么是MCP？</a></li>
+                    <li>
+                        <a href="#2-mcp%e7%9a%84%e6%8f%90%e5%87%ba%e8%83%8c%e6%99%af%e5%92%8c%e6%8b%9f%e8%a7%a3%e5%86%b3%e9%97%ae%e9%a2%98" aria-label="2. MCP的提出背景和拟解决问题？">2. MCP的提出背景和拟解决问题？</a></li>
+                    <li>
+                        <a href="#3-mcp%e7%9a%84%e6%a0%b8%e5%bf%83%e6%80%9d%e6%83%b3" aria-label="3. MCP的核心思想？">3. MCP的核心思想？</a></li>
+                    <li>
+                        <a href="#4-mcp%e7%9a%84%e7%bb%84%e6%88%90%e7%bb%93%e6%9e%84" aria-label="4. MCP的组成结构？">4. MCP的组成结构？</a></li>
+                    <li>
+                        <a href="#5-mcp%e7%9a%84%e5%b7%a5%e4%bd%9c%e6%b5%81" aria-label="5. MCP的工作流？">5. MCP的工作流？</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%ba%8cmcp-%e5%b7%a5%e4%bd%9c%e6%9c%ba%e5%88%b6%e7%9a%84%e6%a0%b8%e5%bf%83" aria-label="二、MCP 工作机制的核心">二、MCP 工作机制的核心</a><ul>
+                            
+                    <li>
+                        <a href="#1-%e5%a6%82%e4%bd%95%e7%90%86%e8%a7%a3-mcp-server-%e7%9a%84%e5%88%9d%e5%a7%8b%e5%8c%96" aria-label="1. 如何理解 MCP Server 的初始化？">1. 如何理解 MCP Server 的初始化？</a></li>
+                    <li>
+                        <a href="#2-%e5%a6%82%e4%bd%95%e6%99%ba%e8%83%bd%e9%80%89%e6%8b%a9-mcp-server%e8%bf%9b%e8%a1%8c%e4%bb%bb%e5%8a%a1%e7%bc%96%e6%8e%92" aria-label="2. 如何智能选择 MCP Server，进行任务编排？">2. 如何智能选择 MCP Server，进行任务编排？</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#refer" aria-label="Refer">Refer</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    
+    document.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+    
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        if (elements.length > 0) {
+            
+            activeElement = elements[0];
+            const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+            document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+        }
+    
+        
+        const topLink = document.getElementById('top-link');
+        if (topLink) {
+            topLink.addEventListener('click', (event) => {
+                
+                event.preventDefault();
+    
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }, false);
+    
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+    
+    window.addEventListener('scroll', () => {
+        
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    
+        
+        if (scrollPosition === 0) {
+            return;
+        }
+    
+        
+        if (elements && elements.length > 0) {
+            
+            activeElement = Array.from(elements).find((element) => {
+                if ((getOffsetTop(element) - scrollPosition) > 0 && 
+                    (getOffsetTop(element) - scrollPosition) < window.innerHeight / 2) {
+                    return element;
+                }
+            }) || activeElement;
+    
+            elements.forEach(element => {
+                const id = encodeURI(element.getAttribute('id')).toLowerCase();
+                const tocLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
+                if (element === activeElement){
+                    tocLink.classList.add('active');
+    
+                    
+                    const tocContainer = document.querySelector('.toc .inner');
+                    const linkOffsetTop = tocLink.offsetTop;
+                    const containerHeight = tocContainer.clientHeight;
+                    const linkHeight = tocLink.clientHeight;
+    
+                    
+                    const scrollPosition = linkOffsetTop - (containerHeight / 2) + (linkHeight / 2);
+                    tocContainer.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+                } else {
+                    tocLink.classList.remove('active');
+                }
+            });
+        }
+    }, false);
+    
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+    
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+    
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+    
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+    
+</script>
 
   </div>
   <div class="post-content"><!-- more -->
@@ -332,7 +431,7 @@
   <a class="prev" href="https://lz0o0.github.io/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/">
     <span class="title">« Last Page</span>
     <br>
-    <span>关于WAF你需要知道什么？</span>
+    <span>关于WAF--Web应用防火墙</span>
   </a>
   <a class="next" href="https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99/">
     <span class="title">Next Page »</span>
@@ -357,13 +456,55 @@
     </main>
     
 <footer class="footer">
-        <span><a href="https://lz0o0.github.io/">©2024  Le blog de Lz0o0</a></span> · 
+    
+    <div class="poem-footer">
+        <span class="poem_sentence"></span>
+        <span class="poem_info"></span>
+    </div>
 
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+    
+
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    jinrishici.load(function(result) {
+        var sentence = document.querySelector(".poem_sentence");
+        var info = document.querySelector(".poem_info");
+        sentence.innerHTML = result.data.content;
+        info.innerHTML = '---- ' + result.data.origin.author;
+    });
+    </script>
+    
+    <script type="text/javascript">
+    jinrishici.load(function(result) {
+        var sentence = document.querySelector(".poem_sentence");
+        var info = document.querySelector(".poem_info");
+        sentence.innerHTML = result.data.content;
+        info.innerHTML = '---- ' + result.data.origin.author;
+    });
+
+    
+    function runtime() {
+        
+        var startTime = new Date('2025-04-04');
+        var currentTime = new Date();
+        var diffTime = currentTime - startTime;
+        var days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+        
+        document.getElementById("runtime_span").innerHTML = 
+            days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒";
+    }
+
+    
+    runtime();
+    
+    setInterval(runtime, 1000);
+    </script>
+    
+    
+
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">

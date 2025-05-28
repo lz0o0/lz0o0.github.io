@@ -13,7 +13,7 @@
 
 
 
-<link crossorigin="anonymous" href="/assets/css/stylesheet.bb0cec0c7a539dacbd847d7d1e35eacffd8a2da750a88b5f1a6e68694059b4da.css" integrity="" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.7091febde7787314335b94b2362830b60649093c80e4a31dc87e2fd7c20d2e67.css" integrity="" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://lz0o0.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
@@ -202,30 +202,129 @@
       </ul>
   </div> 
   
-  <div class="toc-container"><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Directory</span>
-        </summary>
+  <div class="toc-container"><aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Directory</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#1-%e5%89%8d%e8%a8%80%e0%b9%91%cb%91_" aria-label="1. 前言(๑✦ˑ_✦)">1. 前言(๑✦ˑ_✦)</a></li>
-                <li>
-                    <a href="#2-%e6%91%98%e8%a6%81" aria-label="2. 摘要">2. 摘要</a><ul>
-                        
-                <li>
-                    <a href="#%e5%8d%9a%e5%ae%a2%e7%9a%84%e6%84%8f%e4%b9%89%e6%90%ad%e5%bb%ba%e6%b5%81%e7%a8%8b%e6%a0%b8%e5%bf%83%e9%9c%80%e6%b1%82" aria-label="博客的意义？搭建流程？核心需求？">博客的意义？搭建流程？核心需求？</a></li></ul>
-                </li>
-                <li>
-                    <a href="#3-demo%e6%90%ad%e5%bb%ba%e5%8f%91%e5%b8%83%e5%9f%ba%e6%9c%ac%e8%87%aa%e5%ae%9a%e4%b9%89" aria-label="3. Demo搭建/发布&#43;基本自定义">3. Demo搭建/发布+基本自定义</a></li>
-                <li>
-                    <a href="#%e5%86%99%e5%9c%a8%e6%9c%80%e5%90%8e" aria-label="写在最后">写在最后</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#1-%e5%89%8d%e8%a8%80%e0%b9%91%cb%91_" aria-label="1. 前言(๑✦ˑ_✦)">1. 前言(๑✦ˑ_✦)</a></li>
+                    <li>
+                        <a href="#2-%e6%91%98%e8%a6%81" aria-label="2. 摘要">2. 摘要</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%8d%9a%e5%ae%a2%e7%9a%84%e6%84%8f%e4%b9%89%e6%90%ad%e5%bb%ba%e6%b5%81%e7%a8%8b%e6%a0%b8%e5%bf%83%e9%9c%80%e6%b1%82" aria-label="博客的意义？搭建流程？核心需求？">博客的意义？搭建流程？核心需求？</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#3-demo%e6%90%ad%e5%bb%ba%e5%8f%91%e5%b8%83%e5%9f%ba%e6%9c%ac%e8%87%aa%e5%ae%9a%e4%b9%89" aria-label="3. Demo搭建/发布&#43;基本自定义">3. Demo搭建/发布+基本自定义</a></li>
+                    <li>
+                        <a href="#%e5%86%99%e5%9c%a8%e6%9c%80%e5%90%8e" aria-label="写在最后">写在最后</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    
+    document.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+    
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        if (elements.length > 0) {
+            
+            activeElement = elements[0];
+            const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+            document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+        }
+    
+        
+        const topLink = document.getElementById('top-link');
+        if (topLink) {
+            topLink.addEventListener('click', (event) => {
+                
+                event.preventDefault();
+    
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }, false);
+    
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+    
+    window.addEventListener('scroll', () => {
+        
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    
+        
+        if (scrollPosition === 0) {
+            return;
+        }
+    
+        
+        if (elements && elements.length > 0) {
+            
+            activeElement = Array.from(elements).find((element) => {
+                if ((getOffsetTop(element) - scrollPosition) > 0 && 
+                    (getOffsetTop(element) - scrollPosition) < window.innerHeight / 2) {
+                    return element;
+                }
+            }) || activeElement;
+    
+            elements.forEach(element => {
+                const id = encodeURI(element.getAttribute('id')).toLowerCase();
+                const tocLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
+                if (element === activeElement){
+                    tocLink.classList.add('active');
+    
+                    
+                    const tocContainer = document.querySelector('.toc .inner');
+                    const linkOffsetTop = tocLink.offsetTop;
+                    const containerHeight = tocContainer.clientHeight;
+                    const linkHeight = tocLink.clientHeight;
+    
+                    
+                    const scrollPosition = linkOffsetTop - (containerHeight / 2) + (linkHeight / 2);
+                    tocContainer.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+                } else {
+                    tocLink.classList.remove('active');
+                }
+            });
+        }
+    }, false);
+    
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+    
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+    
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+    
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+    
+</script>
 
   </div>
   <div class="post-content"><!--
@@ -306,13 +405,55 @@
     </main>
     
 <footer class="footer">
-        <span><a href="https://lz0o0.github.io/">©2024  Le blog de Lz0o0</a></span> · 
+    
+    <div class="poem-footer">
+        <span class="poem_sentence"></span>
+        <span class="poem_info"></span>
+    </div>
 
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+    
+
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    jinrishici.load(function(result) {
+        var sentence = document.querySelector(".poem_sentence");
+        var info = document.querySelector(".poem_info");
+        sentence.innerHTML = result.data.content;
+        info.innerHTML = '---- ' + result.data.origin.author;
+    });
+    </script>
+    
+    <script type="text/javascript">
+    jinrishici.load(function(result) {
+        var sentence = document.querySelector(".poem_sentence");
+        var info = document.querySelector(".poem_info");
+        sentence.innerHTML = result.data.content;
+        info.innerHTML = '---- ' + result.data.origin.author;
+    });
+
+    
+    function runtime() {
+        
+        var startTime = new Date('2025-04-04');
+        var currentTime = new Date();
+        var diffTime = currentTime - startTime;
+        var days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+        
+        document.getElementById("runtime_span").innerHTML = 
+            days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒";
+    }
+
+    
+    runtime();
+    
+    setInterval(runtime, 1000);
+    </script>
+    
+    
+
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
