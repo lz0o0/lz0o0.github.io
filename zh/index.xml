@@ -265,6 +265,18 @@
         &lt;/a&gt;
     &lt;/div&gt;
     
+    &lt;div class=&#34;friend-skeleton&#34;&gt;
+        &lt;a href=&#34;https://msdming.github.io/&#34; target=&#34;_blank&#34;&gt;
+            &lt;div class=&#34;friend&#34;&gt;
+                &lt;img class=&#34;friend-avatar&#34; src=&#34;&#34; /&gt;
+                &lt;div class=&#34;friend-content&#34;&gt;
+                    &lt;div class=&#34;friend-name&#34;&gt;LknLd&lt;/div&gt;
+                    &lt;div class=&#34;friend-description&#34;&gt;LknLd&amp;#39;s blog&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    
 &lt;/div&gt;
 
 
