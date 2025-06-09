@@ -7,30 +7,28 @@
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
-    <lastBuildDate>Wed, 28 May 2025 22:32:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 09 Jun 2025 21:34:23 +0800</lastBuildDate>
     <atom:link href="https://lz0o0.github.io/zh/posts/academic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Internet Censorship</title>
+      <link>https://lz0o0.github.io/zh/posts/academic/internet-censorship/</link>
+      <pubDate>Mon, 09 Jun 2025 21:34:23 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/academic/internet-censorship/</guid>
+      <description>收录网络审查相关信息、主要研究及代表工作</description>
+    </item>
     <item>
       <title>方班收获回顾</title>
       <link>https://lz0o0.github.io/zh/posts/academic/%E6%96%B9%E7%8F%AD%E6%94%B6%E8%8E%B7%E5%9B%9E%E9%A1%BE/</link>
       <pubDate>Wed, 28 May 2025 22:32:00 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/academic/%E6%96%B9%E7%8F%AD%E6%94%B6%E8%8E%B7%E5%9B%9E%E9%A1%BE/</guid>
-      <description>&lt;!-- more --&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;h3 id=&#34;整体介绍&#34;&gt;整体介绍&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;h4 id=&#34;背景与发展&#34;&gt;背景与发展&lt;/h4&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;  “方班研讨厅”又名&lt;strong&gt;创新与思辨&lt;/strong&gt;，是方班的三门研究生创新课（研讨厅、演武堂、前沿秀）中的一门，也是方班最早推广的一门能力素质型课程。2019年秋在广大网安学院最早落地，凭借课程的独特性和方老师的号召力，该课程目前已经推广到国内29所高校，以&lt;strong&gt;创新实验班和研讨课程&lt;/strong&gt;的形式进行落地和展开。&lt;/p&gt;</description>
+      <description>对24-25 UCAS 方班的小结</description>
     </item>
     <item>
       <title>毕业答辩旁听纪要</title>
       <link>https://lz0o0.github.io/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</link>
       <pubDate>Sat, 17 May 2025 08:52:09 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</guid>
-      <description>今天组内两位师兄毕业，和之前旁听的感觉很不一样，去年旁听dk师兄时，其实还没什么概念，恭喜他们，走上了人生一个新的阶段，也算得到未来的一块拼图。</description>
+      <description>今天组内两位师兄毕业，恭喜他们，走上了人生一个新的阶段！</description>
     </item>
   </channel>
 </rss>
