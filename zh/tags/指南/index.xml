@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>指南 on Le blog de Lz0o0</title>
+    <link>https://lz0o0.github.io/zh/tags/%E6%8C%87%E5%8D%97/</link>
+    <description>Recent content in 指南 on Le blog de Lz0o0</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>zh</language>
+    <copyright>©2025 Le blog de Lz0o0</copyright>
+    <lastBuildDate>Mon, 11 Aug 2025 18:02:45 +0800</lastBuildDate>
+    <atom:link href="https://lz0o0.github.io/zh/tags/%E6%8C%87%E5%8D%97/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CCF-RC</title>
+      <link>https://lz0o0.github.io/posts/academic/ccf-rc/</link>
+      <pubDate>Mon, 11 Aug 2025 18:02:45 +0800</pubDate>
+      <guid>https://lz0o0.github.io/posts/academic/ccf-rc/</guid>
+      <description>收录CCF推荐会议，Focus网络安全</description>
+    </item>
+  </channel>
+</rss>
