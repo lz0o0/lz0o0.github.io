@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -19,19 +19,19 @@ CoJ：USENIX ATC 16【25年已取消】
 
 bg&amp;cq：互联网在地理、技术、政治、伦理四个维度上都呈现“碎片化&#43;黑箱化”，而 CDN 与干扰行为又故意隐藏在正常流量背后，所以任何单一视角、单一工具、单一时刻的测量都类似“盲人摸象”。这导致各方角色难以全面了解全球网站部署方式及其可达性，尤其是CDN分布和网络干扰（如DNS劫持、封锁）情况。">
 <meta name="author" content="Lz0o0">
-<link rel="canonical" href="https://lz0o0.github.io/zh/posts/plogs/plog-25.08.29/">
+<link rel="canonical" href="http://localhost:1313/zh/posts/plogs/plog-25.08.29/">
 
 
 
 <link crossorigin="anonymous" href="/assets/css/stylesheet.dc247c692426150538992de49392ca63b8cb0d90dcc90029cb4735527c5f15b2.css" integrity="" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://lz0o0.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://lz0o0.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://lz0o0.github.io/favicon.ico">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="https://lz0o0.github.io/zh/posts/plogs/plog-25.08.29/">
+<link rel="alternate" hreflang="zh" href="http://localhost:1313/zh/posts/plogs/plog-25.08.29/">
 <noscript>
     <style>
         #theme-toggle,
@@ -48,7 +48,7 @@ bg&amp;cq：互联网在地理、技术、政治、伦理四个维度上都呈�
 
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
-<meta property="og:url" content="https://lz0o0.github.io/zh/posts/plogs/plog-25.08.29/">
+<meta property="og:url" content="http://localhost:1313/zh/posts/plogs/plog-25.08.29/">
   <meta property="og:site_name" content="Le blog de Lz0o0">
   <meta property="og:title" content="plog-25.08.29">
   <meta property="og:description" content="CDNs和网络干扰的联合分析 Title：Satellite: Joint Analysis of CDNs and Network-Level Interference
@@ -83,19 +83,19 @@ bg&amp;cq：互联网在地理、技术、政治、伦理四个维度上都呈�
       "@type": "ListItem",
       "position":  1 ,
       "name": "๑✦ˑ_✦",
-      "item": "https://lz0o0.github.io/zh/posts/"
+      "item": "http://localhost:1313/zh/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "๑乛◡乛๑",
-      "item": "https://lz0o0.github.io/zh/posts/plogs/"
+      "item": "http://localhost:1313/zh/posts/plogs/"
     }, 
     {
       "@type": "ListItem",
       "position":  3 ,
       "name": "plog-25.08.29",
-      "item": "https://lz0o0.github.io/zh/posts/plogs/plog-25.08.29/"
+      "item": "http://localhost:1313/zh/posts/plogs/plog-25.08.29/"
     }
   ]
 }
@@ -121,14 +121,14 @@ bg&amp;cq：互联网在地理、技术、政治、伦理四个维度上都呈�
   }],
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://lz0o0.github.io/zh/posts/plogs/plog-25.08.29/"
+    "@id": "http://localhost:1313/zh/posts/plogs/plog-25.08.29/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Le blog de Lz0o0",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://lz0o0.github.io/favicon.ico"
+      "url": "http://localhost:1313/favicon.ico"
     }
   }
 }
@@ -146,7 +146,7 @@ bg&amp;cq：互联网在地理、技术、政治、伦理四个维度上都呈�
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://lz0o0.github.io/zh/" accesskey="h" title="Le blog de Lz0o0 (Alt + H)">Le blog de Lz0o0</a>
+            <a href="http://localhost:1313/zh/" accesskey="h" title="Le blog de Lz0o0 (Alt + H)">Le blog de Lz0o0</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -172,47 +172,47 @@ bg&amp;cq：互联网在地理、技术、政治、伦理四个维度上都呈�
         </div>
         <ul id="menu">
             <li>
-                <a href="https://lz0o0.github.io/zh/search" title="🔍Search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/zh/search" title="🔍Search (Alt &#43; /)" accesskey=/>
                     <span>🔍Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/" title="🏠Home">
+                <a href="http://localhost:1313/zh/" title="🏠Home">
                     <span>🏠Home</span>
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/posts/plogs" title="Plogs">
+                <a href="http://localhost:1313/zh/posts/plogs" title="Plogs">
                     <span>Plogs</span>
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/posts" title="📓Blogs">
+                <a href="http://localhost:1313/zh/posts" title="📓Blogs">
                     <span>📓Blogs</span>
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/posts/poetry" title="📝Poetry">
+                <a href="http://localhost:1313/zh/posts/poetry" title="📝Poetry">
                     <span>📝Poetry</span>
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/tags" title="🔖tags">
+                <a href="http://localhost:1313/zh/tags" title="🔖tags">
                     <span>🔖tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/archive" title="⏱archives">
+                <a href="http://localhost:1313/zh/archive" title="⏱archives">
                     <span>⏱archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/links" title="🤝links">
+                <a href="http://localhost:1313/zh/links" title="🤝links">
                     <span>🤝links</span>
                 </a>
             </li>
             <li>
-                <a href="https://lz0o0.github.io/zh/about" title="😎about">
+                <a href="http://localhost:1313/zh/about" title="😎about">
                     <span>😎about</span>
                 </a>
             </li>
@@ -223,7 +223,7 @@ bg&amp;cq：互联网在地理、技术、政治、伦理四个维度上都呈�
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://lz0o0.github.io/zh/">🏠Home</a>&nbsp;»&nbsp;<a href="https://lz0o0.github.io/zh/posts/">๑✦ˑ_✦</a>&nbsp;»&nbsp;<a href="https://lz0o0.github.io/zh/posts/plogs/">๑乛◡乛๑</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:1313/zh/">🏠Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/">๑✦ˑ_✦</a>&nbsp;»&nbsp;<a href="http://localhost:1313/zh/posts/plogs/">๑乛◡乛๑</a></div>
     <h1 class="post-title entry-hint-parent">
       plog-25.08.29
     </h1>
@@ -401,12 +401,12 @@ bg&amp;cq：互联网在地理、技术、政治、伦理四个维度上都呈�
   <footer class="post-footer">
     
 <nav class="paginav">
-  <a class="prev" href="https://lz0o0.github.io/zh/posts/life/says/">
+  <a class="prev" href="http://localhost:1313/zh/posts/life/says/">
     <span class="title">« Last Page</span>
     <br>
     <span>💭 See what I Says</span>
   </a>
-  <a class="next" href="https://lz0o0.github.io/zh/posts/academic/weekly-paper/">
+  <a class="next" href="http://localhost:1313/zh/posts/academic/weekly-paper/">
     <span class="title">Next Page »</span>
     <br>
     <span>Weekly Paper</span>

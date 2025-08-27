@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>诗词 on Le blog de Lz0o0</title>
-    <link>https://lz0o0.github.io/zh/tags/%E8%AF%97%E8%AF%8D/</link>
+    <link>http://localhost:1313/zh/tags/%E8%AF%97%E8%AF%8D/</link>
     <description>Recent content in 诗词 on Le blog de Lz0o0</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
     <lastBuildDate>Tue, 10 Jun 2025 00:56:18 +0800</lastBuildDate>
-    <atom:link href="https://lz0o0.github.io/zh/tags/%E8%AF%97%E8%AF%8D/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/zh/tags/%E8%AF%97%E8%AF%8D/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>清平乐·笑登科</title>
-      <link>https://lz0o0.github.io/zh/posts/poetry/%E6%B8%85%E5%B9%B3%E4%B9%90%E7%AC%91%E7%99%BB%E7%A7%91/</link>
+      <link>http://localhost:1313/zh/posts/poetry/%E6%B8%85%E5%B9%B3%E4%B9%90%E7%AC%91%E7%99%BB%E7%A7%91/</link>
       <pubDate>Tue, 10 Jun 2025 00:56:18 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/poetry/%E6%B8%85%E5%B9%B3%E4%B9%90%E7%AC%91%E7%99%BB%E7%A7%91/</guid>
+      <guid>http://localhost:1313/zh/posts/poetry/%E6%B8%85%E5%B9%B3%E4%B9%90%E7%AC%91%E7%99%BB%E7%A7%91/</guid>
       <description>&lt;!-- more --&gt;
 &lt;div class=&#34;poem&#34;&gt;
     &amp;emsp;&amp;emsp;笑登科，颜眉展，苦韵渐甘。风波颂，短歌行，且与君同乐。
@@ -39,9 +39,9 @@
     </item>
     <item>
       <title>贺新郎·读史</title>
-      <link>https://lz0o0.github.io/zh/posts/poetry/%E8%B4%BA%E6%96%B0%E9%83%8E%E8%AF%BB%E5%8F%B2/</link>
+      <link>http://localhost:1313/zh/posts/poetry/%E8%B4%BA%E6%96%B0%E9%83%8E%E8%AF%BB%E5%8F%B2/</link>
       <pubDate>Wed, 28 May 2025 18:50:41 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/poetry/%E8%B4%BA%E6%96%B0%E9%83%8E%E8%AF%BB%E5%8F%B2/</guid>
+      <guid>http://localhost:1313/zh/posts/poetry/%E8%B4%BA%E6%96%B0%E9%83%8E%E8%AF%BB%E5%8F%B2/</guid>
       <description>&lt;!-- more --&gt;
 &lt;div class=&#34;poem&#34;&gt;
 	&amp;emsp;&amp;emsp;人猿相揖别。只几个石头磨过，小儿时节。铜铁炉中翻火焰，为问何时猜得，不过几千寒热。人世难逢开口笑，上疆场彼此弯弓月。流遍了，郊原血。

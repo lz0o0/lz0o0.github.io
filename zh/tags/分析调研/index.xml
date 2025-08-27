@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>分析调研 on Le blog de Lz0o0</title>
-    <link>https://lz0o0.github.io/zh/tags/%E5%88%86%E6%9E%90%E8%B0%83%E7%A0%94/</link>
+    <link>http://localhost:1313/zh/tags/%E5%88%86%E6%9E%90%E8%B0%83%E7%A0%94/</link>
     <description>Recent content in 分析调研 on Le blog de Lz0o0</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
     <lastBuildDate>Tue, 15 Apr 2025 23:05:12 +0800</lastBuildDate>
-    <atom:link href="https://lz0o0.github.io/zh/tags/%E5%88%86%E6%9E%90%E8%B0%83%E7%A0%94/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/zh/tags/%E5%88%86%E6%9E%90%E8%B0%83%E7%A0%94/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>家用摄像头数据安全分析</title>
-      <link>https://lz0o0.github.io/zh/posts/affair-logs/%E5%AE%B6%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/</link>
+      <link>http://localhost:1313/zh/posts/affair-logs/%E5%AE%B6%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/</link>
       <pubDate>Tue, 15 Apr 2025 23:05:12 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/affair-logs/%E5%AE%B6%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/</guid>
+      <guid>http://localhost:1313/zh/posts/affair-logs/%E5%AE%B6%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/</guid>
       <description>本文对目前国内主流家用摄像头的情况进行了梳理，分析了市场情况和发展趋势；着眼于数据安全，侧重分析了摄像头目前数据采集存储，以及传输的模式特点，旨在揭示家用摄像头中潜藏的数据安全问题和风险。</description>
     </item>
   </channel>

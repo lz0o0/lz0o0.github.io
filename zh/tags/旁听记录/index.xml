@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>旁听记录 on Le blog de Lz0o0</title>
-    <link>https://lz0o0.github.io/zh/tags/%E6%97%81%E5%90%AC%E8%AE%B0%E5%BD%95/</link>
+    <link>http://localhost:1313/zh/tags/%E6%97%81%E5%90%AC%E8%AE%B0%E5%BD%95/</link>
     <description>Recent content in 旁听记录 on Le blog de Lz0o0</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
     <lastBuildDate>Sat, 17 May 2025 08:52:09 +0800</lastBuildDate>
-    <atom:link href="https://lz0o0.github.io/zh/tags/%E6%97%81%E5%90%AC%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/zh/tags/%E6%97%81%E5%90%AC%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>毕业答辩旁听纪要</title>
-      <link>https://lz0o0.github.io/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</link>
+      <link>http://localhost:1313/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</link>
       <pubDate>Sat, 17 May 2025 08:52:09 +0800</pubDate>
-      <guid>https://lz0o0.github.io/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</guid>
+      <guid>http://localhost:1313/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</guid>
       <description>今天组内两位师兄毕业，恭喜他们，走上了人生一个新的阶段！</description>
     </item>
   </channel>
