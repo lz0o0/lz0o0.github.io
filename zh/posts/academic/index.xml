@@ -2,46 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>(ｷ▼O▼)و ̑̑ on Le blog de Lz0o0</title>
-    <link>http://localhost:1313/zh/posts/academic/</link>
+    <link>https://lz0o0.github.io/zh/posts/academic/</link>
     <description>Recent content in (ｷ▼O▼)و ̑̑ on Le blog de Lz0o0</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
     <lastBuildDate>Tue, 26 Aug 2025 10:02:49 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/posts/academic/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lz0o0.github.io/zh/posts/academic/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Weekly Paper</title>
-      <link>http://localhost:1313/zh/posts/academic/weekly-paper/</link>
+      <link>https://lz0o0.github.io/zh/posts/academic/weekly-paper/</link>
       <pubDate>Tue, 26 Aug 2025 10:02:49 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/academic/weekly-paper/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/academic/weekly-paper/</guid>
       <description>本文档记录每周拟阅读论文计划，周笔记单设博客页记录</description>
     </item>
     <item>
       <title>CCF-RC</title>
-      <link>http://localhost:1313/posts/academic/ccf-rc/</link>
+      <link>https://lz0o0.github.io/posts/academic/ccf-rc/</link>
       <pubDate>Mon, 11 Aug 2025 18:02:45 +0800</pubDate>
-      <guid>http://localhost:1313/posts/academic/ccf-rc/</guid>
+      <guid>https://lz0o0.github.io/posts/academic/ccf-rc/</guid>
       <description>收录CCF推荐会议，Focus网络安全</description>
     </item>
     <item>
       <title>Internet Censorship</title>
-      <link>http://localhost:1313/zh/posts/academic/internet-censorship/</link>
+      <link>https://lz0o0.github.io/zh/posts/academic/internet-censorship/</link>
       <pubDate>Mon, 09 Jun 2025 21:34:23 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/academic/internet-censorship/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/academic/internet-censorship/</guid>
       <description>收录网络审查相关信息、主要研究及代表工作</description>
     </item>
     <item>
       <title>方班收获回顾</title>
-      <link>http://localhost:1313/zh/posts/academic/%E6%96%B9%E7%8F%AD%E6%94%B6%E8%8E%B7%E5%9B%9E%E9%A1%BE/</link>
+      <link>https://lz0o0.github.io/zh/posts/academic/%E6%96%B9%E7%8F%AD%E6%94%B6%E8%8E%B7%E5%9B%9E%E9%A1%BE/</link>
       <pubDate>Wed, 28 May 2025 22:32:00 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/academic/%E6%96%B9%E7%8F%AD%E6%94%B6%E8%8E%B7%E5%9B%9E%E9%A1%BE/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/academic/%E6%96%B9%E7%8F%AD%E6%94%B6%E8%8E%B7%E5%9B%9E%E9%A1%BE/</guid>
       <description>对24-25 UCAS 方班的小结</description>
     </item>
     <item>
       <title>毕业答辩旁听纪要</title>
-      <link>http://localhost:1313/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</link>
+      <link>https://lz0o0.github.io/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</link>
       <pubDate>Sat, 17 May 2025 08:52:09 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</guid>
       <description>今天组内两位师兄毕业，恭喜他们，走上了人生一个新的阶段！</description>
     </item>
   </channel>

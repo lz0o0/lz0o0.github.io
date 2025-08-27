@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>领域工作收录 on Le blog de Lz0o0</title>
-    <link>http://localhost:1313/zh/tags/%E9%A2%86%E5%9F%9F%E5%B7%A5%E4%BD%9C%E6%94%B6%E5%BD%95/</link>
+    <link>https://lz0o0.github.io/zh/tags/%E9%A2%86%E5%9F%9F%E5%B7%A5%E4%BD%9C%E6%94%B6%E5%BD%95/</link>
     <description>Recent content in 领域工作收录 on Le blog de Lz0o0</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
     <lastBuildDate>Mon, 09 Jun 2025 21:34:23 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/tags/%E9%A2%86%E5%9F%9F%E5%B7%A5%E4%BD%9C%E6%94%B6%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lz0o0.github.io/zh/tags/%E9%A2%86%E5%9F%9F%E5%B7%A5%E4%BD%9C%E6%94%B6%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Internet Censorship</title>
-      <link>http://localhost:1313/zh/posts/academic/internet-censorship/</link>
+      <link>https://lz0o0.github.io/zh/posts/academic/internet-censorship/</link>
       <pubDate>Mon, 09 Jun 2025 21:34:23 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/academic/internet-censorship/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/academic/internet-censorship/</guid>
       <description>收录网络审查相关信息、主要研究及代表工作</description>
     </item>
   </channel>

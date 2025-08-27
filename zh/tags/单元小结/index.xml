@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>单元小结 on Le blog de Lz0o0</title>
-    <link>http://localhost:1313/zh/tags/%E5%8D%95%E5%85%83%E5%B0%8F%E7%BB%93/</link>
+    <link>https://lz0o0.github.io/zh/tags/%E5%8D%95%E5%85%83%E5%B0%8F%E7%BB%93/</link>
     <description>Recent content in 单元小结 on Le blog de Lz0o0</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
     <lastBuildDate>Wed, 28 May 2025 22:32:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/tags/%E5%8D%95%E5%85%83%E5%B0%8F%E7%BB%93/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lz0o0.github.io/zh/tags/%E5%8D%95%E5%85%83%E5%B0%8F%E7%BB%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>方班收获回顾</title>
-      <link>http://localhost:1313/zh/posts/academic/%E6%96%B9%E7%8F%AD%E6%94%B6%E8%8E%B7%E5%9B%9E%E9%A1%BE/</link>
+      <link>https://lz0o0.github.io/zh/posts/academic/%E6%96%B9%E7%8F%AD%E6%94%B6%E8%8E%B7%E5%9B%9E%E9%A1%BE/</link>
       <pubDate>Wed, 28 May 2025 22:32:00 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/academic/%E6%96%B9%E7%8F%AD%E6%94%B6%E8%8E%B7%E5%9B%9E%E9%A1%BE/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/academic/%E6%96%B9%E7%8F%AD%E6%94%B6%E8%8E%B7%E5%9B%9E%E9%A1%BE/</guid>
       <description>对24-25 UCAS 方班的小结</description>
     </item>
   </channel>

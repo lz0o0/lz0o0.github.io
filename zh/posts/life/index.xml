@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>(*▼-▼) on Le blog de Lz0o0</title>
-    <link>http://localhost:1313/zh/posts/life/</link>
+    <link>https://lz0o0.github.io/zh/posts/life/</link>
     <description>Recent content in (*▼-▼) on Le blog de Lz0o0</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
-    <atom:link href="http://localhost:1313/zh/posts/life/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lz0o0.github.io/zh/posts/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>💭 See what I Says</title>
-      <link>http://localhost:1313/zh/posts/life/says/</link>
+      <link>https://lz0o0.github.io/zh/posts/life/says/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zh/posts/life/says/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/life/says/</guid>
       <description>🤫 我愿称之为懒人日记界面&amp;hellip;</description>
     </item>
     <item>
       <title>🎧 我的歌单Songs</title>
-      <link>http://localhost:1313/zh/posts/life/songs/</link>
+      <link>https://lz0o0.github.io/zh/posts/life/songs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zh/posts/life/songs/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/life/songs/</guid>
       <description>听一些，我认为伟大的&amp;hellip;..音乐&amp;hellip;</description>
     </item>
     <item>
       <title>📺 我喜欢的视画作品</title>
-      <link>http://localhost:1313/zh/posts/life/artworks/</link>
+      <link>https://lz0o0.github.io/zh/posts/life/artworks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/zh/posts/life/artworks/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/life/artworks/</guid>
       <description>看一看，我觉得的好看的&amp;hellip;动画、漫画、电影、剧目</description>
     </item>
   </channel>

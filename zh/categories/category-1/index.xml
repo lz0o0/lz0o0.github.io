@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Category 1 on Le blog de Lz0o0</title>
-    <link>http://localhost:1313/zh/categories/category-1/</link>
+    <link>https://lz0o0.github.io/zh/categories/category-1/</link>
     <description>Recent content in Category 1 on Le blog de Lz0o0</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
     <lastBuildDate>Sat, 17 May 2025 08:52:09 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/categories/category-1/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lz0o0.github.io/zh/categories/category-1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>毕业答辩旁听纪要</title>
-      <link>http://localhost:1313/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</link>
+      <link>https://lz0o0.github.io/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</link>
       <pubDate>Sat, 17 May 2025 08:52:09 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</guid>
       <description>今天组内两位师兄毕业，恭喜他们，走上了人生一个新的阶段！</description>
     </item>
     <item>
       <title>关于WAF--Web应用防火墙</title>
-      <link>http://localhost:1313/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</link>
+      <link>https://lz0o0.github.io/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</link>
       <pubDate>Thu, 24 Apr 2025 13:36:50 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</guid>
       <description>WAF即Web应用防火墙，专门用于保护Web应用服务免受各种网络攻击。本文主介绍WAF的需求背景、工作流程和拓扑、主要业界厂商。</description>
     </item>
     <item>
       <title>AI 内容防火墙</title>
-      <link>http://localhost:1313/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99/</link>
+      <link>https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99/</link>
       <pubDate>Wed, 16 Apr 2025 15:22:25 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99/</guid>
       <description>2020年至今，AI 应用井喷式爆发，但AI 内容缺乏有效、可靠的技术监管机制。本项目意在实现一个 AI-CFW 原型系统，部署于 AI 应用和 AI 使用者之间，能够对&lt;strong&gt;使用者的提问&lt;/strong&gt;以及 &lt;strong&gt;AI 应用的回复内容&lt;/strong&gt;进行过滤。</description>
     </item>
     <item>
       <title>家用摄像头数据安全分析</title>
-      <link>http://localhost:1313/zh/posts/affair-logs/%E5%AE%B6%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/</link>
+      <link>https://lz0o0.github.io/zh/posts/affair-logs/%E5%AE%B6%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/</link>
       <pubDate>Tue, 15 Apr 2025 23:05:12 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/affair-logs/%E5%AE%B6%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/affair-logs/%E5%AE%B6%E7%94%A8%E6%91%84%E5%83%8F%E5%A4%B4%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/</guid>
       <description>本文对目前国内主流家用摄像头的情况进行了梳理，分析了市场情况和发展趋势；着眼于数据安全，侧重分析了摄像头目前数据采集存储，以及传输的模式特点，旨在揭示家用摄像头中潜藏的数据安全问题和风险。</description>
     </item>
   </channel>

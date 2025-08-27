@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>博客搭建 on Le blog de Lz0o0</title>
-    <link>http://localhost:1313/zh/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+    <link>https://lz0o0.github.io/zh/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
     <description>Recent content in 博客搭建 on Le blog de Lz0o0</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
     <lastBuildDate>Thu, 10 Apr 2025 15:21:26 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lz0o0.github.io/zh/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hugo发布css无法加载问题</title>
-      <link>http://localhost:1313/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8E%E4%BB%85%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BAcss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</link>
+      <link>https://lz0o0.github.io/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8E%E4%BB%85%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BAcss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</link>
       <pubDate>Thu, 10 Apr 2025 15:21:26 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8E%E4%BB%85%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BAcss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/error-logs/hugo%E5%8F%91%E5%B8%83%E5%90%8E%E4%BB%85%E6%96%87%E6%9C%AC%E6%98%BE%E7%A4%BAcss%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD/</guid>
       <description>本文分析并解决了Hugo+Papermod部署到github pages时，由于SRI校验失败，导致CSS文件无法正常加载不显示网页样式内容的问题。</description>
     </item>
     <item>
       <title>Blog == 管理 &#43; 输出</title>
-      <link>http://localhost:1313/zh/posts/affair-logs/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</link>
+      <link>https://lz0o0.github.io/zh/posts/affair-logs/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</link>
       <pubDate>Sat, 05 Apr 2025 13:41:46 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/affair-logs/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/affair-logs/blog--%E7%AE%A1%E7%90%86-&#43;-%E8%BE%93%E5%87%BA/</guid>
       <description>如何理解博客？博客构建的逻辑和步骤是怎样的？</description>
     </item>
   </channel>

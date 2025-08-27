@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>技术学习 on Le blog de Lz0o0</title>
-    <link>http://localhost:1313/zh/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/</link>
+    <link>https://lz0o0.github.io/zh/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/</link>
     <description>Recent content in 技术学习 on Le blog de Lz0o0</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
     <lastBuildDate>Thu, 24 Apr 2025 13:36:50 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/zh/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://lz0o0.github.io/zh/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于WAF--Web应用防火墙</title>
-      <link>http://localhost:1313/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</link>
+      <link>https://lz0o0.github.io/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</link>
       <pubDate>Thu, 24 Apr 2025 13:36:50 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/nice-techs/%E5%85%B3%E4%BA%8Ewaf%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88/</guid>
       <description>WAF即Web应用防火墙，专门用于保护Web应用服务免受各种网络攻击。本文主介绍WAF的需求背景、工作流程和拓扑、主要业界厂商。</description>
     </item>
     <item>
       <title>MCP 模型上下文协议全解</title>
-      <link>http://localhost:1313/zh/posts/nice-techs/mcp-%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE%E5%85%A8%E8%A7%A3/</link>
+      <link>https://lz0o0.github.io/zh/posts/nice-techs/mcp-%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE%E5%85%A8%E8%A7%A3/</link>
       <pubDate>Mon, 21 Apr 2025 00:11:27 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/nice-techs/mcp-%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE%E5%85%A8%E8%A7%A3/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/nice-techs/mcp-%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE%E5%85%A8%E8%A7%A3/</guid>
       <description>MCP模型上下文协议,通过采取单一通信协议，取代碎片化集成，对AI系统和数据源之间的连接进行了规范和统一，打破了传统模型和数据源之间互相隔离和访问繁琐的限制，重塑了模型和数据的操作和安全边界。</description>
     </item>
     <item>
       <title>AI 内容防火墙</title>
-      <link>http://localhost:1313/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99/</link>
+      <link>https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99/</link>
       <pubDate>Wed, 16 Apr 2025 15:22:25 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/affair-logs/ai%E5%86%85%E5%AE%B9%E9%98%B2%E7%81%AB%E5%A2%99/</guid>
       <description>2020年至今，AI 应用井喷式爆发，但AI 内容缺乏有效、可靠的技术监管机制。本项目意在实现一个 AI-CFW 原型系统，部署于 AI 应用和 AI 使用者之间，能够对&lt;strong&gt;使用者的提问&lt;/strong&gt;以及 &lt;strong&gt;AI 应用的回复内容&lt;/strong&gt;进行过滤。</description>
     </item>
     <item>
       <title>利用 frp 实现内网穿透</title>
-      <link>http://localhost:1313/zh/posts/nice-techs/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
+      <link>https://lz0o0.github.io/zh/posts/nice-techs/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
       <pubDate>Sun, 06 Apr 2025 23:57:22 +0800</pubDate>
-      <guid>http://localhost:1313/zh/posts/nice-techs/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
+      <guid>https://lz0o0.github.io/zh/posts/nice-techs/%E5%88%A9%E7%94%A8-frp-%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
       <description>frp 是一种反向代理工具, 被广泛用于内网穿透，能够将外网暴露内网服务，本文具体介绍了如何基于云服务器和frp源码实现简单的内网穿透，是一种很有意思和实际用处的技术。</description>
     </item>
   </channel>
