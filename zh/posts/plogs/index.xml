@@ -14,17 +14,7 @@
       <link>https://lz0o0.github.io/zh/posts/plogs/plog-25.08.29/</link>
       <pubDate>Tue, 26 Aug 2025 11:22:50 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/plogs/plog-25.08.29/</guid>
-      <description>&lt;!-- more --&gt;
-&lt;h2 id=&#34;cdns和网络干扰的联合分析&#34;&gt;&lt;font size=4&gt;CDNs和网络干扰的联合分析&lt;/font&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Title&lt;/strong&gt;：Satellite: Joint Analysis of CDNs and Network-Level Interference&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;CoJ&lt;/strong&gt;：USENIX ATC 16【25年已取消】&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;bg&amp;amp;cq&lt;/strong&gt;：互联网在地理、技术、政治、伦理四个维度上都呈现“碎片化+黑箱化”，而 CDN 与干扰行为又故意隐藏在正常流量背后，所以任何单一视角、单一工具、单一时刻的测量都类似“盲人摸象”。这导致各方角色难以全面了解全球网站部署方式及其可达性，尤其是CDN分布和网络干扰（如DNS劫持、封锁）情况。&lt;/p&gt;</description>
+      <description>CDN与网络干扰分布区分；基于QUIC SNI的反审查探测</description>
     </item>
   </channel>
 </rss>
