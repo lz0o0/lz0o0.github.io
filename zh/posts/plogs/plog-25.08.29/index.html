@@ -88,8 +88,8 @@
   "keywords": [
     "Satellite", "Quic-censor"
   ],
-  "articleBody": "\rA. CDNs和网络干扰的联合分析 Title：Satellite: Joint Analysis of CDNs and Network-Level Interference\nCoJ：USENIX ATC 16【25年已取消】\nb\u0026q 互联网在地理、技术、政治、伦理四个维度上都呈现“碎片化+黑箱化”，而 CDN 与干扰行为又故意隐藏在正常流量背后，所以任何单一视角、单一工具、单一时刻的测量都类似“盲人摸象”。这导致各方角色难以全面了解全球网站部署方式及其可达性，尤其是CDN分布和网络干扰（如DNS劫持、封锁）情况。\ncore 网站分布情况、可达性【网站放在哪？谁能打开谁打不开？】\nchallenge 缺乏全球分布式、可持续、可复现的测量平台 CDN于网络干扰行为容易混淆，缺乏适当方法加以区分 传统测量依赖分布式节点，成本高、风险大 target 设计单节点测量系统，可持续、低成本地监测全球CDN部署和网络干扰\nMethod\u0026Trick 核心思想：利用DNS解析网络，通过探测全球开放DNS解析器，收集网站域名的解析数据，分析CDN部署与网络干扰\n测量方式：\n开发解析器扫描：使用 zmap 扫描 IPv4 地址空间，发现约 700 万个开放递归DNS服务器（1200万中700万个对测量服务器解析正常） 每周拨测，目标为Alexa Top 10000域名 收集信息：完整DNS响应、IP元数据（PTR、WHOIS）、地理位置信息 CDN集群与网络干扰行为区分方法：基于“域名—AS—\u003eIP”三元关系，构建二部图，基于二部图计算DomainSimilarity和IPTrust两个指标，度量域名相似程度和解析信度，定点迭代直到结果稳定支持划分。二部图示意和迭代算法如下图所示：\n四个粗度干扰型：Focus on DNS\n解析太少/畸形 → 像“答案被吃掉”：突发解析失败或格式异常 单点突变 → 像“特定地区被调包”：原本全球都解析到同一 IP，却突然出现不同 IP 分散爆炸 → 像“被拉进黑洞群”：域名本来集中在一个 AS，却突然出现在多个 AS 偏离 CDN → 像“官方 CDN 被旁路”：域名本属于某 CDN 集群，却解析到集群外 IP Topo 下列为研究实验结构拓扑和工作流草图\neffect 论文用可复现的“撞库+内容验证+事件对标”三重验证检验实际效果，与官方 CDN 段撞库 100% 命中、favicon 内容指纹 82% 真服务器可达、政策窗口 1 周内实时捕捉数据与事件对应\nCDN 识别：与官方 IP 列表“撞库”(Fastly:https://api.fastly.com/public-ip-list（12 段）;Cloudflare:公开 anycast 列表) 干扰检测：用 favicon 内容指纹做“真·可达”验证(拉取favicon对比哈希计算准确率) 时效性：对照伊朗、土耳其真实政策事件 Find CDN 渗透率+DNS 干扰面+本地解析率\n全球主流网站已高度 CDN 化：Alexa Top 10 k 里 20 % 域名落在 10 大共享平台 审查/封锁已成普遍现象：117 国 出现 4,819 起 ISP 级 DNS 劫持 干扰手法地域化：①中国 → 多样化假 IP（随机污染）②伊朗/利比亚 → 单一封锁页面（集中重定向）③土耳其 → 多 AS 扩散（黑洞化） 数据本地化策略差异巨大：中国 18 % 域名解析到境内 IP，墨西哥仅 5 % Tools 1 2 3 4 5 6 7 8 9 zmap —— 高速 IPv4 开放 DNS 扫描 —— 论文扩展 udp-multi 模式，50k pps 单线程 zgrab2 —— 对可疑 IP 做 TCP/HTTP/HTTPS 握手 —— 用于 favicon 内容验证 libpcap —— 抓取并保存完整 UDP 应答包 —— 保留原始 PCAP，便于后续字段深度挖掘 NetworkX —— 内存里构建域名-IP 二部图并计算相似度迭代 —— 处理稀疏矩阵，5-6 轮即可收敛 MaxMind GeoLite2 —— IP 到国家/城市地理定位 —— 默认 Country 级，Anycast 时结合列表修正 pygeoip —— Python 接口调用 MaxMind 库 —— 与 NetworkX 脚本直接集成 whois/pywhois —— 查询 IP 归属组织与 ASN —— 用于 WHOIS 聚类 dnspython —— PTR 反向解析与 EDNS 子网测试 —— 收集反向 PTR 记录，验证 CDN 名称 pandas+TSV —— 读取 TSV 边数据并生成分析报表 —— 周级流水线标配 启发项 关于网络干扰与审查： 本文中用了网络干扰“network interference”来描述操纵和审查（我发现不少文章都是类似用法），诚然，在学术语境中，Interference更加中性、学术化，立场站位也相对合适，但理解起来通常认为就是censorship+traffic manipulation的统称。\n研究的核心动机之一是发现并量化DNS层面的封锁、劫持与重定向等“干扰”行为，这实际就是网络层面的审查行为。不论有意与否，从其动机描述和实证引例来看，DNS劫持、DNS污染、封锁页、透明度等等阐述都言及实际的审查，如何发现和量化DNS层面的网络审查可以算作研究的核心目标之一。\n关于审查界定：解析解显著偏离全球基准\u0026无法用CDN解释\u003c==\u003e审查 本研究没有提供“审查”的定义描述，但用技术性、可验证的操作进行了界定：凡是DNS解析结果显著偏离该域名在全球绝大多数网络中的“正常“分布，并且无法用CDN负载均衡或网络故障来解释，即可视为”网络干扰（network-level interference）“，在上下文中等同于”审查“行为。\n关于实验设计： 研究的第2章描述中先整体介绍设计目标阐述需求，然后2.1介绍对应每一步需求的具体做法，后面在分节详述，实验设计十分顺畅和清晰，值得学习。对应具体的场景，预期难点主要落在需求分析（明确要什么）和确定可行的具体做法上（怎么要）\nB. 关于GFW基于SNI的QUIC审查的披露与规避 title：Exposing and Circumventing SNI-based QUIC Censorship of the Great Firewall of China coj：USENIX 25 b\u0026q QUIC-FOR-TEST! WISH FOR RIGHT!\ncore challenge Method\u0026Trick Topo effect Find Tools ",
-  "wordCount" : "2119",
+  "articleBody": "\rA. CDNs和网络干扰的联合分析 Title：Satellite: Joint Analysis of CDNs and Network-Level Interference\nCoJ：USENIX ATC 16【25年已取消】\nb\u0026q 互联网在地理、技术、政治、伦理四个维度上都呈现“碎片化+黑箱化”，而 CDN 与干扰行为又故意隐藏在正常流量背后，所以任何单一视角、单一工具、单一时刻的测量都类似“盲人摸象”。这导致各方角色难以全面了解全球网站部署方式及其可达性，尤其是CDN分布和网络干扰（如DNS劫持、封锁）情况。\ncore 网站分布情况、可达性【网站放在哪？谁能打开谁打不开？】\nchallenge 缺乏全球分布式、可持续、可复现的测量平台 CDN于网络干扰行为容易混淆，缺乏适当方法加以区分 传统测量依赖分布式节点，成本高、风险大 target 设计单节点测量系统，可持续、低成本地监测全球CDN部署和网络干扰\nMethod\u0026Trick 核心思想：利用DNS解析网络，通过探测全球开放DNS解析器，收集网站域名的解析数据，分析CDN部署与网络干扰\n测量方式：\n开发解析器扫描：使用 zmap 扫描 IPv4 地址空间，发现约 700 万个开放递归DNS服务器（1200万中700万个对测量服务器解析正常） 每周拨测，目标为Alexa Top 10000域名 收集信息：完整DNS响应、IP元数据（PTR、WHOIS）、地理位置信息 CDN集群与网络干扰行为区分方法：基于“域名—AS—\u003eIP”三元关系，构建二部图，基于二部图计算DomainSimilarity和IPTrust两个指标，度量域名相似程度和解析信度，定点迭代直到结果稳定支持划分。二部图示意和迭代算法如下图所示：\n四个粗度干扰型：Focus on DNS\n解析太少/畸形 → 像“答案被吃掉”：突发解析失败或格式异常 单点突变 → 像“特定地区被调包”：原本全球都解析到同一 IP，却突然出现不同 IP 分散爆炸 → 像“被拉进黑洞群”：域名本来集中在一个 AS，却突然出现在多个 AS 偏离 CDN → 像“官方 CDN 被旁路”：域名本属于某 CDN 集群，却解析到集群外 IP Topo 下列为研究实验结构拓扑和工作流草图\neffect 论文用可复现的“撞库+内容验证+事件对标”三重验证检验实际效果，与官方 CDN 段撞库 100% 命中、favicon 内容指纹 82% 真服务器可达、政策窗口 1 周内实时捕捉数据与事件对应\nCDN 识别：与官方 IP 列表“撞库”(Fastly:https://api.fastly.com/public-ip-list（12 段）;Cloudflare:公开 anycast 列表) 干扰检测：用 favicon 内容指纹做“真·可达”验证(拉取favicon对比哈希计算准确率) 时效性：对照伊朗、土耳其真实政策事件 Find CDN 渗透率+DNS 干扰面+本地解析率\n全球主流网站已高度 CDN 化：Alexa Top 10 k 里 20 % 域名落在 10 大共享平台 审查/封锁已成普遍现象：117 国 出现 4,819 起 ISP 级 DNS 劫持 干扰手法地域化：①中国 → 多样化假 IP（随机污染）②伊朗/利比亚 → 单一封锁页面（集中重定向）③土耳其 → 多 AS 扩散（黑洞化） 数据本地化策略差异巨大：中国 18 % 域名解析到境内 IP，墨西哥仅 5 % Tools 1 2 3 4 5 6 7 8 9 zmap —— 高速 IPv4 开放 DNS 扫描 —— 论文扩展 udp-multi 模式，50k pps 单线程 zgrab2 —— 对可疑 IP 做 TCP/HTTP/HTTPS 握手 —— 用于 favicon 内容验证 libpcap —— 抓取并保存完整 UDP 应答包 —— 保留原始 PCAP，便于后续字段深度挖掘 NetworkX —— 内存里构建域名-IP 二部图并计算相似度迭代 —— 处理稀疏矩阵，5-6 轮即可收敛 MaxMind GeoLite2 —— IP 到国家/城市地理定位 —— 默认 Country 级，Anycast 时结合列表修正 pygeoip —— Python 接口调用 MaxMind 库 —— 与 NetworkX 脚本直接集成 whois/pywhois —— 查询 IP 归属组织与 ASN —— 用于 WHOIS 聚类 dnspython —— PTR 反向解析与 EDNS 子网测试 —— 收集反向 PTR 记录，验证 CDN 名称 pandas+TSV —— 读取 TSV 边数据并生成分析报表 —— 周级流水线标配 启发项 关于网络干扰与审查： 本文中用了网络干扰“network interference”来描述操纵和审查（我发现不少文章都是类似用法），诚然，在学术语境中，Interference更加中性、学术化，立场站位也相对合适，但理解起来通常认为就是censorship+traffic manipulation的统称。\n研究的核心动机之一是发现并量化DNS层面的封锁、劫持与重定向等“干扰”行为，这实际就是网络层面的审查行为。不论有意与否，从其动机描述和实证引例来看，DNS劫持、DNS污染、封锁页、透明度等等阐述都言及实际的审查，如何发现和量化DNS层面的网络审查可以算作研究的核心目标之一。\n关于审查界定：解析解显著偏离全球基准\u0026无法用CDN解释\u003c==\u003e审查 本研究没有提供“审查”的定义描述，但用技术性、可验证的操作进行了界定：凡是DNS解析结果显著偏离该域名在全球绝大多数网络中的“正常“分布，并且无法用CDN负载均衡或网络故障来解释，即可视为”网络干扰（network-level interference）“，在上下文中等同于”审查“行为。\n关于实验设计： 研究的第2章描述中先整体介绍设计目标阐述需求，然后2.1介绍对应每一步需求的具体做法，后面在分节详述，实验设计十分顺畅和清晰，值得学习。对应具体的场景，预期难点主要落在需求分析（明确要什么）和确定可行的具体做法上（怎么要）\nB. 关于GFW基于SNI的QUIC审查的披露与规避 title：Exposing and Circumventing SNI-based QUIC Censorship of the Great Firewall of China coj：USENIX 25 note：这篇线下讲过，简单讲下背景核心，后面直接搬运部分PPT了 b\u0026q 由于立场和目标的衍生矛盾，网络审查和审查规避之间的对抗演进交织进行。知名的审查系统或者封闭网络成为许多反审查研究的首选对象（似乎已经成为不成文的共识一般），本文的对象即中国的GFW——长城防火墙。随着加密防护的意识普及和部署访问的技术迭代更新，加密流量逐渐成为网络主流，审查的有效作用域和效果均被极大限制，但无论审查还是审查规避都在向新推广的加密协议迁移，其中代表之一便是QUIC。\n尽管QUIC宣称全过程加密，但在QUIC连接建立的早期【QUIC 握手】却并不安全，这一阶段客户端和服务还未进行交互得到仅对方可知的密钥材料，因而加密基于的关键信息是公开/可获取的，这个过程的密钥能够被计算解密，针对QUIC-SNI的审查基于此展开，而对应本文的反向测绘同样基于该逻辑进行反推。\n本研究关注QUIC-SNI是怎么实行的，以及封锁特点等，其实都是基于上述逻辑进行展开或者单项深入得到的测量发现。\ncore ​\t审查实施机制、审查机制特点【如何封锁、封锁什么、封锁的可观特征】\nPPT：开始无脑贴图…\n",
+  "wordCount" : "2586",
   "inLanguage": "zh",
   "datePublished": "2025-08-26T11:22:50+08:00",
   "dateModified": "2025-08-26T11:22:50+08:00",
@@ -205,7 +205,7 @@
     <h1 class="post-title entry-hint-parent">
       plog-25.08.29
     </h1>
-    <div class="post-meta"><span title='2025-08-26 11:22:50 +0800 CST'>2025-08-26</span>&nbsp;·&nbsp;5 mins&nbsp;·&nbsp;Lz0o0 w/ kimi
+    <div class="post-meta"><span title='2025-08-26 11:22:50 +0800 CST'>2025-08-26</span>&nbsp;·&nbsp;6 mins&nbsp;·&nbsp;Lz0o0 w/ kimi
 
 </div>
   </header>
@@ -257,19 +257,7 @@
                     <li>
                         <a href="#bq-1" aria-label="b&amp;q"><strong>b&amp;q</strong></a></li>
                     <li>
-                        <a href="#core-1" aria-label="core"><strong>core</strong></a></li>
-                    <li>
-                        <a href="#challenge-1" aria-label="challenge"><strong>challenge</strong></a></li>
-                    <li>
-                        <a href="#methodtrick-1" aria-label="Method&amp;Trick"><strong>Method&amp;Trick</strong></a></li>
-                    <li>
-                        <a href="#topo-1" aria-label="Topo"><strong>Topo</strong></a></li>
-                    <li>
-                        <a href="#effect-1" aria-label="effect"><strong>effect</strong></a></li>
-                    <li>
-                        <a href="#find-1" aria-label="Find"><strong>Find</strong></a></li>
-                    <li>
-                        <a href="#tools-1" aria-label="Tools"><strong>Tools</strong></a>
+                        <a href="#core-1" aria-label="core"><strong>core</strong></a>
                     </li>
                 </ul>
                 </ul>
@@ -491,17 +479,30 @@
 <ul>
 <li><strong>title</strong>：Exposing and Circumventing SNI-based QUIC Censorship of the Great Firewall of China</li>
 <li><strong>coj</strong>：USENIX 25</li>
+<li>note：这篇线下讲过，简单讲下背景核心，后面直接搬运部分PPT了</li>
 </ul>
 <h4 id="bq-1"><strong>b&amp;q</strong><a hidden class="anchor" aria-hidden="true" href="#bq-1">#</a></h4>
-<p>  QUIC-FOR-TEST!
-WISH FOR RIGHT!</p>
+<p>  由于立场和目标的衍生矛盾，网络审查和审查规避之间的对抗演进交织进行。知名的审查系统或者封闭网络成为许多反审查研究的首选对象（似乎已经成为不成文的共识一般），本文的对象即中国的GFW——长城防火墙。随着加密防护的意识普及和部署访问的技术迭代更新，加密流量逐渐成为网络主流，审查的有效作用域和效果均被极大限制，但无论审查还是审查规避都在向新推广的加密协议迁移，其中代表之一便是QUIC。</p>
+<p>  尽管QUIC宣称全过程加密，但在QUIC连接建立的早期【QUIC 握手】却并不安全，这一阶段客户端和服务还未进行交互得到仅对方可知的密钥材料，因而加密基于的关键信息是公开/可获取的，这个过程的密钥能够被计算解密，针对QUIC-SNI的审查基于此展开，而对应本文的反向测绘同样基于该逻辑进行反推。</p>
+<p>  本研究关注QUIC-SNI是怎么实行的，以及封锁特点等，其实都是基于上述逻辑进行展开或者单项深入得到的测量发现。</p>
 <h4 id="core-1"><strong>core</strong><a hidden class="anchor" aria-hidden="true" href="#core-1">#</a></h4>
-<h4 id="challenge-1"><strong>challenge</strong><a hidden class="anchor" aria-hidden="true" href="#challenge-1">#</a></h4>
-<h4 id="methodtrick-1"><strong>Method&amp;Trick</strong><a hidden class="anchor" aria-hidden="true" href="#methodtrick-1">#</a></h4>
-<h4 id="topo-1"><strong>Topo</strong><a hidden class="anchor" aria-hidden="true" href="#topo-1">#</a></h4>
-<h4 id="effect-1"><strong>effect</strong><a hidden class="anchor" aria-hidden="true" href="#effect-1">#</a></h4>
-<h4 id="find-1"><strong>Find</strong><a hidden class="anchor" aria-hidden="true" href="#find-1">#</a></h4>
-<h4 id="tools-1"><strong>Tools</strong><a hidden class="anchor" aria-hidden="true" href="#tools-1">#</a></h4>
+<p>​	审查实施机制、审查机制特点【如何封锁、封锁什么、封锁的可观特征】</p>
+<p><strong>PPT</strong>：开始无脑贴图&hellip;</p>
+<img src="https://img.lizhuo.space/plog250829-4.png" alt="揭露&规避 GFW的QUIC-SNI审查" style="zoom: 65%;" />
+<br>
+<img src="https://img.lizhuo.space/plog250829-5.png" alt="审查vs规避 对抗" style="zoom: 65%;" />
+<br>
+<img src="https://img.lizhuo.space/plog250829-6.png" alt="QUIC简介" style="zoom: 65%;" />
+<br>
+<img src="https://img.lizhuo.space/plog250829-7.png" alt="QUIC审查相关研究" style="zoom: 65%;" />
+<br>
+<img src="https://img.lizhuo.space/plog250829-8.png" alt="实验设计与目标明确" style="zoom: 65%;" />
+<br>
+<img src="https://img.lizhuo.space/plog250829-9.png" alt="研究内容与动机推测" style="zoom: 65%;" />
+<br>
+<img src="https://img.lizhuo.space/plog250829-10.png" alt="研究内容与核心发现" style="zoom: 65%;" />
+<br>
+<img src="https://img.lizhuo.space/plog250829-11.png" alt="研究工作简评" style="zoom: 65%;" />
 
 
   </div>
@@ -509,10 +510,10 @@ WISH FOR RIGHT!</p>
   <footer class="post-footer">
     
 <nav class="paginav">
-  <a class="prev" href="https://lz0o0.github.io/zh/posts/life/says/">
+  <a class="prev" href="https://lz0o0.github.io/zh/posts/poetry/%E6%B0%B4%E8%B0%83%E6%AD%8C%E5%A4%B4%E9%87%8D%E4%B8%8A%E4%BA%95%E5%86%88%E5%B1%B1/">
     <span class="title">« Last Page</span>
     <br>
-    <span>💭 See what I Says</span>
+    <span>水调歌头·重上井冈山</span>
   </a>
   <a class="next" href="https://lz0o0.github.io/zh/posts/academic/weekly-paper/">
     <span class="title">Next Page »</span>
