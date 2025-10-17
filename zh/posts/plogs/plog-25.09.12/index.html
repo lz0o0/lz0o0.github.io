@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Plog 25.09.12 | Le blog de Lz0o0</title>
+<meta name="keywords" content="流量分析, 中观理论">
+<meta name="description" content="鲁棒可认证的流量分析；ML与DL的实效比对；恶意加密流特征挖掘">
+<meta name="author" content="Lz0o0 w/ 安全内参">
+<link rel="canonical" href="https://lz0o0.github.io/zh/posts/plogs/plog-25.09.12/">
+
+
+
+<link crossorigin="anonymous" href="/assets/css/stylesheet.dc247c692426150538992de49392ca63b8cb0d90dcc90029cb4735527c5f15b2.css" integrity="" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lz0o0.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lz0o0.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lz0o0.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lz0o0.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lz0o0.github.io/favicon.ico">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="https://lz0o0.github.io/zh/posts/plogs/plog-25.09.12/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+<meta property="og:url" content="https://lz0o0.github.io/zh/posts/plogs/plog-25.09.12/">
+  <meta property="og:site_name" content="Le blog de Lz0o0">
+  <meta property="og:title" content="Plog 25.09.12">
+  <meta property="og:description" content="鲁棒可认证的流量分析；ML与DL的实效比对；恶意加密流特征挖掘">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-09-12T09:36:05+08:00">
+    <meta property="article:modified_time" content="2025-09-12T09:36:05+08:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Plog 25.09.12">
+<meta name="twitter:description" content="鲁棒可认证的流量分析；ML与DL的实效比对；恶意加密流特征挖掘">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "๑✦ˑ_✦",
+      "item": "https://lz0o0.github.io/zh/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "๑乛◡乛๑",
+      "item": "https://lz0o0.github.io/zh/posts/plogs/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Plog 25.09.12",
+      "item": "https://lz0o0.github.io/zh/posts/plogs/plog-25.09.12/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Plog 25.09.12",
+  "name": "Plog 25.09.12",
+  "description": "鲁棒可认证的流量分析；ML与DL的实效比对；恶意加密流特征挖掘",
+  "keywords": [
+    "流量分析", "中观理论"
+  ],
+  "articleBody": "\rA. CertTA：鲁棒可认证的流量分析 title：CertTA: Certified Robustness Made Practical for Learning-Based Traffic Analysis coj：USENIX Securitry 25 Link：https://www.usenix.org/conference/usenixsecurity25/presentation/yan-jinzhu note：鲁棒区域和数学推导的结合不错，可供借鉴 b\u0026m 随着AI在网络流量分析中的广泛应用，基于机器学习的模型在入侵检测、应用识别等任务中表现出高准确率。然而，这些模型在面对对抗攻击时表现出严重的脆弱性，攻击者可通过数据包延迟、填充、插入等方式构造对抗流量，误导模型判断，导致AI驱动的流量分析系统在实际应用中缺乏安全性保障。因此，为AI驱动的流量分析系统提供可证明的鲁棒性保障，成为当前亟需解决的关键问题。\nr\u0026q 现有研究主要采用可认证鲁棒性方法（如随机平滑）为AI模型提供理论安全保证。在流量分析领域，现有方法主要分为两类：\n将流量数据视为连续向量，认证其上的加性扰动； 将流量视为离散序列，认证数据包的插入、删除等离散扰动。 离散扰动比较好理解即增删改排，而所谓加性扰动其实就是数学游戏，对连续向量施加的改动无非就是改数值、调时隙，在数学上将这种扰动量化为加性噪声ΔL，严格来说论文中的“加性扰动”是在工程里是对离散包做的，但可以在理论里被当成连续向量上的 ℓ∞ 【ℓ∞ 范数 ‖Δx‖∞ = maxᵢ |Δxᵢ|：逐维单独算，只要最狠的那一下不超标，就认你安全**】样式扰动**来处理。然而，现实中的对抗攻击往往是多模态的，同时包含加性和离散扰动，并且且不同模型结构和输入表征差异较大，现有方法很难提供通用且有效的鲁棒性保证。（这里比较直观能想到可以结合这两种思路来进行平滑兼容）\nm\u0026s 本文提出CertTA框架，创新性地引入多模态随机平滑方法，同时应对加性和离散对抗扰动，核心思想包括：\n多模态随机平滑：从原始流量中随机选取部分数据包，并在其长度和时间间隔上添加指数型噪声，生成多个平滑样本； 鲁棒区域推导：通过理论分析，推导出分类结果在多模态扰动下保持不变的鲁棒区域，提供可认证的分类准确率下界； 联合防御机制：将CertTA与异常检测系统结合，构建能同时应对强攻击和隐蔽攻击的联合防御系统，提升整体防护能力。 CertTA的核心有两个，一个是多模态的随机平滑，另一个是所谓的鲁棒区域。\n多模态随机平滑基本上融合了两种传统鲁棒认证思路的特点，通过离散采样和附加指数型扰动，来尽可能增大对样本随机空间覆盖程度，支撑后续鲁棒空间的推导。\n对输入样本多轮平滑后得到的输出样本即可用于分类决策，论文实际的实现也是如此，后续基于基分类器进行多数投票（plurality vote）：对一批加了随机扰动后的平滑样本跑模型，把得票最多的那个类别当作最终预测。\n鲁棒区域如何理解？下面是原文中的数学推导，看起来很复杂，我们简单草履虫式的思考一下：一个不规则点块经过随机扩散（like水溶）后得到一个大很多的扩散区域，我们需要画圈圈出尽可能多的原本的点块。在实际操作时，我们会发现鲁棒的区域很难界定，不规则而且不同部分的扩散也各不相同，那么有什么好办法呢？愚蠢的草履虫决定反复画圈，每一圈尽可能基于当前时刻的扩散情况圈出更多，在经过很多次之后，好的，你得到了这些圈中重叠的这个部分，好了这时候你发现只要圈尽可能包含这个部分，那么你总是能够过及格线，非常之鲁棒。\n回到论文，所谓的鲁棒区域即在何种程度上不影响多数投票的结果，对各种扰动构成的波函数进行采样，只要确定最终分类稳定即可，数学推导验证了这个区域存在，并且存在下界，具体鲁棒区域的大小，取决于你的“及格线”容度。\nr\u0026s 研究还提出了一个联合防御系统，将异常检测系统与CertTA框架结合，该系统能够同时应对不同强度的对抗攻击。其中，异常检测系统首先从所有流量中过滤出异常告警流量，再将其余未告警流量（对应那些强扰动干扰的部分）输入CertTA框架进行可认证鲁棒的流量分类。\nelse 论文一共跑了 6 种异构基分类器，覆盖传统机器学习、深度 CNN、RNN、Transformer 等不同结构，以及三种常见流量表征（统计特征、原始序列、原始字节）。列表如下：\nFlowLens（基于决策树的传统 ML，用手工统计特征） FS-Net（1-D CNN + 注意力，原始流量序列输入） DeepPacket（CNN，原始字节输入） AppScanner（堆叠 CNN + 全连接，原始字节） LSTM-based classifier（两层 LSTM，原始序列） Transformer-based classifier（自注意力序列模型，原始序列） 所有模型都在公开数据集（CICIDS2017、USTC-TFC2016 等）上重新训练，然后套进 CertTA 的随机平滑管道，用来验证“同一份证书”对不同架构、不同输入表征都能给出可证明鲁棒下界。\nB. 深度学习与传统机器学习在加密恶意流量分类中的对比研究 title：When a RF beats a CNN and GRU, together—A comparison of deep learning and classical machine learning approaches for encrypted malware traffic classification coj：Computers \u0026 Security, 2022 Link：https://www.sciencedirect.com/science/article/pii/S0167404822003923 note： C. 加密恶意流量特征挖掘研究 title：Feature Mining for Encrypted Malicious Traffic Detection with Deep Learning and Other Machine Learning Algorithms coj：Computers \u0026 Security, 2023 Link：https://www.sciencedirect.com/science/article/pii/S0167404823000536 note： Refer 安全内参：CertTA：流量分析的可证明安全 安全内参：深度学习与传统机器学习在加密恶意流量分类中的对比研究 安全内参：加密恶意流量特征挖掘研究 ",
+  "wordCount" : "2299",
+  "inLanguage": "zh",
+  "datePublished": "2025-09-12T09:36:05+08:00",
+  "dateModified": "2025-09-12T09:36:05+08:00",
+  "author":[{
+    "@type": "Person",
+    "name": "Lz0o0 w/ 安全内参"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lz0o0.github.io/zh/posts/plogs/plog-25.09.12/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Le blog de Lz0o0",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lz0o0.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lz0o0.github.io/zh/" accesskey="h" title="Le blog de Lz0o0 (Alt + H)">Le blog de Lz0o0</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lz0o0.github.io/zh/search" title="🔍Search (Alt &#43; /)" accesskey=/>
+                    <span>🔍Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/" title="🏠Home">
+                    <span>🏠Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/posts/plogs" title="Plogs">
+                    <span>Plogs</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/posts" title="📓Blogs">
+                    <span>📓Blogs</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/posts/poetry" title="📝Poetry">
+                    <span>📝Poetry</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/tags" title="🔖tags">
+                    <span>🔖tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/archive" title="⏱archives">
+                    <span>⏱archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/links" title="🤝links">
+                    <span>🤝links</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lz0o0.github.io/zh/about" title="😎about">
+                    <span>😎about</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://lz0o0.github.io/zh/">🏠Home</a>&nbsp;»&nbsp;<a href="https://lz0o0.github.io/zh/posts/">๑✦ˑ_✦</a>&nbsp;»&nbsp;<a href="https://lz0o0.github.io/zh/posts/plogs/">๑乛◡乛๑</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Plog 25.09.12
+    </h1>
+    <div class="post-meta"><span title='2025-09-12 09:36:05 +0800 CST'>2025-09-12</span>&nbsp;·&nbsp;5 mins&nbsp;·&nbsp;Lz0o0 w/ 安全内参
+
+</div>
+  </header>
+
+  
+  <div class="post-tags">
+      <ul class="post-tags">
+      </ul>
+  </div> 
+  
+  <div class="toc-container"><aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Directory</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#a-certta%e9%b2%81%e6%a3%92%e5%8f%af%e8%ae%a4%e8%af%81%e7%9a%84%e6%b5%81%e9%87%8f%e5%88%86%e6%9e%90" aria-label="A. CertTA：鲁棒可认证的流量分析"><font size=4>A. CertTA：鲁棒可认证的流量分析</font></a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#bm" aria-label="b&amp;m"><strong>b&amp;m</strong></a></li>
+                    <li>
+                        <a href="#rq" aria-label="r&amp;q"><strong>r&amp;q</strong></a></li>
+                    <li>
+                        <a href="#ms" aria-label="m&amp;s"><strong>m&amp;s</strong></a></li>
+                    <li>
+                        <a href="#rs" aria-label="r&amp;s"><strong>r&amp;s</strong></a></li>
+                    <li>
+                        <a href="#else" aria-label="else"><strong>else</strong></a></li></ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#b-%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e4%b8%8e%e4%bc%a0%e7%bb%9f%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e5%9c%a8%e5%8a%a0%e5%af%86%e6%81%b6%e6%84%8f%e6%b5%81%e9%87%8f%e5%88%86%e7%b1%bb%e4%b8%ad%e7%9a%84%e5%af%b9%e6%af%94%e7%a0%94%e7%a9%b6" aria-label="B. 深度学习与传统机器学习在加密恶意流量分类中的对比研究"><font size=4>B. 深度学习与传统机器学习在加密恶意流量分类中的对比研究</font></a></li>
+                    <li>
+                        <a href="#c-%e5%8a%a0%e5%af%86%e6%81%b6%e6%84%8f%e6%b5%81%e9%87%8f%e7%89%b9%e5%be%81%e6%8c%96%e6%8e%98%e7%a0%94%e7%a9%b6" aria-label="C. 加密恶意流量特征挖掘研究"><font size=4>C. 加密恶意流量特征挖掘研究</font></a><ul>
+                            
+                    <li>
+                        <a href="#refer" aria-label="Refer">Refer</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    
+    document.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+    
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        if (elements.length > 0) {
+            
+            activeElement = elements[0];
+            const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+            document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+        }
+    
+        
+        const topLink = document.getElementById('top-link');
+        if (topLink) {
+            topLink.addEventListener('click', (event) => {
+                
+                event.preventDefault();
+    
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }, false);
+    
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+    
+    window.addEventListener('scroll', () => {
+        
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    
+        
+        if (scrollPosition === 0) {
+            return;
+        }
+    
+        
+        if (elements && elements.length > 0) {
+            
+            activeElement = Array.from(elements).find((element) => {
+                if ((getOffsetTop(element) - scrollPosition) > 0 && 
+                    (getOffsetTop(element) - scrollPosition) < window.innerHeight / 2) {
+                    return element;
+                }
+            }) || activeElement;
+    
+            elements.forEach(element => {
+                const id = encodeURI(element.getAttribute('id')).toLowerCase();
+                const tocLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
+                if (element === activeElement){
+                    tocLink.classList.add('active');
+    
+                    
+                    const tocContainer = document.querySelector('.toc .inner');
+                    const linkOffsetTop = tocLink.offsetTop;
+                    const containerHeight = tocContainer.clientHeight;
+                    const linkHeight = tocLink.clientHeight;
+    
+                    
+                    const scrollPosition = linkOffsetTop - (containerHeight / 2) + (linkHeight / 2);
+                    tocContainer.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+                } else {
+                    tocLink.classList.remove('active');
+                }
+            });
+        }
+    }, false);
+    
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+    
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+    
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+    
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+    
+</script>
+
+  </div>
+  <div class="post-content"><!-- more -->
+<h2 id="a-certta鲁棒可认证的流量分析"><font size=4>A. CertTA：鲁棒可认证的流量分析</font><a hidden class="anchor" aria-hidden="true" href="#a-certta鲁棒可认证的流量分析">#</a></h2>
+<ul>
+<li><strong>title</strong>：CertTA: Certified Robustness Made Practical for Learning-Based Traffic Analysis</li>
+<li><strong>coj</strong>：USENIX Securitry 25</li>
+<li><strong>Link</strong>：https://www.usenix.org/conference/usenixsecurity25/presentation/yan-jinzhu</li>
+<li><strong>note</strong>：鲁棒区域和数学推导的结合不错，可供借鉴</li>
+</ul>
+<h4 id="bm"><strong>b&amp;m</strong><a hidden class="anchor" aria-hidden="true" href="#bm">#</a></h4>
+<p>  随着AI在网络流量分析中的广泛应用，基于机器学习的模型在入侵检测、应用识别等任务中表现出高准确率。然而，这些模型在面对对抗攻击时表现出严重的脆弱性，攻击者可通过<strong>数据包延迟、填充、插入</strong>等方式构造<strong>对抗流量，误导模型判断</strong>，导致AI驱动的流量分析系统在实际应用中缺乏安全性保障。因此，<u>为AI驱动的流量分析系统提供可证明的鲁棒性保障</u>，成为当前亟需解决的关键问题。</p>
+<h4 id="rq"><strong>r&amp;q</strong><a hidden class="anchor" aria-hidden="true" href="#rq">#</a></h4>
+<p>  现有研究主要采用<strong>可认证鲁棒性方法</strong>（如随机平滑）为AI模型提供理论安全保证。在流量分析领域，现有方法主要分为两类：</p>
+<img src="https://s.secrss.com/anquanneican/d4939abc83d233224b7ebe4ec3eb4a6a.png" alt="流量鲁棒认证方法-离散&连续平滑·" style="zoom: 65%;" />
+<ol>
+<li>将流量数据视为连续向量，认证其上的加性扰动；</li>
+<li>将流量视为离散序列，认证数据包的插入、删除等离散扰动。</li>
+</ol>
+<p>  离散扰动比较好理解即增删改排，而所谓加性扰动其实就是数学游戏，对连续向量施加的改动无非就是改数值、调时隙，在数学上将这种扰动量化为加性噪声<strong>ΔL</strong>，严格来说论文中的“加性扰动”是在工程里是对离散包做的，但可以在理论里被<strong>当成连续向量上的 ℓ∞ 【ℓ∞ 范数 ‖Δx‖∞ = maxᵢ |Δxᵢ|</strong>：逐维单独算，只要最狠的那一下不超标，就认你安全**】样式扰动**来处理。然而，<strong>现实中的对抗攻击往往是多模态的</strong>，同时包含加性和离散扰动，并且且不同模型结构和输入表征差异较大，现有方法很难提供通用且有效的鲁棒性保证。（这里比较直观能想到可以结合这两种思路来进行平滑兼容）</p>
+<h4 id="ms"><strong>m&amp;s</strong><a hidden class="anchor" aria-hidden="true" href="#ms">#</a></h4>
+<p>  本文提出<strong>CertTA框架</strong>，创新性地引入<strong>多模态随机平滑方法</strong>，同时应对加性和离散对抗扰动，核心思想包括：</p>
+<ol>
+<li><strong>多模态随机平滑</strong>：从原始流量中随机选取部分数据包，并在其长度和时间间隔上添加指数型噪声，生成多个平滑样本；</li>
+<li><strong>鲁棒区域推导</strong>：通过理论分析，推导出分类结果在多模态扰动下保持不变的鲁棒区域，提供可认证的分类准确率下界；</li>
+<li><strong>联合防御机制</strong>：将CertTA与异常检测系统结合，构建能同时应对强攻击和隐蔽攻击的<strong>联合防御系统</strong>，提升整体防护能力。</li>
+</ol>
+<img src="https://s.secrss.com/anquanneican/65fc2b43060c9b7c8523f46f47028f1c.png" alt="鲁棒可认证的CertTA方法·" style="zoom: 65%;" />
+<p>  <strong>CertTA的核心有两个，一个是多模态的随机平滑，另一个是所谓的鲁棒区域。</strong></p>
+<p>  <strong>多模态随机平滑</strong>基本上融合了两种传统鲁棒认证思路的特点，通过离散采样和附加指数型扰动，来尽可能增大对样本随机空间覆盖程度，支撑后续鲁棒空间的推导。</p>
+<p>  对输入样本多轮平滑后得到的输出样本即可用于分类决策，论文实际的实现也是如此，后续基于基分类器进行<strong>多数投票</strong>（plurality vote）：对一批加了随机扰动后的平滑样本跑模型，把得票最多的那个类别当作最终预测。</p>
+<p>  <strong>鲁棒区域</strong>如何理解？下面是原文中的数学推导，看起来很复杂，我们简单草履虫式的思考一下：一个不规则点块经过随机扩散（like水溶）后得到一个大很多的扩散区域，我们需要画圈圈出尽可能多的原本的点块。在实际操作时，我们会发现鲁棒的区域很难界定，不规则而且不同部分的扩散也各不相同，那么有什么好办法呢？愚蠢的草履虫决定反复画圈，每一圈尽可能基于当前时刻的扩散情况圈出更多，在经过很多次之后，好的，你得到了这些圈中重叠的这个部分，好了这时候你发现只要圈尽可能包含这个部分，那么你总是能够过及格线，非常之鲁棒。</p>
+<p>  回到论文，所谓的鲁棒区域即在何种程度上不影响多数投票的结果，对各种扰动构成的波函数进行采样，只要确定最终分类稳定即可，数学推导验证了这个区域存在，并且存在下界，具体鲁棒区域的大小，取决于你的“及格线”容度。</p>
+<img src="https://s.secrss.com/anquanneican/1ee634e937658149a0f665491425cf45.png" alt="鲁棒可认证的CertTA方法·" style="zoom: 55%;" />
+<h4 id="rs"><strong>r&amp;s</strong><a hidden class="anchor" aria-hidden="true" href="#rs">#</a></h4>
+<p>  研究还提出了一个联合防御系统，将异常检测系统与CertTA框架结合，该系统能够同时应对不同强度的对抗攻击。其中，异常检测系统首先从所有流量中过滤出异常告警流量，再将其余未告警流量（对应那些强扰动干扰的部分）输入CertTA框架进行可认证鲁棒的流量分类。</p>
+<img src="https://s.secrss.com/anquanneican/a46256cedbe79ef12c9891c40edc6138.png" alt="鲁棒可认证的CertTA方法·" style="zoom: 65%;" />
+<h4 id="else"><strong>else</strong><a hidden class="anchor" aria-hidden="true" href="#else">#</a></h4>
+<p>  论文一共跑了 <strong>6 种异构基分类器</strong>，覆盖传统机器学习、深度 CNN、RNN、Transformer 等不同结构，以及三种常见流量表征（统计特征、原始序列、原始字节）。列表如下：</p>
+<ol>
+<li><strong>FlowLens</strong>（基于决策树的传统 ML，用手工统计特征）</li>
+<li><strong>FS-Net</strong>（1-D CNN + 注意力，原始流量序列输入）</li>
+<li><strong>DeepPacket</strong>（CNN，原始字节输入）</li>
+<li><strong>AppScanner</strong>（堆叠 CNN + 全连接，原始字节）</li>
+<li><strong>LSTM-based classifier</strong>（两层 LSTM，原始序列）</li>
+<li><strong>Transformer-based classifier</strong>（自注意力序列模型，原始序列）</li>
+</ol>
+<p>  所有模型都在公开数据集（CICIDS2017、USTC-TFC2016 等）上重新训练，然后套进 CertTA 的随机平滑管道，用来验证“同一份证书”对<strong>不同架构、不同输入表征</strong>都能给出可证明鲁棒下界。</p>
+<h2 id="b-深度学习与传统机器学习在加密恶意流量分类中的对比研究"><font size=4>B. 深度学习与传统机器学习在加密恶意流量分类中的对比研究</font><a hidden class="anchor" aria-hidden="true" href="#b-深度学习与传统机器学习在加密恶意流量分类中的对比研究">#</a></h2>
+<ul>
+<li><strong>title</strong>：When a RF beats a CNN and GRU, together—A comparison of deep learning and classical machine learning approaches for encrypted malware traffic classification</li>
+<li><strong>coj</strong>：Computers &amp; Security, 2022</li>
+<li><strong>Link</strong>：https://www.sciencedirect.com/science/article/pii/S0167404822003923</li>
+<li><strong>note</strong>：</li>
+</ul>
+<h2 id="c-加密恶意流量特征挖掘研究"><font size=4>C. 加密恶意流量特征挖掘研究</font><a hidden class="anchor" aria-hidden="true" href="#c-加密恶意流量特征挖掘研究">#</a></h2>
+<ul>
+<li><strong>title</strong>：Feature Mining for Encrypted Malicious Traffic  Detection with Deep Learning and Other Machine  Learning Algorithms</li>
+<li><strong>coj</strong>：Computers &amp; Security, 2023</li>
+<li><strong>Link</strong>：https://www.sciencedirect.com/science/article/pii/S0167404823000536</li>
+<li><strong>note</strong>：</li>
+</ul>
+<h3 id="refer">Refer<a hidden class="anchor" aria-hidden="true" href="#refer">#</a></h3>
+<ul>
+<li><font size=3>安全内参：<a href="https://www.secrss.com/articles/82208">CertTA：流量分析的可证明安全</a></font></li>
+<li><font size=3>安全内参：<a href="https://www.secrss.com/articles/83177">深度学习与传统机器学习在加密恶意流量分类中的对比研究</a></font></li>
+<li><font size=3>安全内参：<a href="https://www.secrss.com/articles/82927">加密恶意流量特征挖掘研究</a></font></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    
+<nav class="paginav">
+  <a class="prev" href="https://lz0o0.github.io/zh/posts/poetry/%E6%B0%B4%E8%B0%83%E6%AD%8C%E5%A4%B4%E9%87%8D%E4%B8%8A%E4%BA%95%E5%86%88%E5%B1%B1/">
+    <span class="title">« Last Page</span>
+    <br>
+    <span>水调歌头·重上井冈山</span>
+  </a>
+  <a class="next" href="https://lz0o0.github.io/zh/posts/plogs/plog-25.08.29/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>plog-25.08.29</span>
+  </a>
+</nav>
+
+  </footer>
+<script src="https://utteranc.es/client.js"
+        repo="lz0o0/lz0o0.github.io"
+        issue-term="pathname"
+        theme="icy-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+</article>
+    </main>
+    
+<footer class="footer">
+    
+    <div class="poem-footer">
+        <span class="poem_sentence"></span>
+        <span class="poem_info"></span>
+    </div>
+
+    
+
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    jinrishici.load(function(result) {
+        var sentence = document.querySelector(".poem_sentence");
+        var info = document.querySelector(".poem_info");
+        sentence.innerHTML = result.data.content;
+        info.innerHTML = '---- ' + result.data.origin.author;
+    });
+    </script>
+    
+    <script type="text/javascript">
+    jinrishici.load(function(result) {
+        var sentence = document.querySelector(".poem_sentence");
+        var info = document.querySelector(".poem_info");
+        sentence.innerHTML = result.data.content;
+        info.innerHTML = '---- ' + result.data.origin.author;
+    });
+
+    
+    function runtime() {
+        
+        var startTime = new Date('2025-04-04');
+        var currentTime = new Date();
+        var diffTime = currentTime - startTime;
+        var days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+        
+        document.getElementById("runtime_span").innerHTML = 
+            days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒";
+    }
+
+    
+    runtime();
+    
+    setInterval(runtime, 1000);
+    </script>
+    
+    
+
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
