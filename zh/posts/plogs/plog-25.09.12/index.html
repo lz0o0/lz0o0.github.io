@@ -88,8 +88,8 @@
   "keywords": [
     "流量分析", "中观理论"
   ],
-  "articleBody": "\rA. CertTA：鲁棒可认证的流量分析 title：CertTA: Certified Robustness Made Practical for Learning-Based Traffic Analysis coj：USENIX Securitry 25 Link：https://www.usenix.org/conference/usenixsecurity25/presentation/yan-jinzhu note：鲁棒区域和数学推导的结合不错，可供借鉴 b\u0026m 随着AI在网络流量分析中的广泛应用，基于机器学习的模型在入侵检测、应用识别等任务中表现出高准确率。然而，这些模型在面对对抗攻击时表现出严重的脆弱性，攻击者可通过数据包延迟、填充、插入等方式构造对抗流量，误导模型判断，导致AI驱动的流量分析系统在实际应用中缺乏安全性保障。因此，为AI驱动的流量分析系统提供可证明的鲁棒性保障，成为当前亟需解决的关键问题。\nr\u0026q 现有研究主要采用可认证鲁棒性方法（如随机平滑）为AI模型提供理论安全保证。在流量分析领域，现有方法主要分为两类：\n将流量数据视为连续向量，认证其上的加性扰动； 将流量视为离散序列，认证数据包的插入、删除等离散扰动。 离散扰动比较好理解即增删改排，而所谓加性扰动其实就是数学游戏，对连续向量施加的改动无非就是改数值、调时隙，在数学上将这种扰动量化为加性噪声ΔL，严格来说论文中的“加性扰动”是在工程里是对离散包做的，但可以在理论里被当成连续向量上的 ℓ∞ 【ℓ∞ 范数 ‖Δx‖∞ = maxᵢ |Δxᵢ|：逐维单独算，只要最狠的那一下不超标，就认你安全**】样式扰动**来处理。然而，现实中的对抗攻击往往是多模态的，同时包含加性和离散扰动，并且且不同模型结构和输入表征差异较大，现有方法很难提供通用且有效的鲁棒性保证。（这里比较直观能想到可以结合这两种思路来进行平滑兼容）\nm\u0026s 本文提出CertTA框架，创新性地引入多模态随机平滑方法，同时应对加性和离散对抗扰动，核心思想包括：\n多模态随机平滑：从原始流量中随机选取部分数据包，并在其长度和时间间隔上添加指数型噪声，生成多个平滑样本； 鲁棒区域推导：通过理论分析，推导出分类结果在多模态扰动下保持不变的鲁棒区域，提供可认证的分类准确率下界； 联合防御机制：将CertTA与异常检测系统结合，构建能同时应对强攻击和隐蔽攻击的联合防御系统，提升整体防护能力。 CertTA的核心有两个，一个是多模态的随机平滑，另一个是所谓的鲁棒区域。\n多模态随机平滑基本上融合了两种传统鲁棒认证思路的特点，通过离散采样和附加指数型扰动，来尽可能增大对样本随机空间覆盖程度，支撑后续鲁棒空间的推导。\n对输入样本多轮平滑后得到的输出样本即可用于分类决策，论文实际的实现也是如此，后续基于基分类器进行多数投票（plurality vote）：对一批加了随机扰动后的平滑样本跑模型，把得票最多的那个类别当作最终预测。\n鲁棒区域如何理解？下面是原文中的数学推导，看起来很复杂，我们简单草履虫式的思考一下：一个不规则点块经过随机扩散（like水溶）后得到一个大很多的扩散区域，我们需要画圈圈出尽可能多的原本的点块。在实际操作时，我们会发现鲁棒的区域很难界定，不规则而且不同部分的扩散也各不相同，那么有什么好办法呢？愚蠢的草履虫决定反复画圈，每一圈尽可能基于当前时刻的扩散情况圈出更多，在经过很多次之后，好的，你得到了这些圈中重叠的这个部分，好了这时候你发现只要圈尽可能包含这个部分，那么你总是能够过及格线，非常之鲁棒。\n回到论文，所谓的鲁棒区域即在何种程度上不影响多数投票的结果，对各种扰动构成的波函数进行采样，只要确定最终分类稳定即可，数学推导验证了这个区域存在，并且存在下界，具体鲁棒区域的大小，取决于你的“及格线”容度。\nr\u0026s 研究还提出了一个联合防御系统，将异常检测系统与CertTA框架结合，该系统能够同时应对不同强度的对抗攻击。其中，异常检测系统首先从所有流量中过滤出异常告警流量，再将其余未告警流量（对应那些强扰动干扰的部分）输入CertTA框架进行可认证鲁棒的流量分类。\nelse 论文一共跑了 6 种异构基分类器，覆盖传统机器学习、深度 CNN、RNN、Transformer 等不同结构，以及三种常见流量表征（统计特征、原始序列、原始字节）。列表如下：\nFlowLens（基于决策树的传统 ML，用手工统计特征） FS-Net（1-D CNN + 注意力，原始流量序列输入） DeepPacket（CNN，原始字节输入） AppScanner（堆叠 CNN + 全连接，原始字节） LSTM-based classifier（两层 LSTM，原始序列） Transformer-based classifier（自注意力序列模型，原始序列） 所有模型都在公开数据集（CICIDS2017、USTC-TFC2016 等）上重新训练，然后套进 CertTA 的随机平滑管道，用来验证“同一份证书”对不同架构、不同输入表征都能给出可证明鲁棒下界。\nB. 深度学习与传统机器学习在加密恶意流量分类中的对比研究 title：When a RF beats a CNN and GRU, together—A comparison of deep learning and classical machine learning approaches for encrypted malware traffic classification coj：Computers \u0026 Security, 2022 Link：https://www.sciencedirect.com/science/article/pii/S0167404822003923 note： C. 加密恶意流量特征挖掘研究 title：Feature Mining for Encrypted Malicious Traffic Detection with Deep Learning and Other Machine Learning Algorithms coj：Computers \u0026 Security, 2023 Link：https://www.sciencedirect.com/science/article/pii/S0167404823000536 note： Refer 安全内参：CertTA：流量分析的可证明安全 安全内参：深度学习与传统机器学习在加密恶意流量分类中的对比研究 安全内参：加密恶意流量特征挖掘研究 ",
-  "wordCount" : "2299",
+  "articleBody": "\rA. CertTA：鲁棒可认证的流量分析框架 title：CertTA: Certified Robustness Made Practical for Learning-Based Traffic Analysis coj：USENIX Securitry 25 Link：https://www.usenix.org/conference/usenixsecurity25/presentation/yan-jinzhu note：鲁棒区域和数学推导的结合不错，可供借鉴 b\u0026m 随着AI在网络流量分析中的广泛应用，基于机器学习的模型在入侵检测、应用识别等任务中表现出高准确率。然而，这些模型在面对对抗攻击时表现出严重的脆弱性，攻击者可通过数据包延迟、填充、插入等方式构造对抗流量，误导模型判断，导致AI驱动的流量分析系统在实际应用中缺乏安全性保障。因此，为AI驱动的流量分析系统提供可证明的鲁棒性保障，成为当前亟需解决的关键问题。\nr\u0026q 现有研究主要采用可认证鲁棒性方法（如随机平滑）为AI模型提供理论安全保证。在流量分析领域，现有方法主要分为两类：\n将流量数据视为连续向量，认证其上的加性扰动； 将流量视为离散序列，认证数据包的插入、删除等离散扰动。 离散扰动比较好理解即增删改排，而所谓加性扰动其实就是数学游戏，对连续向量施加的改动无非就是改数值、调时隙，在数学上将这种扰动量化为加性噪声ΔL，严格来说论文中的“加性扰动”是在工程里是对离散包做的，但可以在理论里被当成连续向量上的 ℓ∞ 【ℓ∞ 范数 ‖Δx‖∞ = maxᵢ |Δxᵢ|：逐维单独算，只要最狠的那一下不超标，就认你安全**】样式扰动**来处理。然而，现实中的对抗攻击往往是多模态的，同时包含加性和离散扰动，并且且不同模型结构和输入表征差异较大，现有方法很难提供通用且有效的鲁棒性保证。（这里比较直观能想到可以结合这两种思路来进行平滑兼容）\nm\u0026s 本文提出CertTA框架，创新性地引入多模态随机平滑方法，同时应对加性和离散对抗扰动，核心思想包括：\n多模态随机平滑：从原始流量中随机选取部分数据包，并在其长度和时间间隔上添加指数型噪声，生成多个平滑样本； 鲁棒区域推导：通过理论分析，推导出分类结果在多模态扰动下保持不变的鲁棒区域，提供可认证的分类准确率下界； 联合防御机制：将CertTA与异常检测系统结合，构建能同时应对强攻击和隐蔽攻击的联合防御系统，提升整体防护能力。 CertTA的核心有两个，一个是多模态的随机平滑，另一个是所谓的鲁棒区域。\n多模态随机平滑基本上融合了两种传统鲁棒认证思路的特点，通过离散采样和附加指数型扰动，来尽可能增大对样本随机空间覆盖程度，支撑后续鲁棒空间的推导。\n对输入样本多轮平滑后得到的输出样本即可用于分类决策，论文实际的实现也是如此，后续基于基分类器进行多数投票（plurality vote）：对一批加了随机扰动后的平滑样本跑模型，把得票最多的那个类别当作最终预测。\n鲁棒区域如何理解？下面是原文中的数学推导，看起来很复杂，我们简单草履虫式的思考一下：一个不规则点块经过随机扩散（like水溶）后得到一个大很多的扩散区域，我们需要画圈圈出尽可能多的原本的点块。在实际操作时，我们会发现鲁棒的区域很难界定，不规则而且不同部分的扩散也各不相同，那么有什么好办法呢？愚蠢的草履虫决定反复画圈，每一圈尽可能基于当前时刻的扩散情况圈出更多，在经过很多次之后，好的，你得到了这些圈中重叠的这个部分，好了这时候你发现只要圈尽可能包含这个部分，那么你总是能够过及格线，非常之鲁棒。\n回到论文，所谓的鲁棒区域即在何种程度上不影响多数投票的结果，对各种扰动构成的波函数进行采样，只要确定最终分类稳定即可，数学推导验证了这个区域存在，并且存在下界，具体鲁棒区域的大小，取决于你的“及格线”容度。\nr\u0026s 研究还提出了一个联合防御系统，将异常检测系统与CertTA框架结合，该系统能够同时应对不同强度的对抗攻击。其中，异常检测系统首先从所有流量中过滤出异常告警流量，再将其余未告警流量（对应那些强扰动干扰的部分）输入CertTA框架进行可认证鲁棒的流量分类。\nelse 论文一共跑了 6 种异构基分类器，覆盖传统机器学习、深度 CNN、RNN、Transformer 等不同结构，以及三种常见流量表征（统计特征、原始序列、原始字节）。列表如下：\nFlowLens（基于决策树的传统 ML，用手工统计特征） FS-Net（1-D CNN + 注意力，原始流量序列输入） DeepPacket（CNN，原始字节输入） AppScanner（堆叠 CNN + 全连接，原始字节） LSTM-based classifier（两层 LSTM，原始序列） Transformer-based classifier（自注意力序列模型，原始序列） 所有模型都在公开数据集（CICIDS2017、USTC-TFC2016 等）上重新训练，然后套进 CertTA 的随机平滑管道，用来验证“同一份证书”对不同架构、不同输入表征都能给出可证明鲁棒下界。\nB. 深度学习与传统机器学习在加密恶意流量分类中的对比研究 title：When a RF beats a CNN and GRU, together—A comparison of deep learning and classical machine learning approaches for encrypted malware traffic classification coj：Computers \u0026 Security, 2022 Link：https://www.sciencedirect.com/science/article/pii/S0167404822003923 note：回想起来，平时交流讨论中，大家总提到各种模型，什么ML\\DL\\Graph-Based的，当然有些是服务于论文评阅的，排除包装效果之外，能够感觉大部分研究中RF效果都不错，基本比较够用了，但这之前基本是偏感性的理论认识，本篇研究相当于给了比较实际的实验结果作为支撑 b\u0026m 随着深度学习的大热，不论是学术界还是工业界，大家对深度学习模型的信任与期望越来越高，大家都在卷深度学习，这也致使深度学习成了加密流量分析中的默认解。本文的目的是为了探究，复杂的深度学习模型是否优于传统机器学习模型，或者说，传统的机器学习模型是否已经够用了呢。\n本文实验从三个数据集、多种分类任务中，较全面的对比传统机器学习与深度学习的分类表现。实验结果表明，在某些任务中，传统机器学习可以提供更简易、高效的解决方案，但这并不代表传统机器学习可以完全取代深度学习在加密流量分析中的作用。\ndsets 本文基于现有的5个公开数据集，创建了3个用于实验的数据集。其中现有数据集分别为：\nStratosphereIPS：由真实环境中的正常流量与恶意网络流量组成。 ISCX2016：由不同应用和流量类型的正常流量样本，以及VPN流量组成。 BOA：由不同操作系统、浏览器和应用程序产生的正常流量组成。 MTA：由恶意流量分析网站共享出的恶意流量样本组成。 USTC：由中科大产生的多种应用程序的正常流量和多种恶意软件的流量组成。 作者在合并数据集后发现，用不同数据集的相同家族恶意流量训练出来的模型并不通用，且分类准确率为0，结果如上表所示。所以，在创建数据集时，本文将不同数据集的相同家族恶意流量视为不同类别。创建的3个数据集如下：\nMTAB：由MTA中的恶意流量与ISCX2016、StratoshpereIPS和BOA中的正常流量组成。 USTCB：由USTC中的恶意流量与ISCX2016、StratoshpereIPS和BOA中的正常流量组成。 MUB：由MTA、ISCX2016中的恶意流量与ISCX2016、StratoshpereIPS、BOA和USTC中的正常流量组成。 在处理数据时，作者首先过滤payload少于784字节的包，因为它们能提供的有用信息较少；其次，移除数据集中的无关协议，如SNMP、局域网广播协议等；最后，为了平衡加密恶意流量与正常流量的比例，对正常流量进行随机采样。各个数据集的数据类型占比如下图所示。\ne\u0026r 研究选取了二分类、多分类两种典型场景来对比众多学习模型的实际效果；得出各自最优模型（ML-RF; DL-MalDIST）后，又针对零日恶意流量和恶意软件家族递增两种特定检测情景来对比和评估模型的实际表现、鲁棒性等指标。下表是整体结果（各模块实验见后）：\n总体来说，RF的表现并不比深度学习差，\n传统机器学习方面，本文选取了基于距离的KNN、基于树的DT和基于集成的RF；深度学习则选取了DeepMAL、MalDIST、M1CNN3、M2CNN和MalDIST。\n二分类场景下，以Accuracy为评估标准，其中KNN的表现最差，RF的表现最优，且优于深度学习模型中表现最好的MalDIST。\n多分类场景只针对恶意流量，但由于不同类型的恶意流量数量规模并不一致，所以实验增添了额外3种评估标准，对比模型在三种定制数据集上的表现。该结果与二分类结果相似，KNN最差，RF最优且优于MalDIST。\n探究RF和MalDIST对零日恶意流量检测的表现时，实验每次将一个恶意家族作为测试集，其余家族和正常流量作为训练集进行二分类测试，评估指标为准确率。结果表明，在MUB数据集上，RF在所有家族检测上都优于MalDIST；但在USTCB数据集上，RF在Geodo和Htbot等家族上表现更好，而MalDIST在Nsis和Zeus等家族上表现更佳，且在极端案例中差异尤为明显，如RF对Cridex识别率为90%，而MalDIST仅为0.6%；相反，RF无法识别Shifu和Zeus，而MalDIST能有效识别；在MUB数据集中也出现类似现象。\n为了评估恶意软件家族数量逐步增加对模型性能的影响，本实验为每个数据集依次加入新的家族，并记录每一步的模型准确率。结果表明，随着家族数量的增加，在进行恶意和正常流量二分类时，两种模型都表现出较高的性能；在进行具体家族分类任务时，模型性能整体呈下降趋势，MTAB数据集上下降最显著。整体上，RF与MalDIST的表现大致相当，未出现明显优劣差距。\nC. 加密恶意流量特征挖掘研究 title：Feature Mining for Encrypted Malicious Traffic Detection with Deep Learning and Other Machine Learning Algorithms coj：Computers \u0026 Security, 2023 Link：https://www.sciencedirect.com/science/article/pii/S0167404823000536 note： Refer 安全内参：CertTA：流量分析的可证明安全 安全内参：深度学习与传统机器学习在加密恶意流量分类中的对比研究 安全内参：加密恶意流量特征挖掘研究 ",
+  "wordCount" : "4115",
   "inLanguage": "zh",
   "datePublished": "2025-09-12T09:36:05+08:00",
   "dateModified": "2025-09-12T09:36:05+08:00",
@@ -205,7 +205,7 @@
     <h1 class="post-title entry-hint-parent">
       Plog 25.09.12
     </h1>
-    <div class="post-meta"><span title='2025-09-12 09:36:05 +0800 CST'>2025-09-12</span>&nbsp;·&nbsp;5 mins&nbsp;·&nbsp;Lz0o0 w/ 安全内参
+    <div class="post-meta"><span title='2025-09-12 09:36:05 +0800 CST'>2025-09-12</span>&nbsp;·&nbsp;9 mins&nbsp;·&nbsp;Lz0o0 w/ 安全内参
 
 </div>
   </header>
@@ -225,7 +225,7 @@
 
             <div class="inner"><ul>
                     <li>
-                        <a href="#a-certta%e9%b2%81%e6%a3%92%e5%8f%af%e8%ae%a4%e8%af%81%e7%9a%84%e6%b5%81%e9%87%8f%e5%88%86%e6%9e%90" aria-label="A. CertTA：鲁棒可认证的流量分析"><font size=4>A. CertTA：鲁棒可认证的流量分析</font></a><ul>
+                        <a href="#a-certta%e9%b2%81%e6%a3%92%e5%8f%af%e8%ae%a4%e8%af%81%e7%9a%84%e6%b5%81%e9%87%8f%e5%88%86%e6%9e%90%e6%a1%86%e6%9e%b6" aria-label="A. CertTA：鲁棒可认证的流量分析框架"><font size=4>A. CertTA：鲁棒可认证的流量分析框架</font></a><ul>
                             <ul>
                             
                     <li>
@@ -241,7 +241,17 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#b-%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e4%b8%8e%e4%bc%a0%e7%bb%9f%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e5%9c%a8%e5%8a%a0%e5%af%86%e6%81%b6%e6%84%8f%e6%b5%81%e9%87%8f%e5%88%86%e7%b1%bb%e4%b8%ad%e7%9a%84%e5%af%b9%e6%af%94%e7%a0%94%e7%a9%b6" aria-label="B. 深度学习与传统机器学习在加密恶意流量分类中的对比研究"><font size=4>B. 深度学习与传统机器学习在加密恶意流量分类中的对比研究</font></a></li>
+                        <a href="#b-%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0%e4%b8%8e%e4%bc%a0%e7%bb%9f%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e5%9c%a8%e5%8a%a0%e5%af%86%e6%81%b6%e6%84%8f%e6%b5%81%e9%87%8f%e5%88%86%e7%b1%bb%e4%b8%ad%e7%9a%84%e5%af%b9%e6%af%94%e7%a0%94%e7%a9%b6" aria-label="B. 深度学习与传统机器学习在加密恶意流量分类中的对比研究"><font size=4>B. 深度学习与传统机器学习在加密恶意流量分类中的对比研究</font></a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#bm-1" aria-label="b&amp;m"><strong>b&amp;m</strong></a></li>
+                    <li>
+                        <a href="#dsets" aria-label="dsets"><strong>dsets</strong></a></li>
+                    <li>
+                        <a href="#er" aria-label="e&amp;r"><strong>e&amp;r</strong></a></li></ul>
+                        </ul>
+                    </li>
                     <li>
                         <a href="#c-%e5%8a%a0%e5%af%86%e6%81%b6%e6%84%8f%e6%b5%81%e9%87%8f%e7%89%b9%e5%be%81%e6%8c%96%e6%8e%98%e7%a0%94%e7%a9%b6" aria-label="C. 加密恶意流量特征挖掘研究"><font size=4>C. 加密恶意流量特征挖掘研究</font></a><ul>
                             
@@ -355,7 +365,7 @@
 
   </div>
   <div class="post-content"><!-- more -->
-<h2 id="a-certta鲁棒可认证的流量分析"><font size=4>A. CertTA：鲁棒可认证的流量分析</font><a hidden class="anchor" aria-hidden="true" href="#a-certta鲁棒可认证的流量分析">#</a></h2>
+<h2 id="a-certta鲁棒可认证的流量分析框架"><font size=4>A. CertTA：鲁棒可认证的流量分析框架</font><a hidden class="anchor" aria-hidden="true" href="#a-certta鲁棒可认证的流量分析框架">#</a></h2>
 <ul>
 <li><strong>title</strong>：CertTA: Certified Robustness Made Practical for Learning-Based Traffic Analysis</li>
 <li><strong>coj</strong>：USENIX Securitry 25</li>
@@ -405,8 +415,43 @@
 <li><strong>title</strong>：When a RF beats a CNN and GRU, together—A comparison of deep learning and classical machine learning approaches for encrypted malware traffic classification</li>
 <li><strong>coj</strong>：Computers &amp; Security, 2022</li>
 <li><strong>Link</strong>：https://www.sciencedirect.com/science/article/pii/S0167404822003923</li>
-<li><strong>note</strong>：</li>
+<li><strong>note</strong>：回想起来，平时交流讨论中，大家总提到各种模型，什么ML\DL\Graph-Based的，当然有些是服务于论文评阅的，排除包装效果之外，能够感觉大部分研究中RF效果都不错，基本比较够用了，但这之前基本是偏感性的理论认识，本篇研究相当于给了比较实际的实验结果作为支撑</li>
 </ul>
+<h4 id="bm-1"><strong>b&amp;m</strong><a hidden class="anchor" aria-hidden="true" href="#bm-1">#</a></h4>
+<p>  随着深度学习的大热，不论是学术界还是工业界，大家对深度学习模型的信任与期望越来越高，大家都在卷深度学习，这也致使深度学习成了加密流量分析中的默认解。本文的目的是为了探究，复杂的深度学习模型是否优于传统机器学习模型，或者说，传统的机器学习模型是否已经够用了呢。</p>
+<p>  本文实验从三个数据集、多种分类任务中，较全面的对比传统机器学习与深度学习的分类表现。实验结果表明，在某些任务中，传统机器学习可以提供更简易、高效的解决方案，但这并不代表传统机器学习可以完全取代深度学习在加密流量分析中的作用。</p>
+<h4 id="dsets"><strong>dsets</strong><a hidden class="anchor" aria-hidden="true" href="#dsets">#</a></h4>
+<p>  本文基于现有的5个公开数据集，创建了3个用于实验的数据集。其中现有数据集分别为：</p>
+<ul>
+<li><strong>StratosphereIPS</strong>：由真实环境中的正常流量与恶意网络流量组成。</li>
+<li><strong>ISCX2016</strong>：由不同应用和流量类型的正常流量样本，以及VPN流量组成。</li>
+<li><strong>BOA</strong>：由不同操作系统、浏览器和应用程序产生的正常流量组成。</li>
+<li><strong>MTA</strong>：由恶意流量分析网站共享出的恶意流量样本组成。</li>
+<li><strong>USTC</strong>：由中科大产生的多种应用程序的正常流量和多种恶意软件的流量组成。</li>
+</ul>
+<img src="https://s.secrss.com/anquanneican/71c8e62172de26834d5ecd28f14db0fa.png" alt="鲁棒可认证的CertTA方法·" style="zoom: 55%;" />
+<p>  作者在合并数据集后发现，<strong>用不同数据集的相同家族恶意流量训练出来的模型并不通用，且分类准确率为0</strong>，结果如上表所示。所以，在创建数据集时，本文将不同数据集的相同家族恶意流量视为不同类别。创建的3个数据集如下：</p>
+<ul>
+<li><strong>MTAB</strong>：由MTA中的恶意流量与ISCX2016、StratoshpereIPS和BOA中的正常流量组成。</li>
+<li><strong>USTCB</strong>：由USTC中的恶意流量与ISCX2016、StratoshpereIPS和BOA中的正常流量组成。</li>
+<li><strong>MUB</strong>：由MTA、ISCX2016中的恶意流量与ISCX2016、StratoshpereIPS、BOA和USTC中的正常流量组成。</li>
+</ul>
+<img src="https://s.secrss.com/anquanneican/9eba7e9fe580b17eefad016b3d0f478f.png" alt="鲁棒可认证的CertTA方法·" style="zoom: 55%;" />
+<p>  在处理数据时，作者首先过滤payload少于784字节的包，因为它们能提供的有用信息较少；其次，移除数据集中的无关协议，如SNMP、局域网广播协议等；最后，为了平衡加密恶意流量与正常流量的比例，对正常流量进行随机采样。各个数据集的数据类型占比如下图所示。</p>
+<img src="https://s.secrss.com/anquanneican/2ec3130a682cd8151e26d91c3bbcb832.png" alt="鲁棒可认证的CertTA方法·" style="zoom: 65%;" />
+<h4 id="er"><strong>e&amp;r</strong><a hidden class="anchor" aria-hidden="true" href="#er">#</a></h4>
+<p>  研究选取了二分类、多分类两种典型场景来对比众多学习模型的实际效果；得出各自最优模型（ML-RF; DL-MalDIST）后，又针对零日恶意流量和恶意软件家族递增两种特定检测情景来对比和评估模型的实际表现、鲁棒性等指标。下表是整体结果（各模块实验见后）：</p>
+<img src="https://s.secrss.com/anquanneican/939c5057f2066088ed0d5430d716b262.png" alt="鲁棒可认证的CertTA方法·" style="zoom: 85%;" />
+<p>  总体来说，RF的表现并不比深度学习差，</p>
+<p>  <strong>传统机器学习方面，本文选取了基于距离的KNN、基于树的DT和基于集成的RF；深度学习则选取了DeepMAL、MalDIST、M1CNN3、M2CNN和MalDIST。</strong></p>
+<p>  二分类场景下，以Accuracy为评估标准，其中KNN的表现最差，RF的表现最优，且优于深度学习模型中表现最好的MalDIST。</p>
+<img src="https://s.secrss.com/anquanneican/e505519585f8b5792df21983fec40b97.png" alt="鲁棒可认证的CertTA方法·" style="zoom: 55%;" />
+<p>  多分类场景只针对恶意流量，但由于不同类型的恶意流量数量规模并不一致，所以实验增添了额外3种评估标准，对比模型在三种定制数据集上的表现。该结果与二分类结果相似，KNN最差，RF最优且优于MalDIST。</p>
+<img src="https://s.secrss.com/anquanneican/99a9038a91ee12e586f631c5278460e0.png" alt="鲁棒可认证的CertTA方法·" style="zoom: 75%;" />
+<p>  探究RF和MalDIST对零日恶意流量检测的表现时，实验每次将一个恶意家族作为测试集，其余家族和正常流量作为训练集进行二分类测试，评估指标为准确率。结果表明，在MUB数据集上，RF在所有家族检测上都优于MalDIST；但在USTCB数据集上，RF在Geodo和Htbot等家族上表现更好，而MalDIST在Nsis和Zeus等家族上表现更佳，且在极端案例中差异尤为明显，如RF对Cridex识别率为90%，而MalDIST仅为0.6%；相反，RF无法识别Shifu和Zeus，而MalDIST能有效识别；在MUB数据集中也出现类似现象。</p>
+<img src="https://s.secrss.com/anquanneican/d07e59202dbdd3ae97faf23f1111a127.png" alt="鲁棒可认证的CertTA方法·" style="zoom: 55%;" />
+<p>  为了评估恶意软件家族数量逐步增加对模型性能的影响，本实验为每个数据集依次加入新的家族，并记录每一步的模型准确率。结果表明，随着家族数量的增加，在进行恶意和正常流量二分类时，两种模型都表现出较高的性能；在进行具体家族分类任务时，模型性能整体呈下降趋势，MTAB数据集上下降最显著。整体上，RF与MalDIST的表现大致相当，未出现明显优劣差距。</p>
+<img src="https://s.secrss.com/anquanneican/33ad7e585e0a45f903c4c5ab7f83a048.png" alt="鲁棒可认证的CertTA方法·" style="zoom: 55%;" />
 <h2 id="c-加密恶意流量特征挖掘研究"><font size=4>C. 加密恶意流量特征挖掘研究</font><a hidden class="anchor" aria-hidden="true" href="#c-加密恶意流量特征挖掘研究">#</a></h2>
 <ul>
 <li><strong>title</strong>：Feature Mining for Encrypted Malicious Traffic  Detection with Deep Learning and Other Machine  Learning Algorithms</li>
