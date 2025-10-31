@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
-    <lastBuildDate>Sat, 25 Oct 2025 11:28:39 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 31 Oct 2025 12:26:12 +0800</lastBuildDate>
     <atom:link href="https://lz0o0.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>热爱，让你成为自己~</title>
@@ -42,6 +42,20 @@
       <description>🤫 我愿称之为懒人日记界面&amp;hellip;</description>
     </item>
     <item>
+      <title>Plog 25.10.31</title>
+      <link>https://lz0o0.github.io/zh/posts/plogs/plog-25.10.31/</link>
+      <pubDate>Fri, 31 Oct 2025 12:26:12 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/plogs/plog-25.10.31/</guid>
+      <description>基于未知协议生成进行审查逃逸</description>
+    </item>
+    <item>
+      <title>Plog 25.09.26</title>
+      <link>https://lz0o0.github.io/zh/posts/plogs/plog-25.09.26/</link>
+      <pubDate>Fri, 31 Oct 2025 11:42:20 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/plogs/plog-25.09.26/</guid>
+      <description>NAT识别与NAT-DDos；日志解析处理；5G注入攻击；大模型评测</description>
+    </item>
+    <item>
       <title>LogIdea</title>
       <link>https://lz0o0.github.io/zh/posts/academic/logidea/</link>
       <pubDate>Sat, 25 Oct 2025 11:28:39 +0800</pubDate>
@@ -74,7 +88,7 @@
       <link>https://lz0o0.github.io/zh/posts/academic/weekly-paper/</link>
       <pubDate>Tue, 26 Aug 2025 10:02:49 +0800</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/academic/weekly-paper/</guid>
-      <description>本文档记录每周拟阅读论文计划，周笔记单设博客页记录</description>
+      <description>本文档记录每x周拟/已阅读论文，详情笔记可能单独设页记录</description>
     </item>
     <item>
       <title>CCF-RC</title>

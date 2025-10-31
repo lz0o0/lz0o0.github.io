@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>💭 See what I Says | Le blog de Lz0o0</title>
-<meta name="keywords" content="">
-<meta name="description" content="🤫 我愿称之为懒人日记界面&hellip;">
-<meta name="author" content="Lz0o0">
-<link rel="canonical" href="https://lz0o0.github.io/zh/posts/life/says/">
+<title>Plog 25.09.26 | Le blog de Lz0o0</title>
+<meta name="keywords" content="设备/模式识别, 攻击利用">
+<meta name="description" content="NAT识别与NAT-DDos；日志解析处理；5G注入攻击；大模型评测">
+<meta name="author" content="Lz0o0 w/ 安全内参">
+<link rel="canonical" href="https://lz0o0.github.io/zh/posts/plogs/plog-25.09.26/">
 
 
 
@@ -21,7 +21,7 @@
 <link rel="mask-icon" href="https://lz0o0.github.io/favicon.ico">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="https://lz0o0.github.io/zh/posts/life/says/">
+<link rel="alternate" hreflang="zh" href="https://lz0o0.github.io/zh/posts/plogs/plog-25.09.26/">
 <noscript>
     <style>
         #theme-toggle,
@@ -38,16 +38,18 @@
 
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
-<meta property="og:url" content="https://lz0o0.github.io/zh/posts/life/says/">
+<meta property="og:url" content="https://lz0o0.github.io/zh/posts/plogs/plog-25.09.26/">
   <meta property="og:site_name" content="Le blog de Lz0o0">
-  <meta property="og:title" content="💭 See what I Says">
-  <meta property="og:description" content="🤫 我愿称之为懒人日记界面…">
+  <meta property="og:title" content="Plog 25.09.26">
+  <meta property="og:description" content="NAT识别与NAT-DDos；日志解析处理；5G注入攻击；大模型评测">
   <meta property="og:locale" content="zh">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-31T11:42:20+08:00">
+    <meta property="article:modified_time" content="2025-10-31T11:42:20+08:00">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="💭 See what I Says">
-<meta name="twitter:description" content="🤫 我愿称之为懒人日记界面&hellip;">
+<meta name="twitter:title" content="Plog 25.09.26">
+<meta name="twitter:description" content="NAT识别与NAT-DDos；日志解析处理；5G注入攻击；大模型评测">
 
 
 <script type="application/ld+json">
@@ -64,14 +66,14 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "(*▼-▼)",
-      "item": "https://lz0o0.github.io/zh/posts/life/"
+      "name": "๑乛◡乛๑",
+      "item": "https://lz0o0.github.io/zh/posts/plogs/"
     }, 
     {
       "@type": "ListItem",
       "position":  3 ,
-      "name": "💭 See what I Says",
-      "item": "https://lz0o0.github.io/zh/posts/life/says/"
+      "name": "Plog 25.09.26",
+      "item": "https://lz0o0.github.io/zh/posts/plogs/plog-25.09.26/"
     }
   ]
 }
@@ -80,24 +82,24 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "💭 See what I Says",
-  "name": "💭 See what I Says",
-  "description": "🤫 我愿称之为懒人日记界面\u0026hellip;",
+  "headline": "Plog 25.09.26",
+  "name": "Plog 25.09.26",
+  "description": "NAT识别与NAT-DDos；日志解析处理；5G注入攻击；大模型评测",
   "keywords": [
-    
+    "设备/模式识别", "攻击利用"
   ],
-  "articleBody": "\r“相信奇迹的人，本身就和奇迹一样了不起”\r--- 2025-10-26\r“Yang 在近代科学上取得的成绩超群绝伦，他103岁的人生激励了几代世界级人才，但晚年却被公众过分窥视私生活”\r--- 2025-10-20\r“首次参加学术大会，颇感复杂（有不少概念轰炸、人捧人高...），对很多大问题颇显无力，纵登光明顶，却非无忌儿...”\r--- 2025-10-18\r“山高万仞，只登一步”\r--- 2025-10-15\r“...”\r--- 2025-10-04\r“今天首次尝试了隐形眼镜，陌生的巨物感~”\r--- 2025-05-22\r“今天旁听组里师兄答辩的感觉很特别，略显局促但莫名的开心~（ps其实很想送他们一程，导师临门一脚也是遂了我的愿，现场挺勇的，抬着手机到处拍照录像🤣”\r--- 2025-05-17\r“崂山的破晓，我发现一个人的旅行也很舒服😎~”\r--- 2025-05-04\r“带车去青岛，折腾，折腾，就要折腾！”\r--- 2025-05-03\r“雁栖湖-天津之眼，160+km，刷新个人骑行的最大里程，中途摔车给我摔醒了，没有同伴，可能真的坚持不下来🥱”\r--- 2025-05-01\r“照亮我们 黑暗的心 究竟是什么”\r--- 2025-04-25\r“事必求精，至美需极力（太正经了ban掉，玩尽兴，学到家！）！”\r--- 2025-04-23\r“AI-CFW,学习新技术总是让人兴奋！”\r--- 2025-04-17\r“😁 碎碎念页面完成了, So easy！”\r--- 2025-04-16\r",
-  "wordCount" : "459",
+  "articleBody": "\rA. ReDAN：一种面向NAT网络的远程拒绝服务攻击实证研究 title：ReDAN: An Empirical Study on Remote DoS Attacks against NAT Networks coj：NDSS 25 Link：https://www.ndss-symposium.org/wp-content/uploads/2025-972-paper.pdf note：NAT DDOS = NAT识别 + DDoS漏洞 detail: refer B. 利用预训练的语言模型释放基于语义的日志解析的真正潜力 title：Unleashing the True Potential of Semantic-based Log Parsing with Pre-trained Language Models coj：IEEE ICSE 25 Link：https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=\u0026arnumber=11029829 note：日志解析处理、预训练 detail: refer C. Sni5Gect：向5G NR注入aNRchy的实用方法 title：SNI5GECT: A Practical Approach to Inject aNRchy into 5G NR coj：Usenix Security 25 Link：https://www.usenix.org/system/files/usenixsecurity25-luo-shijie.pdf note：5G预认证前的未加密状态可以被识别，攻击者可以在下行通信诸如攻击载荷致使DOS和服务降级 detail: refer D. clue中文语言理解测评基准\u0026排行榜 title：clue中文语言理解测评基准 coj：NULL Link：https://www.superclueai.com/homepage note：大模型排行榜 detail: refer ",
+  "wordCount" : "604",
   "inLanguage": "zh",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
-  "author":{
+  "datePublished": "2025-10-31T11:42:20+08:00",
+  "dateModified": "2025-10-31T11:42:20+08:00",
+  "author":[{
     "@type": "Person",
-    "name": "Lz0o0"
-  },
+    "name": "Lz0o0 w/ 安全内参"
+  }],
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://lz0o0.github.io/zh/posts/life/says/"
+    "@id": "https://lz0o0.github.io/zh/posts/plogs/plog-25.09.26/"
   },
   "publisher": {
     "@type": "Organization",
@@ -199,10 +201,13 @@
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="https://lz0o0.github.io/zh/">🏠Home</a>&nbsp;»&nbsp;<a href="https://lz0o0.github.io/zh/posts/">๑✦ˑ_✦</a>&nbsp;»&nbsp;<a href="https://lz0o0.github.io/zh/posts/plogs/">๑乛◡乛๑</a></div>
     <h1 class="post-title entry-hint-parent">
-      💭 See what I Says
+      Plog 25.09.26
     </h1>
+    <div class="post-meta"><span title='2025-10-31 11:42:20 +0800 CST'>2025-10-31</span>&nbsp;·&nbsp;2 mins&nbsp;·&nbsp;Lz0o0 w/ 安全内参
+
+</div>
   </header>
 
   
@@ -210,283 +215,161 @@
       <ul class="post-tags">
       </ul>
   </div> 
-  <div class="post-content"><div class="aplayer" data-id="386835" data-server="netease" data-type="song" data-mode="single" style="--background-url: url('https://img.lizhuo.space/eva-2.png');">
-</div>
-<br>
-<style type="text/css">
-    .says {
-        --say-count-per-row: 1;
-        margin: left auto;  
-    }
-
-    @media screen and (min-width: 576px) {
-        .says {
-            --say-count-per-row: 2;
-        }
-    }
-
-    @media screen and (min-width: 768px) {
-        .says {
-            --say-count-per-row: 3;
-        }
-    }
-
-    .says {
-        display: grid;
-        grid-template-columns: repeat(var(--say-count-per-row), 1fr);
-        grid-gap: 16px;
-    }
-
-    .say-item {
-       height: auto;  
-        min-height: 120px;  
-         
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 16px;
-        border-radius: var(--radius);
-        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-            0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
-        background: var(--entry);
-        transition: 0.3s ease-in-out;
-        overflow: hidden;  
-    }
-
-    .say-item:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
-            0 5px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 14px 0 rgba(0, 0, 0, 0.12) !important;
-    }
-
-    .say-content {
-        font-size: 1rem;
-        line-height: 1.5;
-        color: var(--text);
-        margin-bottom: 12px;
-    }
-
-    .say-meta {
-        font-size: 0.85rem;
-        color: var(--secondary);
-        text-align: right;
-    }
-</style>
-
-<div class="says">
   
-    <div class="say-item" style="
-        
-        background-image: url('https://so1.360tres.com/t0118d65325b9b52ac3.jpg');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“相信奇迹的人，本身就和奇迹一样了不起”</div>
-        <div class="say-meta">---  
-          
-           2025-10-26
-          </div>
+  <div class="toc-container"><aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Directory</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#a-redan%e4%b8%80%e7%a7%8d%e9%9d%a2%e5%90%91nat%e7%bd%91%e7%bb%9c%e7%9a%84%e8%bf%9c%e7%a8%8b%e6%8b%92%e7%bb%9d%e6%9c%8d%e5%8a%a1%e6%94%bb%e5%87%bb%e5%ae%9e%e8%af%81%e7%a0%94%e7%a9%b6" aria-label="A. ReDAN：一种面向NAT网络的远程拒绝服务攻击实证研究"><font size=4>A. ReDAN：一种面向NAT网络的远程拒绝服务攻击实证研究</font></a></li>
+                    <li>
+                        <a href="#b-%e5%88%a9%e7%94%a8%e9%a2%84%e8%ae%ad%e7%bb%83%e7%9a%84%e8%af%ad%e8%a8%80%e6%a8%a1%e5%9e%8b%e9%87%8a%e6%94%be%e5%9f%ba%e4%ba%8e%e8%af%ad%e4%b9%89%e7%9a%84%e6%97%a5%e5%bf%97%e8%a7%a3%e6%9e%90%e7%9a%84%e7%9c%9f%e6%ad%a3%e6%bd%9c%e5%8a%9b" aria-label="B. 利用预训练的语言模型释放基于语义的日志解析的真正潜力"><font size=4>B. 利用预训练的语言模型释放基于语义的日志解析的真正潜力</font></a></li>
+                    <li>
+                        <a href="#c-sni5gect%e5%90%915g-nr%e6%b3%a8%e5%85%a5anrchy%e7%9a%84%e5%ae%9e%e7%94%a8%e6%96%b9%e6%b3%95" aria-label="C. Sni5Gect：向5G NR注入aNRchy的实用方法"><font size=4>C. Sni5Gect：向5G NR注入aNRchy的实用方法</font></a></li>
+                    <li>
+                        <a href="#d-clue%e4%b8%ad%e6%96%87%e8%af%ad%e8%a8%80%e7%90%86%e8%a7%a3%e6%b5%8b%e8%af%84%e5%9f%ba%e5%87%86%e6%8e%92%e8%a1%8c%e6%a6%9c" aria-label="D. clue中文语言理解测评基准&amp;排行榜"><font size=4>D. clue中文语言理解测评基准&amp;排行榜</font></a>
+                    </li>
+                </ul>
+            </div>
+        </details>
     </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
     
-    <div class="say-item" style="
-        
-        background-image: url('https://tse3.mm.bing.net/th/id/OIP.eF2KDQyTv4yyGiJZhKLA6AHaFb?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“Yang 在近代科学上取得的成绩超群绝伦，他103岁的人生激励了几代世界级人才，但晚年却被公众过分窥视私生活”</div>
-        <div class="say-meta">---  
-          
-           2025-10-20
-          </div>
-    </div>
+    document.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
     
-    <div class="say-item" style="
-        
-        background-image: url('https://img.lizhuo.space/berserk-12.jpg');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“首次参加学术大会，颇感复杂（有不少概念轰炸、人捧人高...），对很多大问题颇显无力，纵登光明顶，却非无忌儿...”</div>
-        <div class="say-meta">---  
-          
-           2025-10-18
-          </div>
-    </div>
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+        if (elements.length > 0) {
+            
+            activeElement = elements[0];
+            const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+            document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+        }
     
-    <div class="say-item" style="
         
-        background-image: url('https://img.lizhuo.space/berserk-15.png');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“山高万仞，只登一步”</div>
-        <div class="say-meta">---  
-          
-           2025-10-15
-          </div>
-    </div>
+        const topLink = document.getElementById('top-link');
+        if (topLink) {
+            topLink.addEventListener('click', (event) => {
+                
+                event.preventDefault();
     
-    <div class="say-item" style="
-        
-        background-image: url('https://img.lizhuo.space/25-10-04.jpg');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“...”</div>
-        <div class="say-meta">---  
-          
-           2025-10-04
-          </div>
-    </div>
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }, false);
     
-    <div class="say-item" style="
-        
-        background-image: url('https://img.lizhuo.space/test.jpg');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“今天首次尝试了隐形眼镜，陌生的巨物感~”</div>
-        <div class="say-meta">---  
-          
-           2025-05-22
-          </div>
-    </div>
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
     
-    <div class="say-item" style="
+    window.addEventListener('scroll', () => {
         
-        background-image: url('https://img.lizhuo.space/%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_2025-05-20_125550_523.jpg');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“今天旁听组里师兄答辩的感觉很特别，略显局促但莫名的开心~（ps其实很想送他们一程，导师临门一脚也是遂了我的愿，现场挺勇的，抬着手机到处拍照录像🤣”</div>
-        <div class="say-meta">---  
-          
-           2025-05-17
-          </div>
-    </div>
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
     
-    <div class="say-item" style="
         
-        background-image: url('https://img.lizhuo.space/%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_2025-05-20_123927_335.jpg');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“崂山的破晓，我发现一个人的旅行也很舒服😎~”</div>
-        <div class="say-meta">---  
-          
-           2025-05-04
-          </div>
-    </div>
+        if (scrollPosition === 0) {
+            return;
+        }
     
-    <div class="say-item" style="
         
-        background-image: url('https://img.lizhuo.space/%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20250520124509_88.jpg');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“带车去青岛，折腾，折腾，就要折腾！”</div>
-        <div class="say-meta">---  
-          
-           2025-05-03
-          </div>
-    </div>
+        if (elements && elements.length > 0) {
+            
+            activeElement = Array.from(elements).find((element) => {
+                if ((getOffsetTop(element) - scrollPosition) > 0 && 
+                    (getOffsetTop(element) - scrollPosition) < window.innerHeight / 2) {
+                    return element;
+                }
+            }) || activeElement;
     
-    <div class="say-item" style="
-        
-        background-image: url('https://img.lizhuo.space/%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_2025-05-20_123832_497.jpg');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“雁栖湖-天津之眼，160&#43;km，刷新个人骑行的最大里程，中途摔车给我摔醒了，没有同伴，可能真的坚持不下来🥱”</div>
-        <div class="say-meta">---  
-          
-           2025-05-01
-          </div>
-    </div>
+            elements.forEach(element => {
+                const id = encodeURI(element.getAttribute('id')).toLowerCase();
+                const tocLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
+                if (element === activeElement){
+                    tocLink.classList.add('active');
     
-    <div class="say-item" style="
-        
-        background-image: url('https://img.lizhuo.space/berserk-12.jpg');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“照亮我们 黑暗的心 究竟是什么”</div>
-        <div class="say-meta">---  
-          
-           2025-04-25
-          </div>
-    </div>
+                    
+                    const tocContainer = document.querySelector('.toc .inner');
+                    const linkOffsetTop = tocLink.offsetTop;
+                    const containerHeight = tocContainer.clientHeight;
+                    const linkHeight = tocLink.clientHeight;
     
-    <div class="say-item" style="
-        
-        background-image: url('https://img.lizhuo.space/eva-2.png');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“事必求精，至美需极力（太正经了ban掉，玩尽兴，学到家！）！”</div>
-        <div class="say-meta">---  
-          
-           2025-04-23
-          </div>
-    </div>
+                    
+                    const scrollPosition = linkOffsetTop - (containerHeight / 2) + (linkHeight / 2);
+                    tocContainer.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+                } else {
+                    tocLink.classList.remove('active');
+                }
+            });
+        }
+    }, false);
     
-    <div class="say-item" style="
-        
-        background-image: url('https://img.lizhuo.space/dog.png');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“AI-CFW,学习新技术总是让人兴奋！”</div>
-        <div class="say-meta">---  
-          
-           2025-04-17
-          </div>
-    </div>
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
     
-    <div class="say-item" style="
-        
-        background-image: url('https://img.lizhuo.space/samurai-29.png');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
-        
-    ">
-        <div class="say-content">“😁 碎碎念页面完成了, So easy！”</div>
-        <div class="say-meta">---  
-          
-           2025-04-16
-          </div>
-    </div>
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
     
-</div>
-<!-- more -->
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+    
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+    
+</script>
+
+  </div>
+  <div class="post-content"><!-- more -->
+<h2 id="a-redan一种面向nat网络的远程拒绝服务攻击实证研究"><font size=4>A. ReDAN：一种面向NAT网络的远程拒绝服务攻击实证研究</font><a hidden class="anchor" aria-hidden="true" href="#a-redan一种面向nat网络的远程拒绝服务攻击实证研究">#</a></h2>
+<ul>
+<li><strong>title</strong>：ReDAN: An Empirical Study on Remote DoS Attacks against NAT Networks</li>
+<li><strong>coj</strong>：NDSS 25</li>
+<li><strong>Link</strong>：https://www.ndss-symposium.org/wp-content/uploads/2025-972-paper.pdf</li>
+<li><strong>note</strong>：NAT DDOS = NAT识别 + DDoS漏洞</li>
+<li><strong>detail</strong>: <a href="https://www.secrss.com/articles/82785">refer</a></li>
+</ul>
+<h2 id="b-利用预训练的语言模型释放基于语义的日志解析的真正潜力"><font size=4>B. 利用预训练的语言模型释放基于语义的日志解析的真正潜力</font><a hidden class="anchor" aria-hidden="true" href="#b-利用预训练的语言模型释放基于语义的日志解析的真正潜力">#</a></h2>
+<ul>
+<li><strong>title</strong>：Unleashing the True Potential of Semantic-based Log Parsing with Pre-trained Language Models</li>
+<li><strong>coj</strong>：IEEE ICSE 25</li>
+<li><strong>Link</strong>：https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=11029829</li>
+<li><strong>note</strong>：日志解析处理、预训练</li>
+<li><strong>detail</strong>: <a href="https://www.secrss.com/articles/82229">refer</a></li>
+</ul>
+<h2 id="c-sni5gect向5g-nr注入anrchy的实用方法"><font size=4>C. Sni5Gect：向5G NR注入aNRchy的实用方法</font><a hidden class="anchor" aria-hidden="true" href="#c-sni5gect向5g-nr注入anrchy的实用方法">#</a></h2>
+<ul>
+<li><strong>title</strong>：SNI5GECT: A Practical Approach to Inject aNRchy into 5G NR</li>
+<li><strong>coj</strong>：Usenix Security 25</li>
+<li><strong>Link</strong>：https://www.usenix.org/system/files/usenixsecurity25-luo-shijie.pdf</li>
+<li><strong>note</strong>：5G预认证前的未加密状态可以被识别，攻击者可以在下行通信诸如攻击载荷致使DOS和服务降级</li>
+<li><strong>detail</strong>: <a href="https://www.secrss.com/articles/82216">refer</a></li>
+</ul>
+<h2 id="d-clue中文语言理解测评基准排行榜"><font size=4>D. clue中文语言理解测评基准&amp;排行榜</font><a hidden class="anchor" aria-hidden="true" href="#d-clue中文语言理解测评基准排行榜">#</a></h2>
+<ul>
+<li><strong>title</strong>：clue中文语言理解测评基准</li>
+<li><strong>coj</strong>：NULL</li>
+<li><strong>Link</strong>：https://www.superclueai.com/homepage</li>
+<li><strong>note</strong>：大模型排行榜</li>
+<li><strong>detail</strong>: <a href="https://www.secrss.com/articles/82447">refer</a></li>
+</ul>
 
 
   </div>
@@ -494,15 +377,15 @@
   <footer class="post-footer">
     
 <nav class="paginav">
-  <a class="prev" href="https://lz0o0.github.io/zh/posts/%E4%BD%A0%E5%A5%BD%E6%9C%8B%E5%8F%8B/">
+  <a class="prev" href="https://lz0o0.github.io/zh/posts/plogs/plog-25.10.31/">
     <span class="title">« Last Page</span>
     <br>
-    <span>热爱，让你成为自己~</span>
+    <span>Plog 25.10.31</span>
   </a>
-  <a class="next" href="https://lz0o0.github.io/zh/posts/plogs/plog-25.10.31/">
+  <a class="next" href="https://lz0o0.github.io/zh/posts/academic/logidea/">
     <span class="title">Next Page »</span>
     <br>
-    <span>Plog 25.10.31</span>
+    <span>LogIdea</span>
   </a>
 </nav>
 
