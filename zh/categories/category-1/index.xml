@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
-    <lastBuildDate>Sat, 17 May 2025 08:52:09 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Nov 2025 10:23:50 +0800</lastBuildDate>
     <atom:link href="https://lz0o0.github.io/zh/categories/category-1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图床</title>
+      <link>https://lz0o0.github.io/zh/posts/nice-techs/%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Tue, 04 Nov 2025 10:23:50 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/nice-techs/%E5%9B%BE%E5%BA%8A/</guid>
+      <description>图床是对图像在线存储和托管服务的一种形象描述，一般由核心的存储仓库和用户侧程序组成，用户侧程序方便用户简单直接地上传图片并获取访问链接，以便于图床所有者在社媒平台和更广泛地网络访问中分享和展示这些图片</description>
+    </item>
     <item>
       <title>毕业答辩旁听纪要</title>
       <link>https://lz0o0.github.io/zh/posts/academic/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E6%97%81%E5%90%AC%E7%BA%AA%E8%A6%81/</link>

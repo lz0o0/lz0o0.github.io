@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
-    <lastBuildDate>Fri, 31 Oct 2025 12:26:12 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Nov 2025 10:23:50 +0800</lastBuildDate>
     <atom:link href="https://lz0o0.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>热爱，让你成为自己~</title>
@@ -40,6 +40,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/life/says/</guid>
       <description>🤫 我愿称之为懒人日记界面&amp;hellip;</description>
+    </item>
+    <item>
+      <title>图床</title>
+      <link>https://lz0o0.github.io/zh/posts/nice-techs/%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Tue, 04 Nov 2025 10:23:50 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/nice-techs/%E5%9B%BE%E5%BA%8A/</guid>
+      <description>图床是对图像在线存储和托管服务的一种形象描述，一般由核心的存储仓库和用户侧程序组成，用户侧程序方便用户简单直接地上传图片并获取访问链接，以便于图床所有者在社媒平台和更广泛地网络访问中分享和展示这些图片</description>
     </item>
     <item>
       <title>Plog 25.10.31</title>

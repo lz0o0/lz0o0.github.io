@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>实用服务 on Le blog de Lz0o0</title>
+    <link>https://lz0o0.github.io/zh/tags/%E5%AE%9E%E7%94%A8%E6%9C%8D%E5%8A%A1/</link>
+    <description>Recent content in 实用服务 on Le blog de Lz0o0</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>zh</language>
+    <copyright>©2025 Le blog de Lz0o0</copyright>
+    <lastBuildDate>Tue, 04 Nov 2025 10:23:50 +0800</lastBuildDate>
+    <atom:link href="https://lz0o0.github.io/zh/tags/%E5%AE%9E%E7%94%A8%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图床</title>
+      <link>https://lz0o0.github.io/zh/posts/nice-techs/%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Tue, 04 Nov 2025 10:23:50 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/nice-techs/%E5%9B%BE%E5%BA%8A/</guid>
+      <description>图床是对图像在线存储和托管服务的一种形象描述，一般由核心的存储仓库和用户侧程序组成，用户侧程序方便用户简单直接地上传图片并获取访问链接，以便于图床所有者在社媒平台和更广泛地网络访问中分享和展示这些图片</description>
+    </item>
+  </channel>
+</rss>
