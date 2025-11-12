@@ -7,7 +7,7 @@
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
-    <lastBuildDate>Tue, 04 Nov 2025 10:23:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 12 Nov 2025 09:55:39 +0800</lastBuildDate>
     <atom:link href="https://lz0o0.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>热爱，让你成为自己~</title>
@@ -40,6 +40,41 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://lz0o0.github.io/zh/posts/life/says/</guid>
       <description>🤫 我愿称之为懒人日记界面&amp;hellip;</description>
+    </item>
+    <item>
+      <title>Plog 25.11.14</title>
+      <link>https://lz0o0.github.io/zh/posts/plogs/plog-25.11.14/</link>
+      <pubDate>Wed, 12 Nov 2025 09:55:39 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/plogs/plog-25.11.14/</guid>
+      <description>转发器时间-缓存侧信道攻击；QR Security</description>
+    </item>
+    <item>
+      <title>各开放平台一览</title>
+      <link>https://lz0o0.github.io/zh/posts/affair-logs/%E5%90%84%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E4%B8%80%E8%A7%88/</link>
+      <pubDate>Wed, 12 Nov 2025 09:49:53 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/affair-logs/%E5%90%84%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E4%B8%80%E8%A7%88/</guid>
+      <description>&lt;!-- more --&gt;</description>
+    </item>
+    <item>
+      <title>各种DNS资源记录形式及使用汇总</title>
+      <link>https://lz0o0.github.io/zh/posts/bricks/%E5%90%84%E7%A7%8Ddns%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95%E5%BD%A2%E5%BC%8F%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Wed, 12 Nov 2025 09:47:46 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/bricks/%E5%90%84%E7%A7%8Ddns%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95%E5%BD%A2%E5%BC%8F%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%B1%87%E6%80%BB/</guid>
+      <description>&lt;!-- more --&gt;</description>
+    </item>
+    <item>
+      <title>Dig工具 Nslookup工具原理与作用</title>
+      <link>https://lz0o0.github.io/zh/posts/nice-techs/dig%E5%B7%A5%E5%85%B7-nslookup%E5%B7%A5%E5%85%B7%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%9C%E7%94%A8/</link>
+      <pubDate>Wed, 12 Nov 2025 09:45:49 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/nice-techs/dig%E5%B7%A5%E5%85%B7-nslookup%E5%B7%A5%E5%85%B7%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%9C%E7%94%A8/</guid>
+      <description>&lt;!-- more --&gt;</description>
+    </item>
+    <item>
+      <title>Cname的作用和子域名劫持</title>
+      <link>https://lz0o0.github.io/zh/posts/nice-techs/cname%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%AD%90%E5%9F%9F%E5%90%8D%E5%8A%AB%E6%8C%81/</link>
+      <pubDate>Wed, 12 Nov 2025 09:44:43 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/posts/nice-techs/cname%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%AD%90%E5%9F%9F%E5%90%8D%E5%8A%AB%E6%8C%81/</guid>
+      <description>&lt;!-- more --&gt;</description>
     </item>
     <item>
       <title>图床</title>

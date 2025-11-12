@@ -7,8 +7,22 @@
     <generator>Hugo -- 0.145.0</generator>
     <language>zh</language>
     <copyright>©2025 Le blog de Lz0o0</copyright>
-    <lastBuildDate>Tue, 04 Nov 2025 10:23:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 12 Nov 2025 09:49:53 +0800</lastBuildDate>
     <atom:link href="https://lz0o0.github.io/zh/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tag 1</title>
+      <link>https://lz0o0.github.io/zh/tags/tag-1/</link>
+      <pubDate>Wed, 12 Nov 2025 09:49:53 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/tags/tag-1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tag 2</title>
+      <link>https://lz0o0.github.io/zh/tags/tag-2/</link>
+      <pubDate>Wed, 12 Nov 2025 09:49:53 +0800</pubDate>
+      <guid>https://lz0o0.github.io/zh/tags/tag-2/</guid>
+      <description></description>
+    </item>
     <item>
       <title>实用服务</title>
       <link>https://lz0o0.github.io/zh/tags/%E5%AE%9E%E7%94%A8%E6%9C%8D%E5%8A%A1/</link>
